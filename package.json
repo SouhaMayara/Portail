@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.1.0-next.2",
     "@angular/platform-browser-dynamic": "~9.1.0-next.2",
     "@angular/router": "~9.1.0-next.2",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -43,5 +45,17 @@
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0-next.1.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ghadabs/PORTAIL.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ghadabs/PORTAIL/issues"
+  },
+  "homepage": "https://github.com/ghadabs/PORTAIL#readme"
 }
