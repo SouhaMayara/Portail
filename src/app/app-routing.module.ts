@@ -7,12 +7,9 @@ const routes: Routes = [
   { path: '/', component: LoginComponent }
 ];
 
-
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
