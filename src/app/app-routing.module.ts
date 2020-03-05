@@ -4,14 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  
 ];
 
 @NgModule({
   declarations: [],
-  imports: [ RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled'
-}) ],
+  imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
