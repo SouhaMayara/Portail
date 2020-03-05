@@ -7,6 +7,7 @@ import { ProfComponent } from './prof/prof.component';
 import { LayoutEtudiantComponent } from './layout-etudiant/layout-etudiant.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
 
+
 const routes: Routes = [
   {
     path : "",
