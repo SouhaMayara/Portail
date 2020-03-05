@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
 import { ProfComponent } from './prof/prof.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LayoutProfComponent } from './layout-prof/layout-prof.component';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     LoginComponent,
     EtudiantComponent,
-    ProfComponent
+    ProfComponent,
+    LayoutProfComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -20,6 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [],
   bootstrap: [AppComponent,
-              LoginComponent]
+              LoginComponent,
+            LayoutProfComponent,
+          ProfComponent]
 })
 export class AppModule { }
