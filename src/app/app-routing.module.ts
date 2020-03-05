@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { LayoutProfComponent } from './layout-prof/layout-prof.component';
 import { ProfComponent } from './prof/prof.component';
+import { LayoutEtudiantComponent } from './layout-etudiant/layout-etudiant.component';
+import { EtudiantComponent } from './etudiant/etudiant.component';
+
 
 const routes: Routes = [
   {
@@ -13,8 +16,15 @@ const routes: Routes = [
   { path : "prof" , 
     component : LayoutProfComponent , 
      children : [
-      { path : "test" , 
+      { path : "" , 
     component : ProfComponent } 
+    ] 
+  },
+  { path : "etudiant" , 
+    component : LayoutEtudiantComponent, 
+     children : [
+      { path : "" , 
+    component : EtudiantComponent } 
     ] 
   }
    

@@ -6,6 +6,7 @@ import { EtudiantComponent } from './etudiant/etudiant.component';
 import { ProfComponent } from './prof/prof.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutProfComponent } from './layout-prof/layout-prof.component';
+import { LayoutEtudiantComponent } from './layout-etudiant/layout-etudiant.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { LayoutProfComponent } from './layout-prof/layout-prof.component';
     LoginComponent,
     EtudiantComponent,
     ProfComponent,
-    LayoutProfComponent
+    LayoutProfComponent,
+    LayoutEtudiantComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
