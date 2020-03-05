@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-example-with-routing",
+            "outputPath": "dist/angular-example-with-routing/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -117,12 +117,66 @@
               "devServerTarget": "angular-example-with-routing:serve:production"
             }
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/angular-example-with-routing/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "externalDependencies": [
+              "@nestjs/microservices",
+              "@nestjs/microservices/microservices-module",
+              "@nestjs/websockets",
+              "@nestjs/websockets/socket-module",
+              "cache-manager"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": false
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "angular-example-with-routing:build",
+            "serverTarget": "angular-example-with-routing:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-example-with-routing:build:production",
+              "serverTarget": "angular-example-with-routing:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "angular-example-with-routing:build:production",
+            "serverTarget": "angular-example-with-routing:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
         }
       }
     }
   },
   "defaultProject": "angular-example-with-routing",
   "cli": {
-    "analytics": "a51c3993-14ab-4b5a-9cfd-4dbcf7e33db2"
+    "analytics": "6f3f281c-e040-4b56-a5c6-8b47e371fcd4"
   }
 }
