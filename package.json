@@ -32,12 +32,18 @@
     "@nguniversal/express-engine": "^9.0.0",
     "body-parser": "^1.19.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "bootstrap": "^4.4.1",
 =======
     "bootstrap": "^3.3.7",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
 >>>>>>> 958998955a3a2826e6d81deea376af8e8c99726b
+=======
+    "bootstrap": "^4.4.1",
+    "class-transformer": "^0.2.3",
+    "class-validator": "^0.9.1",
+>>>>>>> 5971aa8aa9305b8c98ef04e31a5dd9c8e2f745a5
     "express": "^4.17.1",
     "json": "^9.0.6",
     "mongodb": "^3.5.4",
