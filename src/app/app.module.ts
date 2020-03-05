@@ -15,10 +15,11 @@ import { AppRoutingModule } from './app-routing.module';
     ProfComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,
+              LoginComponent]
 })
 export class AppModule { }
