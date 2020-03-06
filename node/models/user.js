@@ -16,7 +16,8 @@ const UserSchema = new mongoose.Schema({
   });
 
   const EtudiantSchema = extendSchema(UserSchema, {
-    Groupe: {type: String, required: true}
+    Groupe: {type: String, required: true},
+    nbrAbs:{type:Number}
   });
 
   module.exports = mongoose.model('user', UserSchema);

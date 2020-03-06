@@ -10,25 +10,14 @@ import { EtudiantComponent } from './etudiant/etudiant.component';
 
 const routes: Routes = [
   {
-    path : "",
-    component : LoginComponent,
+    path : '', component : LoginComponent,
   },
-  { path : "prof" , 
-    component : LayoutProfComponent , 
-     children : [
-      { path : "" , 
-    component : ProfComponent } 
-    ] 
-  },
-  { path : "etudiant" , 
-    component : LayoutEtudiantComponent, 
-     children : [
-      { path : "" , 
-    component : EtudiantComponent } 
-    ] 
-  }
-   
-];
+  { path : 'prof' , component : LayoutProfComponent ,  children : [
+      { path : ' ' , component : ProfComponent }
+    ] },
+  { path : 'etudiant' ,  component : LayoutEtudiantComponent, children : [
+      { path : '' ,  component : EtudiantComponent } ] }
+   ];
 
 @NgModule({
   declarations: [],
