@@ -15,6 +15,12 @@ app.use(function(req, res, next) {
 const auth = require('./node/routes/auth')
 app.use('/auth', auth);
 
+const user = require('./node/routes/userId')
+app.use('/user', user);
+
+const article = require('./node/routes/article')
+app.use('/article', article);
+
 app.listen(3001, ()=>{
   console.log('port:3001')
 })

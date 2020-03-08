@@ -2,7 +2,8 @@ const router = require('express').Router();
 const user = require('../models/user')
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const author = require('../models/user');
+const professeur = require('../models/professeur');
+
 
 router.post('/login', async (req, res) => {
   const userResult = await user.findOne({ email: req.body.email }).exec();
@@ -16,13 +17,13 @@ router.post('/register', async (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, 10);
   const userResult = await user.create(req.body).catch(err => err);
   console.log(req.body)
-  // if (req.body.role === 'professeur') {
-  //   req.body.user = userResult._id;
-  //   console.log(req.body)
-  //   const authorResult = await author.create(req.body).catch(err => err);
-  //   const userResult2 = await user.updateOne({_id:userResult._id}, {$set: {author: authorResult._id}})
-  //   console.log(authorResult, userResult2)
-  // }
+  if (req.body.role === 'professeur') {
+    req.body.user = userResult._id;
+    console.log(req.body)
+    const profResult = await professeur.create(req.body).catch(err => err);
+    const userResult2 = await user.updateOne({_id:userResult._id}, {$set: {professeur: profResult._id}})
+    console.log(profResult, userResult2)
+  }
   res.send({ message: 'ok', data: userResult });
 })
 
