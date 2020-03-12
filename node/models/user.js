@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
     role: { type: String, enum: ['professeur', 'Etudiant'], default: 'Etudiant' },
     articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'article' }],
     matieres:[{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
-    seances: [{ type: mongoose.Schema.Types.ObjectId, ref: 'seance' }]
+   
   });
 
   module.exports = mongoose.model('user', UserSchema);
