@@ -6,6 +6,7 @@ import { LayoutProfComponent } from './layout-prof/layout-prof.component';
 import { ProfComponent } from './prof/prof.component';
 import { LayoutEtudiantComponent } from './layout-etudiant/layout-etudiant.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
+import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     path : '', component : LoginComponent,
   },
   { path : 'prof' , component : LayoutProfComponent ,  children : [
-      { path : ' ' , component : ProfComponent }
+      { path : '' , component : ProfComponent },
+      { path : 'presence' , component : ListePresenceComponent },
     ] },
   { path : 'etudiant' ,  component : LayoutEtudiantComponent, children : [
       { path : '' ,  component : EtudiantComponent } ] }
@@ -21,7 +23,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes),RouterModule.forChild(routes)  ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
