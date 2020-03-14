@@ -7,8 +7,11 @@ const UserSchema = new mongoose.Schema({
     firstname: {type: String},
     lastname: {type: String},
     abs:Boolean, 
-    role: { type: String, enum: ['professeur', 'Etudiant'], default: 'Etudiant' }
-    
+    professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
+    role: { type: String, enum: ['professeur', 'Etudiant'], default: 'Etudiant' },
+    articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'article' }],
+    matieres:[{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
+   
   });
 
   module.exports = mongoose.model('user', UserSchema);
