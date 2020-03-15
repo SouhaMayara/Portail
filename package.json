@@ -36,6 +36,7 @@
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
     "cors": "^2.8.5",
+    "decode-jwt": "^1.0.2",
     "express": "^4.17.1",
     "json": "^9.0.6",
     "jsonwebtoken": "^8.5.1",
