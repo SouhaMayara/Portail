@@ -1,7 +1,6 @@
-const express = require('express')
+const express = require('express');
 const bodyparser = require('body-parser');
-const cors = require('cors')
-
+//const cors = require('cors');
 const mongoose = require('mongoose');
 const app = express();
 app.use(bodyparser.json());
@@ -28,6 +27,12 @@ app.use('/user', user);
 
 const article = require('./node/routes/article')
 app.use('/article', article);
+
+const seance = require('./node/routes/seance')
+app.use('/seance', seance);
+
+const matiere = require('./node/routes/matiere')
+app.use('/matiere', matiere);
 
 app.listen(3001, ()=>{
   console.log('________________________port:3001')
