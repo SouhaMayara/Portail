@@ -1,19 +1,20 @@
-<div id="login-page">
-    <div class="container">
-      <form class="form-login" >
+<div id="login-page" >
+    <div role="form" class="container">
+      <form class="form-login" [formGroup]="loginForm" (ngSubmit)="loginBtn()" >
         <h2 class="form-login-heading">sign in now</h2>
         <div class="login-wrap">
-          <input [(ngModel)]="loginUserData.email" name="email" type="text" class="form-control" placeholder="User ID" autofocus required>
-          <br>
-          <input [(ngModel)]="loginUserData.password" name="password" type="password" class="form-control" placeholder="Password" required>
-          <label class="checkbox">
+          <input formControlName="email" name="email" type="text" class="form-control" placeholder="Email" autofocus required>
+            <br>
+          <input formControlName="password" name="password" type="password" class="form-control" placeholder="Password" required>
+            <label class="checkbox">
             <input type="checkbox" value="remember-me"> Remember me
             <span class="pull-right">
             <a data-toggle="modal" href="login.html#myModal"> Forgot Password?</a>
             </span>
             </label>
-          <button (click)="loginUser()" class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
-          <hr>
+          <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+ 
+          <hr>     
         </div>
         
         <!-- Modal -->

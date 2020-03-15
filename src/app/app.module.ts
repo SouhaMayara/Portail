@@ -1,17 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { FormsModule }   from '@angular/forms';
+import { FormsModule,    ReactiveFormsModule}   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClient, HttpClientModule} from'@angular/common/http';
 import { AppComponent } from './app.component';
-
-
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { EtudiantComponent } from './etudiant/etudiant.component';
 import { ProfComponent } from './prof/prof.component';
 import { AuthService } from './auth.service';
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,24 +19,21 @@ import { ListePresenceComponent } from './liste-presence/liste-presence.componen
     LoginComponent,
     EtudiantComponent,
     ProfComponent,
-    LayoutProfComponent,
-    LayoutEtudiantComponent,
+    HomeComponent,
     ListePresenceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AppRoutingModule,
     FormsModule,
-    HttpClientModule,
-    AppRoutingModule
-    
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent,
               LoginComponent,
-            LayoutProfComponent,
-          ProfComponent,
-          LayoutProfComponent,
-          LayoutEtudiantComponent,
-          ListePresenceComponent]
+              ProfComponent,
+              ListePresenceComponent],
+  exports: []
 })
 export class AppModule { };

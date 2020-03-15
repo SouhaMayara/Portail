@@ -39,6 +39,7 @@
     "express": "^4.17.1",
     "json": "^9.0.6",
     "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "file:node_modules/jwt-decode",
     "mongodb": "^3.5.4",
     "mongoose": "^5.9.3",
     "mongoose-extend-schema": "^1.0.0",
