@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
     role: { type: String, enum: ['professeur', 'Etudiant'], default: 'Etudiant' },
     articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'article' }],
     matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
+    image: '',
    // groupes:[{type: mongoose.Schema.Types.ObjectId, ref: 'groupe' }]
   });
 

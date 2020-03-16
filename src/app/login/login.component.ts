@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-//import * as jwt_decode from 'jwt-decode';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
         console.log(res);
         if (res.message === 'ok') {
           // redirection
-           //console.log(res.token.jwt_decode)
+          //console.log(res.token.jwt_decode)
+          console.log( jwt_decode(res.token))
           localStorage.setItem('token', res.token);
           this.router.navigate(['/home']);
 

@@ -12,7 +12,7 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
-  { path : 'home' , component : HomeComponent},
+  { path : 'home' , component : HomeComponent, canActivate: [AuthGuard]},
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },
@@ -28,3 +28,4 @@ const routes: Routes = [
 })
 // tslint:disable-next-line:semicolon
 export class AppRoutingModule {};
+export const routingComponents =[HomeComponent];
