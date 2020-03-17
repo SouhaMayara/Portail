@@ -11,18 +11,27 @@ import  { AuthService } from '../auth.service';
 export class EtudiantComponent implements OnInit {
   articles = [];
   userId:any;
+  role='';
+  public user:any;
   constructor(private apiService: ArticleService,private auth:AuthService) {
-    console.log("etudiantComponent*********************************");}
+    console.log("etudiantComponent*********************************");
+    }
 
   ngOnInit() {
-    console.log(this.auth.userId);
+    
+    this.auth.getUser().subscribe((res: any) => {
+      this.user = res.data;
+      console.log(this.user);
+      this.role=this.user.role;});
+      console.log(this.role);
+    /*console.log(this.auth.userId);
     this.userId=this.auth.userId;
-    console.log(this.userId);
-    console.log(this.apiService.getArticle(this.userId));
+    console.log(this.userId);*/
+    //console.log(this.apiService.getArticle(this.userId));
     /*this.apiService.getArticle(this.userId).subscribe((res: any) => {
       console.log(res);
       this.articles = res.data;});*/
-      this.auth.getArticle1().subscribe((res: any) => {
+      this.auth.getArticle1(this.role).subscribe((res: any) => {
         console.log(res);
         this.articles = res.data;});
   }
