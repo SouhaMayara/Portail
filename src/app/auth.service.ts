@@ -18,8 +18,9 @@ export class AuthService {
     return this.http.get('http://localhost:3001/user/byUser/'+this.userId);
   }
 
-  getArticle1() {
-    return this.http.get('http://localhost:3001/article/byUser/'+this.userId);
+  getArticle1(role) {
+   // return this.http.get('http://localhost:3001/article/byUser/'+this.userId);
+   return this.http.get('http://localhost:3001/article/byRole/'+role);
   }
 
   decodeToken() {
