@@ -7,6 +7,7 @@ const professeur = new mongoose.Schema({
   grade: String,
   matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
   image: '',
+  
   //groupes:[{ type: mongoose.Schema.Types.ObjectId, ref: 'groupe'}]
 })
 

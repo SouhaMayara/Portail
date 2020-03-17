@@ -3,15 +3,15 @@ const article = require('../models/article');
 const user = require('../models/user');
 // const professeur = require('../models/professeur');
 
-router.post('/addArticle/:idUser', async (req, res) => {
-  req.body.user = req.params.idUser;
+router.post('/addArticle', async (req, res) => {
+  
   const articleResult = await article.create(req.body).catch(err => err);
-  const userResult = await user.updateOne({ "_id": req.params.idUser }, { $push: { articles: articleResult._id } }).exec();
+  const userResult = await user.updateMany( { $push: { articles: articleResult} }).exec();
   res.send({ data: userResult })
 })
 
-router.get('/byUser/:id', async (req, res) => {
-    const articleResult = await article.find({ "user": req.params.id }).populate('user').exec();
+router.get('/byRole/:role', async (req, res) => {
+    const articleResult = await article.find({ "type": req.params.role }).populate('user').exec();
     res.send({ data: articleResult })
   })
 
