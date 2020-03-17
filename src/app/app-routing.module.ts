@@ -12,7 +12,9 @@ import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
-  { path : 'home' , component : HomeComponent, canActivate: [AuthGuard]},
+  { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
+  , children : [
+      { path : '' ,  component : EtudiantComponent }]}
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },
@@ -23,8 +25,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [ RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes),RouterModule.forChild(routes)],
   exports: [ RouterModule ]
+
 })
 // tslint:disable-next-line:semicolon
 export class AppRoutingModule {};
