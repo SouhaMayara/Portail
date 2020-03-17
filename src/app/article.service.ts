@@ -5,21 +5,12 @@ import * as jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  userId;
-  
+export class ArticleService {
+userId:any;
+id;
   constructor(private http: HttpClient) { }
-
-  login(form){
-    return this.http.post('http://localhost:3001/auth/login',form);
-  }
-
-  getUser() {
-    return this.http.get('http://localhost:3001/user/byUser/'+this.userId);
-  }
-
-  getArticle1() {
-    return this.http.get('http://localhost:3001/article/byUser/'+this.userId);
+  getArticle(id) {
+    return this.http.get('http://localhost:3001/article/byUser/'+this.id);
   }
 
   decodeToken() {
