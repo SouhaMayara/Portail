@@ -14,7 +14,9 @@ const routes: Routes = [
   {path : '', component : LoginComponent},
   { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
   , children : [
-      { path : '' ,  component : EtudiantComponent }]}
+      { path : '' ,  component : EtudiantComponent },
+      {path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},]}
+
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },

@@ -14,7 +14,7 @@
                 <img src="{{ article?.image }}" width="180" height="100" alt="">
                 <h5 class="mt">{{ article?.topic}}{{ article?.title}}</h5>
                 <h6>{{ article?.content}}</h6>
-                <button class="btn btn-small btn-theme04">READ MORE</button>
+                <button class="btn btn-theme" routerLink="article/{{article?._id}}">READ MORE</button>
               </div>
             </div>
            </div>
