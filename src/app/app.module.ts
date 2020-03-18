@@ -7,22 +7,28 @@ import {HttpClient, HttpClientModule} from'@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { EtudiantComponent } from './etudiant/etudiant.component';
+
 import { ProfComponent } from './prof/prof.component';
 import { AuthService } from './auth.service';
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
 import { HomeProfComponent } from './home-prof/home-prof.component';
 
+import { ProfilComponent } from './profil/profil.component';
+import { ArticleComponent } from './article/article.component';
+import { LesArticlesComponent } from './les-articles/les-articles.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EtudiantComponent,
     ProfComponent,
     HomeComponent,
     ListePresenceComponent,
-    HomeProfComponent
+    HomeProfComponent,
+    ProfilComponent,
+    ArticleComponent,
+    LesArticlesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -7,6 +7,9 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class AuthService {
   userId;
+  role: string;
+  articles: any;
+  professeurId: any;
   
   constructor(private http: HttpClient) { }
 
@@ -19,14 +22,22 @@ export class AuthService {
   }
 
   getArticle1() {
-    return this.http.get('http://localhost:3001/article/byUser/'+this.userId);
+   // return this.http.get('http://localhost:3001/article/byUser/'+this.userId);
+   return this.http.get('http://localhost:3001/article/byRole/'+this.role);
   }
 
+  getArticles(){
+    return this.http.get('http://localhost:3001/article/articles');
+  }
+  updateUser(userId, profile) {
+    return this.http.post('http://localhost:3001/user/updateProfile/' + userId, profile);
+  }
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
       console.log(jwt_decode(token));
       this.userId = jwt_decode(token).data._id;
+      this.professeurId = jwt_decode(token).data.professeur;
       console.log(this.userId);
     }
   }
