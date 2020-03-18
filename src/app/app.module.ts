@@ -12,6 +12,7 @@ import { ProfComponent } from './prof/prof.component';
 import { AuthService } from './auth.service';
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
+import { HomeProfComponent } from './home-prof/home-prof.component';
 
 import { ProfilComponent } from './profil/profil.component';
 import { ArticleComponent } from './article/article.component';
@@ -24,6 +25,7 @@ import { LesArticlesComponent } from './les-articles/les-articles.component';
     ProfComponent,
     HomeComponent,
     ListePresenceComponent,
+    HomeProfComponent,
     ProfilComponent,
     ArticleComponent,
     LesArticlesComponent
