@@ -3,19 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { ProfComponent } from './prof/prof.component';
-import { LayoutEtudiantComponent } from './layout-etudiant/layout-etudiant.component';
-import { EtudiantComponent } from './etudiant/etudiant.component';
+import { ProfComponent } from './prof/prof.component'
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
+import { ArticleComponent } from './article/article.component';
 
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
   { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
   , children : [
-      { path : '' ,  component : EtudiantComponent },
-      {path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},]}
+      { path : '' ,  component : HomeComponent },
+      {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},]}
 
    /*, children : [
       { path : '' , component : ProfComponent },

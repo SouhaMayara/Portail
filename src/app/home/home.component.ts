@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   id:any;
 
   public idd;
+  articles: any;
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) {console.log("homeComponent*********************************");}
 
   ngOnInit() {
@@ -28,6 +29,9 @@ export class HomeComponent implements OnInit {
     this.apiService.getUser().subscribe((res: any) => {
       console.log(res);
       this.user = res.data;});
+    this.apiService.getArticles().subscribe((res: any) => {
+        console.log(res);
+        this.articles = res.data });
   }
 
 }
