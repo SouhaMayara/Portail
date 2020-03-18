@@ -8,10 +8,24 @@ import { LayoutEtudiantComponent } from './layout-etudiant/layout-etudiant.compo
 import { EtudiantComponent } from './etudiant/etudiant.component';
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
+import { HomeProfComponent } from './home-prof/home-prof.component';
 
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
+  {path : 'homeprof', component : HomeProfComponent
+  , children : [
+    { path : '' ,  component : ProfComponent },
+    {path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
+    {path: 'listepresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'addpresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'profilprof', component: ProfComponent, canActivate: [AuthGuard]},
+    {path: 'notes', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'document', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'emplois', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'mail', component: ListePresenceComponent, canActivate: [AuthGuard]},
+  ]},
+
   { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
   , children : [
       { path : '' ,  component : EtudiantComponent },
