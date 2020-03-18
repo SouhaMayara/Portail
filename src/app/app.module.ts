@@ -12,6 +12,8 @@ import { ProfComponent } from './prof/prof.component';
 import { AuthService } from './auth.service';
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
+import { ArticleComponent } from './article/article.component';
+import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AuthGuard } from './auth.guard';
     EtudiantComponent,
     ProfComponent,
     HomeComponent,
-    ListePresenceComponent
+    ListePresenceComponent,
+    ArticleComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
