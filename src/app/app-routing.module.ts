@@ -8,6 +8,7 @@ import { ListePresenceComponent } from './liste-presence/liste-presence.componen
 import { AuthGuard } from './auth.guard';
 import { ArticleComponent } from './article/article.component';
 import { LesArticlesComponent } from './les-articles/les-articles.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
   , children : [
       { path : '' ,  component : LesArticlesComponent },
-      {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},]}
+      {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
+      {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]}]}
 
    /*, children : [
       { path : '' , component : ProfComponent },
