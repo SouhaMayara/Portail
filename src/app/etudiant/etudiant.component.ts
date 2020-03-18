@@ -11,8 +11,9 @@ import  { AuthService } from '../auth.service';
 export class EtudiantComponent implements OnInit {
   articles = [];
   userId:any;
-  public role:any;
+  role='';
   public user:any;
+  article: any;
   constructor(private apiService: ArticleService,private auth:AuthService) {
     console.log("etudiantComponent*********************************");
     }
@@ -22,13 +23,7 @@ export class EtudiantComponent implements OnInit {
     this.auth.getUser().subscribe((res: any) => {
       this.user = res.data;
       console.log(this.user);
-      console.log(this.user.role);
-      this.role=this.user.role;
-      console.log(this.role);
-      this.auth.getArticle1(this.role).subscribe((res: any) => {
-        console.log(res);
-        this.articles = res.data;});
-    });
+      console.log(this.user.role);});
      
     /*console.log(this.auth.userId);
     this.userId=this.auth.userId;
@@ -37,7 +32,9 @@ export class EtudiantComponent implements OnInit {
     /*this.apiService.getArticle(this.userId).subscribe((res: any) => {
       console.log(res);
       this.articles = res.data;});*/
-      
+      this.auth.getArticles().subscribe((res: any) => {
+        console.log(res);
+        this.articles = res.data });
   }
 
 }

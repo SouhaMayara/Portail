@@ -9,7 +9,7 @@
           <!-- Product Panel -->
           <div class="row"  >
             <div class="col-lg-4 col-md-4 col-sm-4 mb" *ngFor="let article of articles">
-              <div class="product-panel-2 pn" >
+              <div class="product-panel-2 pn" *ngIf="article?.type===user?.role">
                 <!--<h5 class="mt"></h5>-->
                 <img src="{{ article?.image }}" width="180" height="100" alt="">
                 <h5 class="mt">{{ article?.topic}}{{ article?.title}}</h5>

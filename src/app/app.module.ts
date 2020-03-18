@@ -12,7 +12,7 @@ import { ProfComponent } from './prof/prof.component';
 import { AuthService } from './auth.service';
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
-import { ArticleComponent } from './article/article.component';
+
 import { ProfilComponent } from './profil/profil.component';
 
 @NgModule({
@@ -23,7 +23,6 @@ import { ProfilComponent } from './profil/profil.component';
     ProfComponent,
     HomeComponent,
     ListePresenceComponent,
-    ArticleComponent,
     ProfilComponent
   ],
   imports: [
