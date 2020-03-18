@@ -1,0 +1,31 @@
+<section id="container"  >
+    <!--main content start-->
+   <section id="main-content">
+     <section class="wrapper site-min-height">
+       <h3><i class="fa fa-angle-right"></i> Actualités </h3>
+       <div class="row mt">
+         <div class="col-lg-12">
+  <!--  SIXTH ROW OF PANELS -->
+           <!-- Product Panel -->
+           <div class="row"  >
+             <div class="col-lg-4 col-md-4 col-sm-4 mb" *ngFor="let article of articles">
+               <div class="product-panel-2 pn" *ngIf="article?.type===user?.role">
+                 <!--<h5 class="mt"></h5>-->
+                 <img src="{{ article?.image }}" width="180" height="100" alt="">
+                 <h5 class="mt">{{ article?.topic}}{{ article?.title}}</h5>
+                 <h6>{{ article?.content}}</h6>
+                 <button class="btn btn-theme" routerLink="article/{{article?._id}}">READ MORE</button>
+               </div>
+             </div>
+            </div>
+           </div>
+   <!--  END SIXTH ROW OF PANELS -->
+ </div>
+ </section>
+ 
+     <!-- /wrapper -->
+   </section>
+   <!-- /MAIN CONTENT -->
+   <!--main content end-->
+ 
+ </section>

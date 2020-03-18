@@ -7,13 +7,14 @@ import { ProfComponent } from './prof/prof.component'
 import { ListePresenceComponent } from './liste-presence/liste-presence.component';
 import { AuthGuard } from './auth.guard';
 import { ArticleComponent } from './article/article.component';
+import { LesArticlesComponent } from './les-articles/les-articles.component';
 
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
   { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
   , children : [
-      { path : '' ,  component : HomeComponent },
+      { path : '' ,  component : LesArticlesComponent },
       {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},]}
 
    /*, children : [

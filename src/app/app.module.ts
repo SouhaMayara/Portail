@@ -15,6 +15,7 @@ import { AuthGuard } from './auth.guard';
 
 import { ProfilComponent } from './profil/profil.component';
 import { ArticleComponent } from './article/article.component';
+import { LesArticlesComponent } from './les-articles/les-articles.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ArticleComponent } from './article/article.component';
     HomeComponent,
     ListePresenceComponent,
     ProfilComponent,
-    ArticleComponent
+    ArticleComponent,
+    LesArticlesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
