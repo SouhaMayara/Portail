@@ -1,13 +1,12 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const seance = new mongoose.Schema({
-//   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-//   nom: String,
-//   nom_matiere:String,
-//   duree: String,
-//   jour: String,
-//   date_deb: String,
-//   date_fin: String,
-//   groupe:{ type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },
-// })
-// module.exports = mongoose.model('seance', seance);
+const seance = new mongoose.Schema({
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
+  nom_matiere:String,
+  nomProf:String,
+  duree: String,
+  jour: Date,
+  nom: { type: String, enum: ['S1', 'S2','S3','S4','S5','S6'], required:true },
+  groupe:{ type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },
+})
+module.exports = mongoose.model('seance', seance);

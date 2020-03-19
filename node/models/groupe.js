@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 
 const groupe = new mongoose.Schema({
+  professeurs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'professeur' }],
   professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
-  matiere:{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere'},
-  nomGrp: String,
-  nom_seance: String,
-  nom_matiere:String,
-  duree: String,
-  jour:{ type: Date},
-  date_deb:{ type: Date },
-  date_fin: {type: Date },
+  matiere:[{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere'}],
   etudiants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
+  nom:String,
+  jour: Date,
+  dateDeb:Date,
+  dateFin:Date,
+  seances: [{ type: mongoose.Schema.Types.ObjectId, ref: 'seance' }],
  
-
 })
 module.exports = mongoose.model('groupe', groupe);

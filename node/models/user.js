@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
     matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
     image:'',
     grade: String,
-   // groupes:[{type: mongoose.Schema.Types.ObjectId, ref: 'groupe' }]
+    groupe: {type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },
   });
 
   module.exports = mongoose.model('user', UserSchema);

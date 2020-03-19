@@ -8,17 +8,14 @@ const matiere = new mongoose.Schema({
   nom: String,
   duree: String,
   coef: Number,
-  jour:{ type: Date},
-  date_deb:{ type: Date },
-  date_fin: {type: Date },
+  nbreHeures:Number,
+  // jour:{ type: Date},
+  // date_deb:{ type: Date },
+  // date_fin: {type: Date },
+  //filiere: { type: String, enum: ['FIA1', 'FIA2','FIA3'], required:true },
+  // etudiant: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
   groupe: { type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },
-  etudiant: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-  groupes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'groupe' }],
   absences: [{ type: mongoose.Schema.Types.ObjectId, ref: 'absence' }],
 })
-// matiere.methods.calculAbs = function() {
-//   if(user.abs==true){
-//   return nbAbs++;
-//   }
-// };
+
 module.exports = mongoose.model('matiere', matiere);

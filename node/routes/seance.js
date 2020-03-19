@@ -3,19 +3,39 @@ const user = require('../models/user');
 const groupe = require('../models/groupe');
 const matiere = require('../models/matiere');
 const professeur = require('../models/professeur');
+const seance = require('../models/seance');
 
-//add groupe to a prof pour une matiere
-router.post('/addGrp/:matiereId/:userId', async (req, res) => {
-  req.body.professeur = req.params.userId;
+//add groupe 
+router.post('/addGrp', async (req, res) => {
   const groupeResult = await groupe.create(req.body).catch(err => err);
-  const matiereResult= await matiere.update({ "_id": req.params.matiereId }, { $push: { groupes: groupeResult } }).exec();
-  res.send({ data: matiereResult })
+  res.send({ data: groupeResult })
     
   })
+//add groupe by prof
+router.post('/addGrpProf/:idP', async (req, res) => {
+  req.body.professeur = req.params.idP;
+  const groupeResult = await groupe.create(req.body).catch(err => err);
+  const profResult = await professeur.updateOne({ "_id": req.params.idP }, { $push: { groupes: groupeResult._id } }).exec();
+  res.send({ data: profResult })
+})
+// add seance by groupe 
+router.post('/addSeance/:idGrp', async (req, res) => {
+    req.body.groupe = req.params.idGrp;
+    const seanceResult = await seance.create(req.body).catch(err => err);
+    const groupeResult = await groupe.updateOne({ "_id": req.params.idGrp }, { $push: { seances: seanceResult._id } }).exec();
+    res.send({ data: groupeResult })
+  })
 
-// get groupe et ses etudiants by id prof
-router.get('/groupe/:id', async (req, res) => {
-    const groupeResult = await groupe.find({ "professeur": req.params.id }).exec();
+
+//get seance par groupe
+router.get('/byId/:idg', async (req, res) => {
+  const seanceResult = await seance.findOne({ "groupe": req.params.idg }).exec();
+  res.send({ data: seanceResult })
+})
+
+// get groupes by prof
+router.get('/groupe/:idp', async (req, res) => {
+    const groupeResult = await groupe.find({ "professeur": req.params.idp }).exec();
     res.send({ data: groupeResult })
   })
 

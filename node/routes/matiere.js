@@ -6,45 +6,65 @@ const matiere = require('../models/matiere');
 const absence = require('../models/absence');
 
 
-//add matiere by professeur id
-router.post('/addMatiere/:idp', async (req, res) => {
-  req.body.professeur = req.params.idp;
-  const matiereResult = await matiere.create(req.body).catch(err => err);
-  const profResult = await professeur.updateOne({ "_id": req.params.idp }, { $push:{ matieres: matiereResult._id } }).exec();
-  res.send({ data: profResult })
-})
+//add matiere
+// router.post('/addMatiere/', async (req, res) => {
+//   req.body.professeur = req.params.idp;
+//   const matiereResult = await matiere.create(req.body).catch(err => err);
+//   const profResult = await professeur.updateOne({ "_id": req.params.idp }, { $push:{ matieres: matiereResult._id } }).exec();
+//   res.send({ data: profResult })
+// })
 
 //add matiere to etudiant
-router.post('/addMatiereEtud/:id', async (req, res) => {
-  req.body.user = req.params.id;
+router.post('/addMatiere', async (req, res) => {
   const matiereResult = await matiere.create(req.body).catch(err => err);
-  const userResult = await user.update({ "_id": req.params.id }, { $push: { matieres: matiereResult._id } }).exec();
+  const userResult = await user.updateMany( { $push: { matieres: matiereResult._id } }).exec();
   console.log(matiereResult)
   res.send({ data: userResult });
   
 })
 
-//add student by matiere to prof
-// router.post('/addStudent/:idm/:id', async (req, res) => {
-//   req.body.professeur = req.params.id;
-//   const studentResult = await user.create(req.body).catch(err => err);
-//   const matiereResult2 = await matiere.update({ "_id": req.params.idm }, { $push: { etudiants: studentResult } }).exec();
-//   res.send({ data: matiereResult2 })
-// })
+//add matiere by prof
+router.post('/addMatiereProf/:idP', async (req, res) => {
+  req.body.professeur = req.params.idP;
+  const matiereResult = await matiere.create(req.body).catch(err => err);
+  const profResult = await professeur.updateOne({ "_id": req.params.idP }, { $push: { matieres: matiereResult._id } }).exec();
+  console.log(matiereResult)
+  res.send({ data: profResult })
+})
 
+//get matiere by prof
+router.get('/:idP', async (req, res) => {
+  const matiereResult = await matiere.find({ "professeur": req.params.idP }).exec();
+  res.send({ data: matiereResult })
+})
+
+//add matiere by groupe
+router.post('/addMatiere/:idGrp', async (req, res) => {
+  req.body.groupe = req.params.idGrp;
+  const matiereResult = await matiere.create(req.body).catch(err => err);
+  const groupeResult = await groupe.updateOne({ "_id": req.params.idGrp }, { $push: { matiere: matiereResult._id } }).exec();
+  res.send({ data: groupeResult })
+})
+
+// add matiere by etudiant
+router.post('/addMatiereEtudiant/:id', async (req, res) => {
+  req.body.user = req.params.id;
+  const matiereResult = await matiere.create(req.body).catch(err => err);
+  const userResult = await user.updateOne({ "_id": req.params.id }, { $push: { matieres: matiereResult._id } }).exec();
+  res.send({ data: userResult })
+})
+
+//get matieres by etudiant
+// router.get('/:idE', async (req, res) => {
+//   const matiereResult = await matiere.find({ "user": req.params.idE }).ppopulate("user").exec();
+//   res.send({ data: matiereResult })
+// })
 //get number of absences by matiere and student
-router.get('/absNb/:nom', async (req, res) => {
-  const absResult = await absence.countDocuments({ "Fullname": req.params.nom }).populate('absence').exec();
+router.get('/absNb/:id', async (req, res) => {
+  const absResult = await absence.countDocuments({ "user": req.params.id }).populate('absence').exec();
   res.send({ data: absResult })
 })
 
-
-
-//get matieres et leurs absences par user 
-// router.get('/:id', async (req, res) => {
-//   const matiereResult = await matiere.find({ "user": req.params.id }).exec();
-//   res.send({ data: matiereResult })
-//   })
 
 //add absence by matiere to etudiants
 router.post('/addAbs/:idm/:id', async (req, res) => {
@@ -59,7 +79,7 @@ router.post('/deleteAbs/:id', async (req, res) => {
   const matiereResult = await matiere.findOne({ absences: req.params.id }).exec()
   const matiereUpdateResult = await matiere.updateOne({ _id: matiereResult._id },
     { $pull: { absences: req.params.id } }).exec()
-  const absenceResult = await absence.deleteOne({ _id: req.params.id }).exec()
+  const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec()
   // const delResult = await comments.update({ "_id": ObjectId(req.params.id) }, { $set: { [`articles.${i}`]: req.body } }).exec();
   res.send({ data: absenceResult })
     
