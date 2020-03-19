@@ -29,7 +29,7 @@ router.post('/addSeance/:idGrp', async (req, res) => {
 
 //get seance par groupe
 router.get('/byId/:idg', async (req, res) => {
-  const seanceResult = await seance.findOne({ "groupe": req.params.idg }).exec();
+  const seanceResult = await seance.find({ "groupe": req.params.idg }).exec();
   res.send({ data: seanceResult })
 })
 
