@@ -39,13 +39,22 @@ router.get('/groupe/:idp', async (req, res) => {
     res.send({ data: groupeResult })
   })
 
+//get etudiants by groupe
+router.get('/etudiants/:idg', async (req, res) => {
+  const userResult = await user.find({ "groupe": req.params.idg }).populate("groupe").exec();
+  res.send({ data: userResult })
+})
+//get etudiant in groupe
+router.get('/etudiant/:id', async (req, res) => {
+  const userResult = await user.find({"_id":req.params.id}).populate({path: 'groupe', populate:{path:'user'}}).exec();
+  res.send({ data: userResult })
+})
 
-
-//add etudiants dans un groupe d
+//add etudiants dans un groupe 
 router.post('/addEtudiants/:idgrp', async (req, res) => {
   req.body.groupe = req.params.idgrp;
   const etudiantResult = await user.create(req.body).catch(err => err);
-  const groupeResult = await groupe.updateOne({ "_id": req.params.idgrp }, { $push: { etudiants: etudiantResult._id } }).exec();
+  const groupeResult = await groupe.updateOne({ "_id": req.params.idgrp }, { $push: { etudiants: etudiantResult._id } }).populate("groupe").exec();
   res.send({ data: groupeResult })
   })
 
