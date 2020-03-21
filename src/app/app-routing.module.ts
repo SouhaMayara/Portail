@@ -17,7 +17,7 @@ const routes: Routes = [
   {path : 'homeprof', component : HomeProfComponent
   , children : [
     { path : '' ,  component : ProfComponent },
-    {path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
+    //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
     {path: 'listepresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
     {path: 'addpresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
     {path: 'profilprof', component: ProfComponent, canActivate: [AuthGuard]},
