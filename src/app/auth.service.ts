@@ -36,6 +36,13 @@ export class AuthService {
   updateUser(userId, profile) {
     return this.http.post('http://localhost:3001/user/updateProfile/' + userId, profile);
   }
+  getUserInG(){
+    return this.http.get('http://localhost:3001/seance/etudiant/'+ this.userId);
+  }
+  
+  getSeance(idG){
+    return this.http.get('http://localhost:3001/seance/byId/'+idG);
+  }
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');

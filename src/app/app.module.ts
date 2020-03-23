@@ -17,6 +17,7 @@ import { HomeProfComponent } from './home-prof/home-prof.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ArticleComponent } from './article/article.component';
 import { LesArticlesComponent } from './les-articles/les-articles.component';
+import { EmploiComponent } from './emploi/emploi.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LesArticlesComponent } from './les-articles/les-articles.component';
     HomeProfComponent,
     ProfilComponent,
     ArticleComponent,
-    LesArticlesComponent
+    LesArticlesComponent,
+    EmploiComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

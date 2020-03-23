@@ -10,6 +10,7 @@ import { HomeProfComponent } from './home-prof/home-prof.component';
 import { ArticleComponent } from './article/article.component';
 import { LesArticlesComponent } from './les-articles/les-articles.component';
 import { ProfilComponent } from './profil/profil.component';
+import { EmploiComponent } from './emploi/emploi.component';
 
 
 const routes: Routes = [
@@ -31,8 +32,9 @@ const routes: Routes = [
   , children : [
       { path : '' ,  component : LesArticlesComponent },
       {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
-      {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]}]}
-
+      {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
+      {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]}
+    ]},
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },

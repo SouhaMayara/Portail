@@ -1,0 +1,52 @@
+
+<!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+          <h3><i class="fa fa-angle-right"></i>Calendar</h3>
+          <!-- /row -->
+          <div class="row mt">
+            <div class="col-lg-12">
+              <div class="content-panel" *ngFor="let userG0 of userG">
+                <h4><i class="fa fa-angle-right"></i>{{ userG0?.groupe.nom }}</h4>
+  
+               <section id="no-more-tables">
+                  <table class="table table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                      <tr>
+                        <th >Day\Seance</th>
+                        <th>S1[8:30=>10:00]</th>
+                        <th>S2[10:10=>11:40]</th>
+                        <th>S3[11:50=>13:20]</th>
+                        <th>S4[13:50=>15:20]</th>
+                        <th>S5[15:30=>17:00]</th>
+                        <th>S6[17:10=>18:40]</th>
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let i of jour">
+                      <tr>
+                        <td data-title="Code">{{ i }}</td>
+                          <td ><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S1'" >{{ seance?.nom_matiere }}<br>{{ seance?.type }}<br>{{ seance?.nomProf }}</p></div></td>
+                          <td ><div *ngFor="let seance of seances" ><p *ngIf="seance?.jour===i && seance?.nom==='S2'">{{ seance?.nom_matiere }}<br>{{ seance?.type }}<br>{{ seance?.nomProf }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S3'">{{ seance?.nom_matiere }}<br>{{ seance?.type }}<br>{{ seance?.nomProf }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S4'">{{ seance?.nom_matiere }}<br>{{ seance?.type }}<br>{{ seance?.nomProf }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S5'">{{ seance?.nom_matiere }}<br>{{ seance?.type }}<br>{{ seance?.nomProf }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S6'">{{ seance?.nom_matiere }}<br>{{ seance?.type }}<br>{{ seance?.nomProf }}</p></div></td>
+                      </tr>
+                    </tbody>
+              </table>
+            </section>
+            </div>
+            
+              <!-- /content-panel -->
+            </div>
+            <!-- /col-lg-12 -->
+          </div>
+          <!-- /row -->
+        </section>
+        <!-- /wrapper -->
+      </section>
+      <!-- /MAIN CONTENT -->
+      <!--main content end-->
