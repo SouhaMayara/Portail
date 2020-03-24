@@ -10,6 +10,10 @@ import { HomeProfComponent } from './home-prof/home-prof.component';
 import { ArticleComponent } from './article/article.component';
 import { LesArticlesComponent } from './les-articles/les-articles.component';
 import { ProfilComponent } from './profil/profil.component';
+import { EmploiComponent } from './emploi/emploi.component';
+import { MapComponent } from './map/map.component';
+import { AbsenceComponent } from './absence/absence.component';
+
 
 
 const routes: Routes = [
@@ -17,7 +21,7 @@ const routes: Routes = [
   {path : 'homeprof', component : HomeProfComponent
   , children : [
     { path : '' ,  component : ProfComponent },
-    {path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
+    //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
     {path: 'listepresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
     {path: 'addpresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
     {path: 'profilprof', component: ProfComponent, canActivate: [AuthGuard]},
@@ -31,7 +35,11 @@ const routes: Routes = [
   , children : [
       { path : '' ,  component : LesArticlesComponent },
       {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
-      {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]}]}
+      {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
+      {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]},
+      {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
+      {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]}
+]}
 
    /*, children : [
       { path : '' , component : ProfComponent },

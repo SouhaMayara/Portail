@@ -60,10 +60,19 @@ router.post('/addMatiereEtudiant/:id', async (req, res) => {
 //   res.send({ data: matiereResult })
 // })
 //get number of absences by matiere and student
-router.get('/absNb/:id', async (req, res) => {
-  const absResult = await absence.countDocuments({ "user": req.params.id }).populate('absence').exec();
-  res.send({ data: absResult })
+router.get('/absNb/:id/:nom', async (req, res) => {
+  //const matiereResult = await matiere.find({"nom_matiere" : req.params.nom}).populate('user').exec();
+  const absResult = await absence.find({"nom_matiere" : req.params.nom}).populate('user').exec();
+ const absResult1 = await absence.countDocuments({ "user":req.params.id ,"nom_matiere": req.params.nom }).exec();
+  res.send({ data: absResult1 ,info:absResult})
 })
+
+//get matiere by name
+router.get('/getBy/:name', async (req, res) => {
+  const matiereResult = await matiere.findOne({ "nom": req.params.name}).exec();
+  res.send({ data: matiereResult })
+})
+
 
 
 //add absence by matiere to etudiants
@@ -84,11 +93,18 @@ router.post('/deleteAbs/:id', async (req, res) => {
   res.send({ data: absenceResult })
     
 })
+//get matieres by user
+router.get('/matieres/:idU', async (req, res) => {
+  const matiereResult = await matiere.find({ "user": req.params.idU}).exec(); 
+ // console.log(groupeResult);
+  res.send({ data: matiereResult})
+ })
 
-router.get('group/:idgrp', async (req, res) => {
-  const groupeResult = await groupe.findOne({ "_id": req.params.idgrp }).populate("matiere").exec(); 
-  console.log(groupeResult);
-  res.send({ data: groupeResult})
+//get matiere by groupeId
+router.get('/mat/:idgrp', async (req, res) => {
+  const matiereResult = await matiere.find({ "groupe": req.params.idgrp }).exec(); 
+ // console.log(groupeResult);
+  res.send({ data: matiereResult})
  })
 
 

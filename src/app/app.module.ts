@@ -17,6 +17,9 @@ import { HomeProfComponent } from './home-prof/home-prof.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ArticleComponent } from './article/article.component';
 import { LesArticlesComponent } from './les-articles/les-articles.component';
+import { EmploiComponent } from './emploi/emploi.component';
+import { MapComponent } from './map/map.component';
+import { AbsenceComponent } from './absence/absence.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { LesArticlesComponent } from './les-articles/les-articles.component';
     HomeProfComponent,
     ProfilComponent,
     ArticleComponent,
-    LesArticlesComponent
+    LesArticlesComponent,
+    EmploiComponent,
+    MapComponent,
+    AbsenceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

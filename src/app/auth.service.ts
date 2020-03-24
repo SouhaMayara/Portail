@@ -42,4 +42,23 @@ export class AuthService {
     }
   }
 
+  getUserInG(){
+    return this.http.get('http://localhost:3001/seance/etudiant/'+ this.userId);
+  }
+  
+  getSeance(idG){
+    return this.http.get('http://localhost:3001/seance/byId/'+idG);
+  }
+
+  getu(id) {
+    return this.http.get('http://localhost:3001/user/byUser/'+id);
+  }
+
+  getMatiere(idG){
+    return this.http.get('http://localhost:3001/matiere/mat/'+idG);
+  }
+  getnbAbsence(nom,id){
+    return this.http.get('http://localhost:3001/matiere/absNb/'+nom+'/'+id);
+  }
+  
 }

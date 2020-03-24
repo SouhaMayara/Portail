@@ -12,6 +12,7 @@ import * as jwt_decode from 'jwt-decode';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   message = '';
+  user: any;
   constructor(private apiService: AuthService, private router: Router) {
 
     this.loginForm = new FormGroup({
@@ -20,8 +21,11 @@ export class LoginComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+   
+    // window.location.reload();
+  
   }
-
+ 
   loginBtn(){
     console.warn(this.loginForm.value);
     console.log(this.loginForm.valid);
@@ -31,12 +35,21 @@ export class LoginComponent implements OnInit {
       this.apiService.login(this.loginForm.value).subscribe((res: any) => {
         console.log(res);
         if (res.message === 'ok') {
+          this.message='ok';
           // redirection
           //console.log(res.token.jwt_decode)
           console.log( jwt_decode(res.token))
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/home']);
-
+          //partie ajoutée
+          const token = localStorage.getItem('token');
+          this.apiService.getu(jwt_decode(token).data._id).subscribe((res: any) => {
+            console.log(res);
+            this.user = res.data;
+          console.log(this.user.role);
+          if(this.user.role==='Etudiant'){this.router.navigate(['/home']);}
+          else{this.router.navigate(['/homeprof']);}
+        });
+        //fin
         } else {
           this.message = res.message;
         }

@@ -1,0 +1,58 @@
+<section id="main-content">
+    <section class="wrapper">
+      <h3><i class="fa fa-angle-right"></i>Absence Table</h3>
+      <!-- /row -->
+      <div class="row mt">
+        <div class="col-lg-12">
+          <div class="content-panel">
+            <h4><i class="fa fa-angle-right"></i>Absence Table</h4>
+           <section id="no-more-tables">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Matter</th>
+                    <th>Number of absence</th>
+                    <th>percentage</th>
+                    <th>percentage</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <tr >
+                    <td ><div style="margin-bottom:15%"  *ngFor="let nom of noms">{{ nom }}</div></td>
+                    <td ><div style="margin-bottom:6.7%"  *ngFor="let n of nb">{{ n }}</div></td>
+                    <td ><div style="margin-bottom:11%" *ngFor="let i of pourcentage">{{ i }}% <br></div></td>
+                    <td s>   
+                      <div class="progress progress-striped active" style="margin-top:2%" *ngFor="let i of pourcentage">
+                        <div class="progress-bar" height="20px" role="progressbar" aria-valuenow="20" aria-valuemin="20" aria-valuemax="100" style="width:{{i}}%"> 
+                        </div>
+                      </div>
+                    </td>
+                    
+                  </tr>
+                 
+  
+  
+  
+                 <!--<tr>
+                    <td>2</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>-->
+  
+  
+                </tbody>
+              </table>
+            </section>
+          </div>
+          </div>
+        </div>
+      </section>
+    </section>

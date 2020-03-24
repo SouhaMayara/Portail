@@ -193,7 +193,7 @@
         </div>
         <div class="top-menu">
           <ul class="nav pull-right top-menu">
-            <li><a class="logout" routerLink="" routerLinkActive="active">Logout</a></li>
+            <li><a class="logout" routerLink="" routerLinkActive="active" >Logout</a></li>
           </ul>
         </div>
       </header>
@@ -222,7 +222,13 @@
                 </a>
             </li>
             <li>
-              <a  routerLink="#" routerLinkActive="active">
+              <a routerLink="emploi/{{user?._id}}" routerLinkActive="active">
+                 <i class="fa fa-calendar"></i>
+                 <span>Calendar</span>
+                 </a>
+             </li>
+            <li>
+              <a routerLink="absence/{{user?._id}}" routerLinkActive="active">
                  <i class="fa fa-book"></i>
                  <span>Absences</span>
                  </a>
@@ -252,7 +258,7 @@
                  </a>
              </li>
              <li>
-              <a href="google_maps.html">
+              <a routerLink="map" routerLinkActive="active">
                 <i class="fa fa-map-marker"></i>
                 <span>Google Maps </span>
                 </a>
@@ -269,17 +275,8 @@
       <footer class="site-footer">
         <div class="text-center">
           <p>
-            &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+            &copy; Copyrights <strong><a href="http://www.issatso.rnu.tn/fo/index.php">ISSATSO</a></strong>. All Rights Reserved
           </p>
-          <div class="credits">
-            <!--
-              You are NOT allowed to delete the credit link to TemplateMag with free version.
-              You can delete the credit link only if you bought the pro version.
-              Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-              Licensing information: https://templatemag.com/license/
-            -->
-            Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-          </div>
           <a href="index.html#" class="go-top">
             <i class="fa fa-angle-up"></i>
             </a>
