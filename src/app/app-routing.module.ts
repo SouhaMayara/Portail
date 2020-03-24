@@ -11,9 +11,12 @@ import { ArticleComponent } from './article/article.component';
 import { LesArticlesComponent } from './les-articles/les-articles.component';
 import { ProfilComponent } from './profil/profil.component';
 import { EmploiComponent } from './emploi/emploi.component';
+<<<<<<< HEAD
 import { MapComponent } from './map/map.component';
 import { AbsenceComponent } from './absence/absence.component';
 
+=======
+>>>>>>> 094415458965037ed09f39986ed8e2b64074f78b
 
 
 const routes: Routes = [
@@ -36,11 +39,16 @@ const routes: Routes = [
       { path : '' ,  component : LesArticlesComponent },
       {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
       {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
+<<<<<<< HEAD
       {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]},
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]}
 ]}
 
+=======
+      {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]}
+    ]},
+>>>>>>> 094415458965037ed09f39986ed8e2b64074f78b
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },

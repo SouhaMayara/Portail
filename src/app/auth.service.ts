@@ -17,6 +17,10 @@ export class AuthService {
     return this.http.post('http://localhost:3001/auth/login',form);
   }
 
+  getu(id) {
+    return this.http.get('http://localhost:3001/user/byUser/'+id);
+  }
+
   getUser() {
     return this.http.get('http://localhost:3001/user/byUser/'+this.userId);
   }
@@ -31,6 +35,13 @@ export class AuthService {
   }
   updateUser(userId, profile) {
     return this.http.post('http://localhost:3001/user/updateProfile/' + userId, profile);
+  }
+  getUserInG(){
+    return this.http.get('http://localhost:3001/seance/etudiant/'+ this.userId);
+  }
+  
+  getSeance(idG){
+    return this.http.get('http://localhost:3001/seance/byId/'+idG);
   }
   decodeToken() {
     if (localStorage.getItem('token')) {
