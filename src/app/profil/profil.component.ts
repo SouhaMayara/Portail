@@ -19,23 +19,26 @@ export class ProfilComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(this.apiService.getUser());
     this.apiService.getUser().subscribe((res: any) => {
-      console.log(res);
+       console.log(res);
       this.user = res.data;
-     // this.image= this.user.image.replace("C:\\fakepath\\", "");
+     this.user.image= this.user.image.replace("C:\\fakepath\\", "");
+    
+     this.user=res.data;
+     console.log(res)
     })
 
   }
 
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
+  onSelectFile($event) {
+    if ($event.target.files && $event.target.files[0]) {
       var reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-      //event.target.files[0].value = this.user.image.replace(/^C:\\fakepath\\/i, '');
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.user.image = event.target.result;
-        
-      
+      reader.readAsDataURL($event.target.files[0]); // read file as data url
+      $event.target.files[0].value =  this.user.image.replace(/^.*\\/, "");
+      reader.onload = ($event) => { // called once readAsDataURL is completed
+      this.user.image = $event.target.result;
+        //return this.user.image;
+     
       }}
     }
   updateProfile(email, firstname, lastname,grade,image) {
@@ -49,12 +52,15 @@ export class ProfilComponent implements OnInit {
     }
 
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
-    
     this.apiService.updateUser(this.id, user).subscribe((res: any) => {
-     user.image.value = user.image.value.replace("C:\\fakepath\\", "http://");
-     console.log(user.image);
-      console.log(res);
-      this.ngOnInit();
+    console.log(this.user.image);
+    console.log(res);
+    //console.log(this.onSelectFile(onchange))
+     this.user.image= this.user.image.replace("C:\\fakepath\\", "");
+    //console.log(this.user.image);
+    this.ngOnInit();
+   // location.reload(); 
+    
     })
   }
 

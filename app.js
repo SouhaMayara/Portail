@@ -34,6 +34,9 @@ app.use('/seance', seance);
 const matiere = require('./node/routes/matiere')
 app.use('/matiere', matiere);
 
+const note = require('./node/routes/note')
+app.use('/note', note);
+
 app.listen(3001, ()=>{
   console.log('________________________port:3001')
 })

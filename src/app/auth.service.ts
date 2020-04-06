@@ -10,6 +10,7 @@ export class AuthService {
   role: string;
   articles: any;
   professeurId: any;
+  image: any;
   
   constructor(private http: HttpClient) { }
 
@@ -48,6 +49,7 @@ export class AuthService {
       const token = localStorage.getItem('token');
       console.log(jwt_decode(token));
       this.userId = jwt_decode(token).data._id;
+      this.image=jwt_decode(token).data.image
       this.professeurId = jwt_decode(token).data.professeur;
       console.log(this.userId);
     }

@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 
 const professeur = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-  matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
-  groupes:[{ type: mongoose.Schema.Types.ObjectId, ref: 'groupe'}],
+ // matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
+  seances:[{ type: mongoose.Schema.Types.ObjectId, ref: 'seance'}],
  // groupe: { type: mongoose.Schema.Types.ObjectId, ref: 'groupe' }
 })
 
