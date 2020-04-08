@@ -34,12 +34,12 @@
                     <tbody *ngFor="let i of jour">
                       <tr>
                         <td data-title="Code">{{ i }}</td>
-                          <td ><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S1'" >{{ seance?.nom_matiere }}<br>{{ seance?.nomProf }}<br>{{ seance?.type }}</p></div></td>
-                          <td ><div *ngFor="let seance of seances" ><p *ngIf="seance?.jour===i && seance?.nom==='S2'">{{ seance?.nom_matiere }}<br>{{ seance?.nomProf }}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S3'">{{ seance?.nom_matiere }}<br>{{ seance?.nomProf }}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S4'">{{ seance?.nom_matiere }}<br>{{ seance?.nomProf }}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S5'">{{ seance?.nom_matiere }}<br>{{ seance?.nomProf }}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S6'">{{ seance?.nom_matiere }}<br>{{ seance?.nomProf }}<br>{{ seance?.type }}</p></div></td>
+                          <td ><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S1'" >{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
+                          <td ><div *ngFor="let seance of seances" ><p *ngIf="seance?.jour===i && seance?.nom==='S2'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S3'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S4'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S5'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S6'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
                       </tr>
                     </tbody>
               </table>
