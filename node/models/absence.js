@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 //absence est un tableau assocoatif
-
 const absence = new mongoose.Schema({
   //nom_matiere: {type:String, required:true},
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },

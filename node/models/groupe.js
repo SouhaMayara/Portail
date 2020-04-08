@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const groupe = new mongoose.Schema({
-  
   //professeurs: [{ type: mongoose.Schema.Types.ObjectId, ref: 'professeur' }],
   //professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
  // matiere:[{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere'}],
