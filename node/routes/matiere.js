@@ -31,9 +31,10 @@ router.get('/getBy/:id', async (req, res) => {
 
 //get matiere by idGrp
 router.get('/getByGrp/:idG', async (req, res) => {
-  const matiereResult = await seance.find({ "groupe": req.params.idG}).populate('matiere').exec();
-  res.send({ data: matiereResult })
+  const seanceResult = await seance.find({"groupe":{$in:req.params.idG}}).distinct('matiere').exec() ;
+  res.send({ data:seanceResult })
 })
+
 
 
 
