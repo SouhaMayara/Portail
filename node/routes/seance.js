@@ -1,4 +1,6 @@
 const router = require('express').Router();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const user = require('../models/user');
 const groupe = require('../models/groupe');
 const matiere = require('../models/matiere');
@@ -14,7 +16,8 @@ router.post('/addSeanceGrp/:idG/:idM/:id', async (req, res) => {
   const seanceResult = await seance.create(req.body).catch(err => err);
   const grpResult = await groupe.updateOne({ "_id": req.params.idG }, { $push: { seances: seanceResult._id } }).exec();
   const matiereResult = await matiere.updateOne({ "_id": req.params.idM }, { $push: { seances: seanceResult._id } }).exec();
-  res.send({ data: grpResult, matiereResult})
+  const profResult = await professeur.updateOne({ "_id": req.params.id }, { $push: { seances: seanceResult._id } }).exec();
+  res.send({ data: grpResult, matiereResult, profResult})
 })
 
 
@@ -57,10 +60,12 @@ router.get('/etudiant/:id', async (req, res) => {
 //add etudiants dans un groupe 
 router.post('/addEtudiants/:idgrp', async (req, res) => {
   req.body.groupe = req.params.idgrp;
-  const etudiantResult = await user.create(req.body).catch(err => err);
-  const groupeResult = await groupe.updateOne({ "_id": req.params.idgrp }, { $push: { etudiants: etudiantResult._id } }).populate("groupe").exec();
-  res.send({ data: groupeResult })
-  })
+  req.body.password = bcrypt.hashSync(req.body.password, 10);
+  const userResult = await user.create(req.body).catch(err => err);
+  const grpResult = await groupe.updateOne({ "_id": req.params.idgrp }, { $push: { etudiants: userResult._id } }).exec();
+  console.log(req.body);
+  res.send({data : grpResult });
+})
 
 //add groupe by prof
 // router.post('/addGrpProf/:idP', async (req, res) => {
