@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const professeur = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
  // matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],

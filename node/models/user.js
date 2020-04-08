@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const UserSchema = new mongoose.Schema({
     //professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
     cin:{type: Number, unique: true },

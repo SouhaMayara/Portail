@@ -2,7 +2,6 @@ const router = require('express').Router();
 const article = require('../models/article');
 const user = require('../models/user');
 // const professeur = require('../models/professeur');
-
 router.post('/addArticle', async (req, res) => {
   
   const articleResult = await article.create(req.body).catch(err => err);
