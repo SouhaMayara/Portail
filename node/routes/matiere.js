@@ -29,6 +29,13 @@ router.get('/getBy/:id', async (req, res) => {
   res.send({ data: matiereResult })
 })
 
+//get matiere by idGrp
+router.get('/getByGrp/:idG', async (req, res) => {
+  const matiereResult = await seance.find({ "groupe": req.params.idG}).populate('matiere').exec();
+  res.send({ data: matiereResult })
+})
+
+
 
 //add absence by id matiere and id etudiant
 router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
