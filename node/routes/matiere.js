@@ -37,6 +37,7 @@ router.get('/getByGrp/:idG', async (req, res) => {
 
 
 
+
 //add absence by id matiere and id etudiant
 router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
   req.body.matiere = req.params.idm;
