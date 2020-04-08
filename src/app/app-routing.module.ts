@@ -18,17 +18,18 @@ import { AbsenceComponent } from './absence/absence.component';
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
-  {path : 'homeprof', component : HomeProfComponent
+  {path : 'homeprof', component : HomeProfComponent, 
+  canActivate: [AuthGuard]
   , children : [
     { path : '' ,  component : ProfComponent },
     //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
-    {path: 'listepresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'addpresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'profilprof', component: ProfComponent, canActivate: [AuthGuard]},
-    {path: 'notes', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'document', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'emplois', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'mail', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'listepresence', component: ListePresenceComponent},
+    {path: 'addpresence', component: ListePresenceComponent},
+    {path: 'profilprof', component: ProfComponent},
+    {path: 'notes', component: ListePresenceComponent},
+    {path: 'document', component: ListePresenceComponent},
+    {path: 'emplois', component: ListePresenceComponent},
+    {path: 'mail', component: ListePresenceComponent},
   ]},
 
   { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},

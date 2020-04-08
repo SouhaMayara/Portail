@@ -32,8 +32,6 @@ seances;
       this.userG = res.data;
       console.log(this.userG[0].groupe.nom);
     });
-    
-
   }
   
 

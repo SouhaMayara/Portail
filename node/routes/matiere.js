@@ -42,7 +42,6 @@ router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
   const absResult = await absence.create(req.body).catch(err => err);
   res.send({ data: absResult })
 })
-
 //delete absence
 router.post('/deleteAbs/:id', async (req, res) => {
     const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec();

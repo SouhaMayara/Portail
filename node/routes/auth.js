@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const professeur = require('../models/professeur')
 
-
 router.post('/login', async (req, res) => {
   const userResult = await user.findOne({ email: req.body.email }).exec();
   if (!userResult) res.send({ message: 'Wrong email or password ' })

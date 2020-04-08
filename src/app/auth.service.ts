@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,16 @@ export class AuthService {
   professeurId: any;
   image: any;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _router : Router) { }
 
   login(form){
     return this.http.post('http://localhost:3001/auth/login',form);
+  }
+
+  logoutUser(){
+    localStorage.removeItem('token');
+    this._router.navigate(['/']);
+    console.log("logout Professeur");
   }
 
   getu(id) {

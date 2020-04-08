@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const article = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'user' },
   title: String,

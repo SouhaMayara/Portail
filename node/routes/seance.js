@@ -20,7 +20,6 @@ router.post('/addSeanceGrp/:idG/:idM/:id', async (req, res) => {
   res.send({ data: grpResult, matiereResult, profResult})
 })
 
-
 //add groupe 
 router.post('/addGrp', async (req, res) => {
   const groupeResult = await groupe.create(req.body).catch(err => err);

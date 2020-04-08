@@ -17,10 +17,6 @@ router.post('/addNote/:idSt/:idM/:id', async (req, res) => {
     const noteResult = await note.create(req.body).catch(err => err);
     res.send({ data:noteResult })
 })
-
-
-
-
 // get notes by students and matiere
 
 router.get('/:idS/:idm', async (req, res) => {

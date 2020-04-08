@@ -55,11 +55,9 @@ export class AbsenceComponent implements OnInit {
             console.log(res);
             this.nb[index] = res.data;
             this.pourcentage[index]=(parseInt(this.nb[index])/(parseInt(this.ntotal[index])))*100;
-            console.log(this.pourcentage[index]);
-            
+            console.log(this.pourcentage[index]);  
           });
           });
-      
         }
         console.log(this.noms);
         console.log(this.nb);
