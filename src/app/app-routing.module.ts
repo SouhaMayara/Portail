@@ -32,7 +32,7 @@ const routes: Routes = [
     {path: 'mail', component: ListePresenceComponent},
   ]},
 
-  { path : 'home' , component : HomeComponent//, canActivate: [AuthGuard]//},
+  { path : 'home/:id' , component : HomeComponent, canActivate: [AuthGuard]
   , children : [
       { path : '' ,  component : LesArticlesComponent },
       {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
