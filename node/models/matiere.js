@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const matiere = new mongoose.Schema({
   professeur:{type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
   user:{ type: mongoose.Schema.Types.ObjectId, ref: 'user' },
-  ref: {type:String, required:true },
+  ref: {type:String, unique:true , required:true},
   nom: String,
   duree: String,
   coef: Number,

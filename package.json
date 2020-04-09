@@ -46,6 +46,7 @@
     "mongodb": "^3.5.4",
     "mongoose": "^5.9.3",
     "mongoose-extend-schema": "^1.0.0",
+    "nodeman": "^1.1.2",
     "nodemon": "^2.0.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",

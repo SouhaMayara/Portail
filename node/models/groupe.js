@@ -6,9 +6,12 @@ const groupe = new mongoose.Schema({
  // matiere:[{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere'}],
   etudiants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'user' }],
   nom:String,
-  jour: Date,
+  annee_scolaire : String,
+  filiere : String,
+  niveau : Number,
+/*   jour: Date,
   dateDeb:Date,
-  dateFin:Date,
+  dateFin:Date, */
   seances: [{ type: mongoose.Schema.Types.ObjectId, ref: 'seance' }],
  
 })

@@ -40,7 +40,9 @@ const routes: Routes = [
       {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]},
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]}
-]}
+]},
+  { path : "**" , 
+    redirectTo : '/'    }
 
    /*, children : [
       { path : '' , component : ProfComponent },

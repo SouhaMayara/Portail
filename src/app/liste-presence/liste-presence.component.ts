@@ -17,10 +17,17 @@ export class ListePresenceComponent implements OnInit {
     this.time = formatDate(this.today, ' hh:mm ', 'en-UTC');
     if(this.time >= ' 8:30 ' && this.time <= ' 10:00 ' )
         this.test ='S1';
-    else
+    else if (this.time >= ' 10:10 ' && this.time <= ' 11:40 ' )
         this.test ='S2';
-
-
+    else if (this.time >= ' 11:50 ' && this.time <= ' 13:20 ' )
+        this.test ='S3';
+    else if (this.time >= ' 14:50 ' && this.time <= ' 15:20 ' )
+        this.test ='S4';
+    else if (this.time >= ' 15:30 ' && this.time <= ' 17:00 ' )
+        this.test ='S5';    
+    else if (this.time >= ' 17:10 ' && this.time <= ' 18:40 ' )
+        this.test ='S6';
+    console.log("Seance n° :",this.test);
   }
   absent;
   User
