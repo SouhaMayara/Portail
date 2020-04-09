@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
             console.log(res);
             this.user = res.data;
           console.log(this.user.role);
-          if(this.user.role==='Etudiant'){this.router.navigate(['/home']);}
+          if(this.user.role==='Etudiant'){this.router.navigate(['/home/',this.user._id]);}
           else{this.router.navigate(['/homeprof']);}
         });
         //fin
