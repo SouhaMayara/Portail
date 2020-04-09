@@ -10,9 +10,9 @@ const seance = require('../models/seance');
 
 //add  seance by groupe , prof and matiere
 router.post('/addSeanceGrp/:idG/:idM/:id', async (req, res) => {
-  req.body.professeur = req.params.id;
   req.body.groupe = req.params.idG;
   req.body.matiere = req.params.idM;
+  req.body.professeur = req.params.id;
   const seanceResult = await seance.create(req.body).catch(err => err);
   const grpResult = await groupe.updateOne({ "_id": req.params.idG }, { $push: { seances: seanceResult._id } }).exec();
   const matiereResult = await matiere.updateOne({ "_id": req.params.idM }, { $push: { seances: seanceResult._id } }).exec();
