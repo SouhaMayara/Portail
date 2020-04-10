@@ -72,6 +72,11 @@ export class AuthService {
     return this.http.get('http://localhost:3001/matiere/getBy/'+idm);
   }
 
+  getNote(ids,idm){
+    return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
+  }
+
+
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
