@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 <!-- ********************************************************************************************************************************************************
         MAIN CONTENT
         ********************************************************************************************************************************************************* -->
-=======
-
-<!-- **********************************************************************************************************************************************************
-        MAIN CONTENT
-        *********************************************************************************************************************************************************** -->
->>>>>>> 094415458965037ed09f39986ed8e2b64074f78b
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
@@ -31,9 +24,9 @@
                     <tbody *ngFor="let nom of noms">
                       <tr>
                        <td data-title="Code">{{ nom[0] }}</td>
-                       <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='DS' && n?.professeur===nom[1]"> {{ n?.note }} </p></div></td>
-                       <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='Examen' && n?.professeur===nom[1]"> {{ n?.note }} </p></div></td>
-                       <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='TP' && n?.professeur===nom[1]"> {{ n?.note }} </p></div></td>
+                       <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='DS' && n?.matiere===nom[1]"> {{ n?.note }} </p></div></td>
+                       <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='Examen' && n?.matiere===nom[1]"> {{ n?.note }} </p></div></td>
+                       <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='TP' && n?.matiere===nom[1]"> {{ n?.note }} </p></div></td>
                      </tr>
                     </tbody>
               </table>

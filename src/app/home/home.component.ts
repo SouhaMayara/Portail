@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 //import * as jwt_decode from 'jwt-decode';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { json } from 'body-parser';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +14,10 @@ export class HomeComponent implements OnInit {
 
   user:any;
   id:any;
-
+  selectedFile=null;
   public idd;
   articles: any;
-  constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) {console.log("homeComponent*********************************");}
+  constructor(private http:HttpClient,private apiService: AuthService, private activatedRoute: ActivatedRoute) {console.log("homeComponent*********************************");}
 
   ngOnInit() {
     //this.id= jwt_decode(localStorage.getItem('token'));
@@ -28,8 +29,11 @@ export class HomeComponent implements OnInit {
     console.log(this.apiService.getUser());
     this.apiService.getUser().subscribe((res: any) => {
       console.log(res);
-      this.user = res.data;});
+      this.user = res.data;
+     console.log(this.user.image)});
 
   }
+
+  
 
 }

@@ -23,7 +23,7 @@
             <!-- /col-md-4 -->
             <div class="col-md-4 centered">
               <div class="profile-pic">
-                <p><img src="{{user?.image}}" class="img-circle"></p>
+                <p><img src="http:\\localhost:3001\{{user?.image}}" class="img-circle"></p>
              
               </div>
             </div>
@@ -58,15 +58,29 @@
                   <input type="text" placeholder=" " id="cell" class="form-control"  #grade value={{user?.grade}}>
                 </div>
               </div>
+   
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value, firstname.value, lastname.value,grade.value)">Save</button>
+                  <button class="btn btn-theme04" type="button" styel="margin-left:5%">Cancel</button>
+                </div>
+              </div>
+            </form>
+            <br>
+           
+            
+            <form>
               <div class="form-group">
                 <label class="col-lg-2 control-label" style="color:aliceblue"> Image</label>
                 <div class="col-lg-6" style="color:aliceblue">
-                  <input type="file" id="exampleInputFile" class="file-pos"  #image value={{user?.image}} (change)="onSelectFile($event)">
+                  <input type="file" id="exampleInputFile" class="file-pos"  #formData value={{user?.image}} (change)="SelectImage($event)">
                 </div>
               </div>
+              <br>
+              <br>
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value, firstname.value, lastname.value,grade.value,image.value)">Save</button>
+                  <button class="btn btn-theme" type="submit"  (click)="updateProfileImage(formData.value)">Save Image</button>
                   <button class="btn btn-theme04" type="button" styel="margin-left:5%">Cancel</button>
                 </div>
               </div>
