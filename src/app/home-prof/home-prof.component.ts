@@ -6,6 +6,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   templateUrl: './home-prof.component.html',
   styleUrls: ['./home-prof.component.css']
 })
+
+
 export class HomeProfComponent implements OnInit {
 
   user:any;

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,19 @@ export class AuthService {
   articles: any;
   professeurId: any;
   image: any;
+  fd =new FormData();
+
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _router : Router) { }
 
   login(form){
     return this.http.post('http://localhost:3001/auth/login',form);
+  }
+
+  logoutUser(){
+    localStorage.removeItem('token');
+    this._router.navigate(['/']);
+    console.log("logout Professeur");
   }
 
   getu(id) {
@@ -34,9 +43,14 @@ export class AuthService {
   getArticles(){
     return this.http.get('http://localhost:3001/article/articles');
   }
-  updateUser(userId, profile) {
-    return this.http.post('http://localhost:3001/user/updateProfile/' + userId, profile);
+  updateUser( userId, profile) {
+    return this.http.post('http://localhost:3001/user/updateProfile/' + userId,profile);
   }
+
+  updatePhoto( userId, fd) {
+    return this.http.post('http://localhost:3001/user/updateProfileImage/' + userId,fd);
+  }
+
   getUserInG(){
     return this.http.get('http://localhost:3001/seance/etudiant/'+ this.userId);
   }
@@ -58,10 +72,20 @@ export class AuthService {
 
 
   getMatiere(idG){
-    return this.http.get('http://localhost:3001/matiere/mat/'+idG);
+    return this.http.get('http://localhost:3001/matiere/getByGrp/'+idG);
   }
-  getnbAbsence(nom,id){
-    return this.http.get('http://localhost:3001/matiere/absNb/'+nom+'/'+id);
+ 
+  getMatiereById(idm){
+    return this.http.get('http://localhost:3001/matiere/getBy/'+idm);
+  }
+
+  getNote(ids,idm){
+    return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
+  }
+
+
+  getnbAbsence(id,idmat){
+    return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
   
 }

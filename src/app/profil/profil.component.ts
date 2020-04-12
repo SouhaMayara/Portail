@@ -16,12 +16,13 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.decodeToken();
-    const id = this.activatedRoute.snapshot.paramMap.get('id')
+    //const id = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(this.apiService.getUser());
     this.apiService.getUser().subscribe((res: any) => {
-       console.log(res);
+      
       this.user = res.data;
-     this.user.image= this.user.image.replace("C:\\fakepath\\", "");
+      console.log(this.user.image);
+     //this.user.image= this.user.image.replace("C:\\fakepath\\", "");
     
      this.user=res.data;
      console.log(res)
@@ -29,41 +30,58 @@ export class ProfilComponent implements OnInit {
 
   }
 
-  onSelectFile($event) {
-    if ($event.target.files && $event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.readAsDataURL($event.target.files[0]); // read file as data url
-      $event.target.files[0].value =  this.user.image.replace(/^.*\\/, "");
-      reader.onload = ($event) => { // called once readAsDataURL is completed
-      this.user.image = $event.target.result;
-        //return this.user.image;
+  SelectImage(event) {
+    if (event.target.files.length>0) {
+      const file=event.target.files[0];
+      this.image=file;
      
-      }}
-    }
-  updateProfile(email, firstname, lastname,grade,image) {
-    //const i=0;
-    const user = {
-      email: email,
-      firstname: firstname,
-      lastname: lastname,
-      grade:grade,
-      image:image,
-    }
-
-    this.id = this.activatedRoute.snapshot.paramMap.get('id')
-    this.apiService.updateUser(this.id, user).subscribe((res: any) => {
-    console.log(this.user.image);
-    console.log(res);
-    //console.log(this.onSelectFile(onchange))
-     this.user.image= this.user.image.replace("C:\\fakepath\\", "");
-    //console.log(this.user.image);
-    this.ngOnInit();
-   // location.reload(); 
+      }
     
-    })
-  }
+    }
+    updateProfile(email, firstname, lastname,grade) {
+    
+      const user = {
+        email: email,
+        firstname: firstname,
+        lastname: lastname,
+        grade:grade,
+      
+        
+      }
+  
+      this.id = this.activatedRoute.snapshot.paramMap.get('id')
+      this.apiService.updateUser(this.id, user).subscribe((res: any) => {
+      console.log(this.user.image);
+      console.log(res);
+      //console.log(this.onSelectFile(onchange))
+      //console.log(this.user.image);
+      this.ngOnInit();
+     // location.reload(); 
+      
+      })
 
+    
+    }
+
+    updateProfileImage(image) {
+      //const i=0;
+      const formData=new FormData();
+      formData.append('image',this.image)
+      const user = {
+        image:formData,
+      }
+  
+      this.id = this.activatedRoute.snapshot.paramMap.get('id')
+      this.apiService.updatePhoto(this.id, formData).subscribe((res: any) => {
+      console.log(this.user.image);
+      console.log(res);
+      //console.log(this.onSelectFile(onchange))
+      //console.log(this.user.image);
+      this.ngOnInit();
+     // location.reload(); 
+      
+      })
+    }
 
   }
 

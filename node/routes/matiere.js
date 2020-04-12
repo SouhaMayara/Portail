@@ -13,9 +13,6 @@ router.post('/addMatiere/', async (req, res) => {
   res.send({ data: matiereResult })
 })
 
-
-
-
 //get number of absences by id student and id matiere
 router.get('/absNb/:id/:idM', async (req, res) => {
  const absResult = await absence.find({"matiere" : req.params.idM}).populate('matiere').exec();
@@ -29,6 +26,13 @@ router.get('/getBy/:id', async (req, res) => {
   res.send({ data: matiereResult })
 })
 
+//get matiere by idGrp  pour etudiant tache
+router.get('/getByGrp/:idG', async (req, res) => {
+  const seanceResult = await seance.find({"groupe":{$in:req.params.idG}}).distinct('matiere').populate('matiere').exec() ;
+  res.send({ data:seanceResult })
+})
+
+
 
 //add absence by id matiere and id etudiant
 router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
@@ -38,7 +42,6 @@ router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
   const absResult = await absence.create(req.body).catch(err => err);
   res.send({ data: absResult })
 })
-
 //delete absence
 router.post('/deleteAbs/:id', async (req, res) => {
     const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec();

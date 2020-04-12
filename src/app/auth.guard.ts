@@ -19,22 +19,22 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('token')) {
       return true
     }
-    this.router.navigateByUrl('/login')
+    this.router.navigateByUrl('/')
     return false;
 
 
   }
 
-  //constructor(private _authService:AuthService,private _router: Router){ }
+//   constructor(public _authService:AuthService,private _router: Router){ }
 
 
-  /*canActivate(): boolean {
-if (this._authService.loggedIn()) {
-  return true
-}else{
-  this._router.navigate([''])
-  return false
-}}*/
+//   canActivate(): boolean {
+// if (this._authService.loggedIn()) {
+//   return true
+// }else{
+//   this._router.navigate([''])
+//   return false
+// }}
   
   
   
