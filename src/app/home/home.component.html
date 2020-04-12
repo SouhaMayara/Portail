@@ -206,11 +206,11 @@
         <div id="sidebar" class="nav-collapse ">
           <!-- sidebar menu start-->
           <ul class="sidebar-menu" id="nav-accordion">
-            <p class="centered"><a href="profile.html"><img src="{{user?.image}}" class="img-circle" width="80"></a></p>
+            <p class="centered"><a href="profile.html"><img src="http://localhost:3001/{{user?.image}}" class="img-circle" width="80" ></a></p>
             <h5 class="centered">{{user?.firstname}}{{user?.lastname}}</h5>
             <!--Sam Soffes************************************************-->
             <li class="mt">
-              <a class="active" routerLink="/home" routerLinkActive="active">
+              <a class="active" routerLink="/home/{{user?._id}}" routerLinkActive="active">
                 <i class="fa fa-dashboard"></i>
                 <span>Home</span>
                 </a>
@@ -234,7 +234,7 @@
                  </a>
              </li>
              <li>
-              <a  routerLink="#" routerLinkActive="active">
+              <a  routerLink="note_e/{{user?._id}}" routerLinkActive="active">
                  <i class="fa fa-th"></i>
                  <span>Notes</span>
                  </a>

@@ -13,6 +13,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { EmploiComponent } from './emploi/emploi.component';
 import { MapComponent } from './map/map.component';
 import { AbsenceComponent } from './absence/absence.component';
+import { NoteEComponent } from './note-e/note-e.component';
 
 
 
@@ -39,11 +40,12 @@ const routes: Routes = [
       {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
       {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]},
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
-      {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]}
-]},
+      {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]},
+      {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]}
+]}
+,
   { path : "**" , 
     redirectTo : '/'    }
-
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },

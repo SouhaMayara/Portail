@@ -2,9 +2,10 @@ const express = require('express');
 const bodyparser = require('body-parser');
 //const cors = require('cors');
 const mongoose = require('mongoose');
+const multer = require('multer');
 const app = express();
 app.use(bodyparser.json());
-
+app.use('/uploads',express.static('uploads'));
 mongoose.connect('mongodb://localhost:27017/absencedb',err =>{
   if(err){
     console.error('___________________Error of connection to database!')

@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
    // articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'article' }],
    // matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
     //notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'note' }],
-    image:'',
+    image:{type: String},
     grade: String,
     groupe: {type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },
   });

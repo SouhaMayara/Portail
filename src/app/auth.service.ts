@@ -12,6 +12,8 @@ export class AuthService {
   articles: any;
   professeurId: any;
   image: any;
+  fd =new FormData();
+
   
   constructor(private http: HttpClient, private _router : Router) { }
 
@@ -41,9 +43,14 @@ export class AuthService {
   getArticles(){
     return this.http.get('http://localhost:3001/article/articles');
   }
-  updateUser(userId, profile) {
-    return this.http.post('http://localhost:3001/user/updateProfile/' + userId, profile);
+  updateUser( userId, profile) {
+    return this.http.post('http://localhost:3001/user/updateProfile/' + userId,profile);
   }
+
+  updatePhoto( userId, fd) {
+    return this.http.post('http://localhost:3001/user/updateProfileImage/' + userId,fd);
+  }
+
   getUserInG(){
     return this.http.get('http://localhost:3001/seance/etudiant/'+ this.userId);
   }
@@ -94,6 +101,11 @@ export class AuthService {
   getMatiereById(idm){
     return this.http.get('http://localhost:3001/matiere/getBy/'+idm);
   }
+
+  getNote(ids,idm){
+    return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
+  }
+
 
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
