@@ -44,9 +44,7 @@ export class ProfilComponent implements OnInit {
         email: email,
         firstname: firstname,
         lastname: lastname,
-        grade:grade,
-      
-        
+        grade:grade 
       }
   
       this.id = this.activatedRoute.snapshot.paramMap.get('id')

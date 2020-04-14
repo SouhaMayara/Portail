@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     //professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
-    cin:{type: Number, unique: true },
-    email: {type: String, unique: true, required: true},
+    cin:{type: String,unique: true },
+    email: {type: String, unique: true, required: true,match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]},
     password: {type: String, required: true},
     firstname: {type: String},
     lastname: {type: String},
@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
    // articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'article' }],
    // matieres:[{type: mongoose.Schema.Types.ObjectId, ref: 'matiere' }],
     //notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'note' }],
-    image:{type: String},
+    image:{type: String, required:true},
     grade: String,
     groupe: {type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },
   });
