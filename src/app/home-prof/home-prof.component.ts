@@ -15,18 +15,18 @@ export class HomeProfComponent implements OnInit {
 
   public idd;
   articles: any;
-  constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { }
+  constructor(public profService: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
      //this.id= jwt_decode(localStorage.getItem('token'));
-     this.apiService.decodeToken();
+     this.profService.decodeToken();
      //let id = parseInt(this.activatedRoute.snapshot.paramMap.get('_id'));
      //console.log(parseInt(this.activatedRoute.parent.snapshot.paramMap.get('id')));
      //console.log(id);
      //console.log(parseInt(this.activatedRoute.parent.snapshot.params.id));
-     console.log(this.apiService.getUser());
-     this.apiService.getUser().subscribe((res: any) => {
+     console.log(this.profService.getUser());
+     this.profService.getUser().subscribe((res: any) => {
        console.log(res);
        this.user = res.data;});
   }

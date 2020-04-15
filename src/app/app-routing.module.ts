@@ -14,19 +14,20 @@ import { EmploiComponent } from './emploi/emploi.component';
 import { MapComponent } from './map/map.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { NoteEComponent } from './note-e/note-e.component';
+import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 
 
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
-  {path : 'homeprof', component : HomeProfComponent, 
+  {path : 'homeprof/:id', component : HomeProfComponent, 
   canActivate: [AuthGuard]
   , children : [
     { path : '' ,  component : LesArticlesComponent },
     //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
     {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
-    {path: 'listepresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'addpresence', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'listAbProf/:id', component: ListAbProfComponent, canActivate: [AuthGuard]},
+    {path: 'listepresence/:id', component: ListePresenceComponent, canActivate: [AuthGuard]},
     {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
     {path: 'notes', component: ListePresenceComponent, canActivate: [AuthGuard]},
     {path: 'document', component: ListePresenceComponent, canActivate: [AuthGuard]},

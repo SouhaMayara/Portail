@@ -193,7 +193,7 @@
     </div>
     <div class="top-menu">
       <ul class="nav pull-right top-menu">
-        <li><a class="logout" (click)="_authService.logoutUser()">Logout</a></li>
+        <li><a class="logout" (click)="profService.logoutUser()">Logout</a></li>
       </ul>
     </div>
   </header>
@@ -206,12 +206,12 @@
     <div id="sidebar" class="nav-collapse ">
       <!-- sidebar menu start-->
       <ul class="sidebar-menu" id="nav-accordion">
-        <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-        <h5 class="centered">Sam Soffes</h5>
+        <p class="centered"><a href="profile.html"><img src="http://localhost:3001/{{user?.image}}" class="img-circle" width="80" ></a></p>
+            <h5 class="centered">{{user?.firstname}} {{user?.lastname}}</h5>
         
         
         <li class="mt">
-          <a class="active" routerLink="/home" routerLinkActive="active">
+          <a class="active" routerLink="/homeprof/{{user?._id}}" routerLinkActive="active">
             <i class="fa fa-dashboard"></i>
             <span>Home</span>
             </a>
@@ -225,7 +225,7 @@
          </li>
 
         <li>
-          <a href="/emplois">
+          <a routerLink="emploi/{{user?._id}}" routerLinkActive="active">
             <i class="fa fa-calendar"></i>
             <span>Calendar</span>
             </a>
@@ -238,8 +238,8 @@
             <span>Students absences</span>
             </a>
           <ul class="sub">
-            <li><a href="/listepresence">presence list</a></li>
-            <li><a href="/addpresence">Mark absence</a></li>
+            <li><a routerLink="listAbProf/{{user?._id}}" routerLinkActive="active">presence list</a></li>
+            <li><a routerLink="listepresence/{{user?._id}}" routerLinkActive="active">Mark absence</a></li>
           </ul>
         </li>
         
