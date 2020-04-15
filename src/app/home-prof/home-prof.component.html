@@ -193,7 +193,7 @@
     </div>
     <div class="top-menu">
       <ul class="nav pull-right top-menu">
-        <li><a class="logout" (click)="_authService.logoutUser()">Logout</a></li>
+        <li><a class="logout" (click)="profService.logoutUser()">Logout</a></li>
       </ul>
     </div>
   </header>
@@ -206,39 +206,43 @@
     <div id="sidebar" class="nav-collapse ">
       <!-- sidebar menu start-->
       <ul class="sidebar-menu" id="nav-accordion">
-        <p class="centered"><a href="profile.html"><img src="assets/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
-        <h5 class="centered">Sam Soffes</h5>
+        <p class="centered"><a href="profile.html"><img src="http://localhost:3001/{{user?.image}}" class="img-circle" width="80" ></a></p>
+            <h5 class="centered">{{user?.firstname}} {{user?.lastname}}</h5>
+        
+        
         <li class="mt">
-          <a class="active" href="/homeprof">
+          <a class="active" routerLink="/homeprof/{{user?._id}}" routerLinkActive="active">
             <i class="fa fa-dashboard"></i>
-            <span>Dashboard</span>
+            <span>Home</span>
             </a>
         </li>
-        
+
         <li>
-          <a href="/actualite">
-            <i class="fa fa-desktop"></i>
-            <span>Actualités</span>
+          <a routerLink="profile/{{user?._id}}" routerLinkActive="active">
+             <i class="fa fa-user"></i>
+             <span>Profile</span>
+             </a>
+         </li>
+
+        <li>
+          <a routerLink="emploi/{{user?._id}}" routerLinkActive="active">
+            <i class="fa fa-calendar"></i>
+            <span>Calendar</span>
             </a>
           
         </li>
+
         <li class="sub-menu">
           <a href="javascript:;">
             <i class="fa fa-clipboard"></i>
-            <span>Présence étudiants</span>
+            <span>Students absences</span>
             </a>
           <ul class="sub">
-            <li><a href="/listepresence">Liste des présences</a></li>
-            <li><a href="/addpresence">Marquer Présence</a></li>
+            <li><a routerLink="listAbProf/{{user?._id}}" routerLinkActive="active">presence list</a></li>
+            <li><a routerLink="listepresence/{{user?._id}}" routerLinkActive="active">Mark absence</a></li>
           </ul>
         </li>
-        <li>
-            <a href="/profilprof">
-              <i class="fa fa-user"></i>
-              <span>Profile</span>
-              </a>
-            
-          </li>
+        
           <li>
             <a href="/notes">
               <i class="fa fa-pencil"></i>
@@ -253,13 +257,7 @@
               </a>
             
           </li>
-          <li>
-            <a href="/emplois">
-              <i class="fa fa-calendar"></i>
-              <span>Emplois</span>
-              </a>
-            
-          </li>
+          
         
         <li>
           <a href="/mail">
