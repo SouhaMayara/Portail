@@ -42,6 +42,12 @@ router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
   const absResult = await absence.create(req.body).catch(err => err);
   res.send({ data: absResult })
 })
+
+//getAbsence
+router.get('/Abs/:idm/:idS/:id', async (req, res) => {
+   const absResult = await absence.findOne({"matiere":req.params.idm ,"seance": req.params.idS,"user": req.params.id }).populate("absence").exec();
+  res.send({ data: absResult })
+})
 //delete absence
 router.post('/deleteAbs/:id', async (req, res) => {
     const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec();
