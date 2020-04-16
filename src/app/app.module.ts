@@ -21,6 +21,7 @@ import { EmploiComponent } from './emploi/emploi.component';
 import { MapComponent } from './map/map.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { NoteEComponent } from './note-e/note-e.component';
+import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NoteEComponent } from './note-e/note-e.component';
     EmploiComponent,
     MapComponent,
     AbsenceComponent,
-    NoteEComponent
+    NoteEComponent,
+    ListAbProfComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -6,6 +6,16 @@ const groupe = require('../models/groupe');
 const matiere = require('../models/matiere');
 const professeur = require('../models/professeur');
 const seance = require('../models/seance');
+const multer=require('multer');
+const storage =multer.diskStorage({
+  destination: function(req,file,cb){
+    cb (null , './uploads');
+  },
+  filename:function(req,file,cb){
+    cb(null, file.originalname);
+  }
+});
+const upload=multer ({storage:storage});
 
 
 //add  seance by groupe , prof and matiere
@@ -59,14 +69,16 @@ router.get('/seance/:idS/:id', async (req, res) => {
 
 
 //get etudiant in groupe
-router.get('/etudiant/:id', async (req, res) => {
-  const userResult = await user.find({"_id":req.params.id}).populate({path: 'groupe', populate:{path:'user'}}).exec();
+router.get('/etudiant/:id', upload.single('image'),async (req, res) => {
+ // req.body.image=req.file.path;
+  const userResult = await user.find({"groupe":req.params.id}).populate({path: 'groupe', populate:{path:'user'}}).exec();
   res.send({ data: userResult })
 })
 
 //add etudiants dans un groupe 
-router.post('/addEtudiants/:idgrp', async (req, res) => {
+router.post('/addEtudiants/:idgrp', upload.single('image'),async (req, res) => {
   req.body.groupe = req.params.idgrp;
+  req.body.image=req.file.path;
   req.body.password = bcrypt.hashSync(req.body.password, 10);
   const userResult = await user.create(req.body).catch(err => err);
   const grpResult = await groupe.updateOne({ "_id": req.params.idgrp }, { $push: { etudiants: userResult._id } }).exec();

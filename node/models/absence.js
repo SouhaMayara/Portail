@@ -7,6 +7,7 @@ const absence = new mongoose.Schema({
   matiere:{ type: mongoose.Schema.Types.ObjectId, ref: 'matiere' },
   seance: { type: mongoose.Schema.Types.ObjectId, ref: 'seance' },
   justification : String,
+  DateAbs:Date
 })
 
 module.exports = mongoose.model('absence', absence);

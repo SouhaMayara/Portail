@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const user = require('../models/user')
+const professeur = require('../models/professeur')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const professeur = require('../models/professeur')
 const multer=require('multer');
 
 const storage =multer.diskStorage({

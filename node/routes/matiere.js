@@ -43,21 +43,11 @@ router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
   res.send({ data: absResult })
 })
 
-//add absence test
-router.post('/absence', function (req, res) {
-  let absence = req.body.absence;
-  console.log(absence);
-
-  if (!absence) {
-      return res.status(400).send({ error:true, message: 'Please provide absence' });
-  }
-
-  dbConn.query("INSERT INTO absence SET ? ", absence, function (error, results, fields) {
-      if (error) throw error;
-      return res.send({ error: false, data: results, message: 'New absence has been created successfully.' });
-  });
-});
-
+//getAbsence
+router.get('/Abs/:idm/:idS/:id', async (req, res) => {
+   const absResult = await absence.findOne({"matiere":req.params.idm ,"seance": req.params.idS,"user": req.params.id }).populate("absence").exec();
+  res.send({ data: absResult })
+})
 //delete absence
 router.post('/deleteAbs/:id', async (req, res) => {
     const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec();
