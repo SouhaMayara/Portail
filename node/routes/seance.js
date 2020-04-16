@@ -52,6 +52,14 @@ router.get('/seances/:idp', async (req, res) => {
     res.send({ data: seanceResult })
   })
 
+//get current seance
+router.get('/seancesCourant/:idp/:jour/:nomS', async (req, res) => {
+  req.body.nom = req.params.s;
+  req.body.jour = req.params.jour;
+  const seanceResult = await seance.find({ "professeur": req.params.idp, "jour": req.params.jour, "nom": req.params.nomS }).populate('matiere').populate('groupe').exec();
+  res.send({ data: seanceResult })
+})
+
 // get les etudiants d'un groupe pendant une certaine seance pour un prof 
 router.get('/seance/:idS/:id', async (req, res) => {
   req.body.professeur = req.params.id;

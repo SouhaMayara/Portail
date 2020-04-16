@@ -5,8 +5,15 @@
         <div class="form-panel">
           
           <form class="form-inline" role="form">
+            
+
+            <select id="ListeMat" class="btn btn-theme dropdown-toggle btn-group" >
+              <option *ngFor="let mat of matieres" value="{{mat}}">{{mat}}</option>
+           </select>
+
+
             <div class="btn-group">
-              <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Subject <span class="caret"></span>
                 </button>
               <ul class="dropdown-menu" role="menu">
@@ -29,11 +36,10 @@
                 <li><a href="#">Separated link</a></li>
               </ul>
             </div>
-            <div class="input-group date form_datetime-component">
-              <input type="text" class="form-control" readonly="" size="16">
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-theme date-set"><i class="fa fa-calendar"></i></button>
-                </span>
+            
+            <div class="input-group btn-theme date form_datetime-component">
+                <input type="date" class="form-control "  size="16">
+               
             </div>
             <button type="submit" class="btn btn-theme">Search</button>
           </form>

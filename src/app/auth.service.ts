@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { Absence } from "../../node/models/absence";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +60,33 @@ export class AuthService {
   getSeance(idG){
     return this.http.get('http://localhost:3001/seance/byId/'+idG);
   }
+  //get prof by IdUser
+  getProfId(){
+      return this.http.get('http://localhost:3001/user/Prof/'+ this.userId);
+    }
+    //pour emploi du prof
+  getSeancesByProf(idP){
+    //console.log("userId*******",this.userId);
+    return this.http.get('http://localhost:3001/seance/seances/'+idP);
+  }
+  getGroupBySeance(ids,idp){
+    //console.log('http://localhost:3001/seance/seance/'+ids+"/"+ idp);
+    return this.http.get('http://localhost:3001/seance/seance/'+ids+'/'+idp);
+  }
+  // Seance courante pour un prof
+  getSeanceByProf(idP,j,s){
+    //console.log('http://localhost:3001/seance/seancesCourant/'+idP+"/"+ j+"/"+s);
+    return this.http.get('http://localhost:3001/seance/seancesCourant/'+idP+"/"+ j+"/"+s);
+  }
+
+  addAbsence(idMat,idS,idEt,dateAbs){
+    return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt+'/'+dateAbs,Absence);
+  }
+
+  getAbsence(idMat,idS,idEt){
+    return this.http.get('http://localhost:3001/matiere/Abs/'+idMat+'/'+idS+'/'+idEt);
+  }
+
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');

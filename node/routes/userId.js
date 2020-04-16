@@ -38,4 +38,9 @@ router.post('/updateProfileImage/:id',upload.single('image'), async (req, res) =
     res.send({ data: userResult })
   })
 
+
+router.get('/Prof/:idUser', async (req, res) => {
+  const profResult = await professeur.findOne({ "user": req.params.idUser }).exec();
+  res.send({ data: profResult })
+})  
 module.exports = router;

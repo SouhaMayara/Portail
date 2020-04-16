@@ -45,7 +45,9 @@ const routes: Routes = [
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]},
       {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]}
 ]}
-
+,
+  { path : "**" , 
+    redirectTo : '/'    }
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },
