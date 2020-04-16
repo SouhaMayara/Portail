@@ -79,14 +79,13 @@ export class AuthService {
     return this.http.get('http://localhost:3001/seance/seancesCourant/'+idP+"/"+ j+"/"+s);
   }
 
-  addAbsence(idMat,idS,idEt){
-    return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt,Absence);
+  addAbsence(idMat,idS,idEt,dateAbs){
+    return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt+'/'+dateAbs,Absence);
   }
 
-  public postAbsences(absent:Absence):Observable <Absence  >{
-    console.log(absent);
-    return this.http.post<Absence >("http://localhost:3001/matiere/absence",absent);
-  } 
+  getAbsence(idMat,idS,idEt){
+    return this.http.get('http://localhost:3001/matiere/Abs/'+idMat+'/'+idS+'/'+idEt);
+  }
 
   decodeToken() {
     if (localStorage.getItem('token')) {

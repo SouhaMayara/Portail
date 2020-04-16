@@ -35,10 +35,11 @@ router.get('/getByGrp/:idG', async (req, res) => {
 
 
 //add absence by id matiere and id etudiant
-router.post('/addAbs/:idm/:idS/:id', async (req, res) => {
+router.post('/addAbs/:idm/:idS/:id/:dateSeance', async (req, res) => {
   req.body.matiere = req.params.idm;
   req.body.user = req.params.id;
   req.body.seance = req.params.idS;
+  req.body.DateAbs = req.params.dateSeance;
   const absResult = await absence.create(req.body).catch(err => err);
   res.send({ data: absResult })
 })

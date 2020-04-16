@@ -15,7 +15,6 @@ export class ListePresenceComponent implements OnInit {
   presentForm: FormGroup;
   today= new Date();
   jstoday = '';
-  time = '';
   test = '';
   
   etudiantsPresent: Number[] = [];
@@ -32,13 +31,10 @@ export class ListePresenceComponent implements OnInit {
   }
   
 async ngOnInit(): Promise<any> {
- // this.absent = "tesssssssssssssssssssssssssssssssssssssssst";
-  this.jstoday = formatDate(this.today, 'dd-MM-yyyy', 'en-UTC');
-    this.time = formatDate(this.today, ' hh:mm ', 'en-UTC');
-    
     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     var d = new Date();
     var dayName = days[d.getDay()];
+    
     var h = d.getHours() ; 
     var m = d.getMinutes();
     var min ='';
@@ -46,12 +42,8 @@ async ngOnInit(): Promise<any> {
     if (m < 10) { min ='0'+m;}
     else min=''+m;
     var tempsCourant = h+':'+min
-    console.log("dayName************",tempsCourant);
+  
   this.apiService.decodeToken();
-  //let id = parseInt(this.activatedRoute.snapshot.paramMap.get('_id'));
-  //console.log(parseInt(this.activatedRoute.parent.snapshot.paramMap.get('id')));
-  //console.log(id);
-  //console.log(parseInt(this.activatedRoute.parent.snapshot.params.id));
   console.log(this.apiService.getUser());
   this.apiService.getUser().subscribe(async (res: any) => {
     console.log(res);
@@ -72,26 +64,18 @@ async ngOnInit(): Promise<any> {
       this.SeanceCourante ='S5';}    
   else if (tempsCourant >= '17:10' && tempsCourant <= '18:40' ){
       this.SeanceCourante ='S6';}
-      dayName="Saturday";
-  this.apiService.getSeanceByProf(this.prof['_id'],dayName,'S4').subscribe(async (resultSeance: any) => {
-    //console.log("00000000000000000000000000000000",resultSeance);
+  this.apiService.getSeanceByProf(this.prof['_id'],dayName,this.SeanceCourante).subscribe(async (resultSeance: any) => {
     this.seances = await resultSeance.data;
-    console.log("seaaaaaaaaaaance",this.seances);
-   /* console.log("proooooooooooooof",this.prof); */
+    console.log("seance",this.seances);
     this.apiService.getGroupBySeance(this.seances[0]['_id'],this.prof['_id']).subscribe(async (resultGroup: any) => {
       //console.log(resultGroup);
       this.etudiants = await resultGroup.data[0]['groupe'].etudiants;
       
-      console.log("eeeeeeeeeeeeeeee",this.seances);
     });
    });
    
-     console.log('today: ',this.seances);
-   /* console.log('jstoday: ',this.jstoday); */
   });
   });
-  //this.seances=this.testSeance;
-  // console.log("etudiantsPresent Matieeeeeeeeere",this.seances); 
   }
   
   async ajouter(id): Promise<any>{
@@ -103,29 +87,36 @@ async ngOnInit(): Promise<any> {
       this.etudiantsPresent.push(id);
     }
     console.log("etudiantsPresent",this.etudiantsPresent); 
-   /*  console.log("etudiantsPresent Matieeeeeeeeere",this.seances);  */ 
   }
 
 
   async validate(): Promise<any>{
-    /* let navItems: {
-      user: Number;
-      matiere: Number;
-      seance: Number;
-    } */
+
+
     this.etudiantsPresent.forEach(async etPresent => {
-    //  console.log(navItems);
-     /*  this.absent.user  = await etPresent;
-      this.absent.matiere = await this.seances[0]['matiere']["_id"];
-      this.absent.seance = await this.seances[0]['_id'];
-      await console.log("hhhhhhhhhhhhhhhhhhhhhhhhh",this.absent); */
-      this.apiService.addAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent).subscribe((res: any) => {
-        console.log(res);
-        
+      this.jstoday = formatDate(this.today, 'dd-MM-yyyy', 'en-UTC');
+      this.apiService.getAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent).subscribe((res: any) => {
+        if (res.data === null) {
+          
+         
+          this.apiService.addAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent,this.jstoday).subscribe((res: any) => {
+
+            console.log(res);
+            
+          }) 
+        }else{
+          if (res.data['DateAbs'] != this.jstoday){
+          this.apiService.addAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent,this.jstoday).subscribe((res: any) => {
+
+            console.log(res);
+            
+          }) 
+          } else {
+            console.log("absent marked !");
+          }
+        }
       }) 
-      //console.log("Ciiiiiiiin",etPresent,this.seances[0]['matiere'],this.seances[0]['_id'],etPresent,this.presentForm);
-    }); 
-    console.log("etudiantsPresent",this.etudiantsPresent);  
+    });  
   }
 
 }

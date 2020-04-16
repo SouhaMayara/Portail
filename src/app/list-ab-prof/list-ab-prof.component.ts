@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class ListAbProfComponent implements OnInit {
 
   constructor() { }
-
+  matieres : any[];
   ngOnInit(): void {
+    this.matieres=['test1','test2','test3','test4']
   }
 
 }
