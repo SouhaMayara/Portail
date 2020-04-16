@@ -3,6 +3,7 @@ import {formatDate} from '@angular/common';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Absence } from "../../../node/models/absence";
 
 @Component({
   selector: 'app-liste-presence',
@@ -18,7 +19,7 @@ export class ListePresenceComponent implements OnInit {
   test = '';
   
   etudiantsPresent: Number[] = [];
-  absent;
+  absent : Absence ;
   seances;
   testSeance;
   user ;
@@ -27,15 +28,11 @@ export class ListePresenceComponent implements OnInit {
   SeanceCourante;
   
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { 
-    this.presentForm = new FormGroup({
-      matiere: new FormControl('', []),
-      user: new FormControl('', []),
-      seance: new FormControl('', [])
-    })
+    this.absent = new Object();
   }
   
 async ngOnInit(): Promise<any> {
-  this.absent = "tesssssssssssssssssssssssssssssssssssssssst";
+ // this.absent = "tesssssssssssssssssssssssssssssssssssssssst";
   this.jstoday = formatDate(this.today, 'dd-MM-yyyy', 'en-UTC');
     this.time = formatDate(this.today, ' hh:mm ', 'en-UTC');
     
@@ -75,7 +72,7 @@ async ngOnInit(): Promise<any> {
       this.SeanceCourante ='S5';}    
   else if (tempsCourant >= '17:10' && tempsCourant <= '18:40' ){
       this.SeanceCourante ='S6';}
-
+      dayName="Saturday";
   this.apiService.getSeanceByProf(this.prof['_id'],dayName,'S4').subscribe(async (resultSeance: any) => {
     //console.log("00000000000000000000000000000000",resultSeance);
     this.seances = await resultSeance.data;
@@ -97,8 +94,8 @@ async ngOnInit(): Promise<any> {
   // console.log("etudiantsPresent Matieeeeeeeeere",this.seances); 
   }
   
-  async ajouter(id){
-    const index: number = this.etudiantsPresent.indexOf(id);
+  async ajouter(id): Promise<any>{
+    const index: any = this.etudiantsPresent.indexOf(id);
     if (index !== -1) {
         this.etudiantsPresent.splice(index, 1);
     } else{
@@ -106,16 +103,26 @@ async ngOnInit(): Promise<any> {
       this.etudiantsPresent.push(id);
     }
     console.log("etudiantsPresent",this.etudiantsPresent); 
-    console.log("etudiantsPresent Matieeeeeeeeere",this.seances);  
+   /*  console.log("etudiantsPresent Matieeeeeeeeere",this.seances);  */ 
   }
 
 
-  async validate(){
-    this.etudiantsPresent.forEach(etPresent => {
-      this.apiService.addAbsence(this.seances['matiere'],this.seances['_id'],etPresent,this.presentForm).subscribe((res: any) => {
+  async validate(): Promise<any>{
+    /* let navItems: {
+      user: Number;
+      matiere: Number;
+      seance: Number;
+    } */
+    this.etudiantsPresent.forEach(async etPresent => {
+    //  console.log(navItems);
+     /*  this.absent.user  = await etPresent;
+      this.absent.matiere = await this.seances[0]['matiere']["_id"];
+      this.absent.seance = await this.seances[0]['_id'];
+      await console.log("hhhhhhhhhhhhhhhhhhhhhhhhh",this.absent); */
+      this.apiService.addAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent).subscribe((res: any) => {
         console.log(res);
         
-      })
+      }) 
       //console.log("Ciiiiiiiin",etPresent,this.seances[0]['matiere'],this.seances[0]['_id'],etPresent,this.presentForm);
     }); 
     console.log("etudiantsPresent",this.etudiantsPresent);  

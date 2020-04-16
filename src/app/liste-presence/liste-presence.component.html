@@ -6,11 +6,11 @@
             
             <h2>Hover Rows</h2>
             <p>The .table-hover class enables a hover state on table rows:</p>            
-            <form [formGroup]="presentForm" (ngSubmit)="validate()">
+            <form  (ngSubmit)="validate()">
                 <table class="table table-hover">
                     <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>CIN</th>
                         <th>Firstname</th>
                         <th>Lastname</th>
                         <th>Email</th>
@@ -23,12 +23,9 @@
                         <td>{{etudiant.firstname}}</td>
                         <td>{{etudiant.lastname}}</td>
                         <td>{{etudiant.email}}</td>
-                        <td><input type="checkbox" name="absent"  id="{{etudiant.cin}}" (change)="ajouter(etudiant.cin)"></td>
+                        <td><input type="checkbox" name="absent"  id="{{etudiant._id}}" (change)="ajouter(etudiant._id)"></td>
                     </tr>
                     </tbody>
-                    <input type="hidden" formControlName="matiere">
-                    <input type="hidden" formControlName="user">
-                    <input type="hidden" formControlName="seance">
                 </table>
                 <button type="submit"  value="">Valider</button>
             </form>

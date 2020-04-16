@@ -193,7 +193,7 @@
     </div>
     <div class="top-menu">
       <ul class="nav pull-right top-menu">
-        <li><a class="logout" (click)="_authService.logoutUser()">Logout</a></li>
+        <li><a class="logout" (click)="profService.logoutUser()">Logout</a></li>
       </ul>
     </div>
   </header>
@@ -229,7 +229,7 @@
             </a>
           <ul class="sub">
             <li><a routerLink="/homeprof/listepresence" routerLinkActive="active">Liste des présences</a></li>
-            <li><a routerLink="/homeprof/addpresence" routerLinkActive="active">Marquer Présence</a></li>
+            <li><a routerLink="/homeprof/listepresence" routerLinkActive="active">Marquer Présence</a></li>
           </ul>
         </li>
         <li>

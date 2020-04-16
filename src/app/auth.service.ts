@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { Absence } from "../../node/models/absence";
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -77,9 +79,14 @@ export class AuthService {
     return this.http.get('http://localhost:3001/seance/seancesCourant/'+idP+"/"+ j+"/"+s);
   }
 
-  addAbsence(idMat,idS,idEt,presentForm){
-    return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt,presentForm);
+  addAbsence(idMat,idS,idEt){
+    return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt,Absence);
   }
+
+  public postAbsences(absent:Absence):Observable <Absence  >{
+    console.log(absent);
+    return this.http.post<Absence >("http://localhost:3001/matiere/absence",absent);
+  } 
 
   decodeToken() {
     if (localStorage.getItem('token')) {

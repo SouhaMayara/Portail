@@ -12,7 +12,7 @@ import {AuthService} from '../auth.service';
 
 export class HomeProfComponent implements OnInit {
 
-  constructor(public _authService: AuthService) { }
+  constructor(public profService: AuthService) { }
 
   ngOnInit(): void {
   }
