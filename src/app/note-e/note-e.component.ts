@@ -16,14 +16,8 @@ export class NoteEComponent implements OnInit {
   pourcentage=[];
   mat;
   listeId=[];
-
-
-
-  constructor(private apiService: AuthService) { }
-
+  constructor(private apiService: AuthService) {}
   ngOnInit(): void {
-
-
     this.apiService.getUser().subscribe((res: any) => {
       console.log(res);
       this.user = res.data;
@@ -40,7 +34,7 @@ export class NoteEComponent implements OnInit {
             this.mat = res.data;
             this.noms[index]=[this.mat.nom,this.matieres[index]];
            
-            console.log(this.noms);
+          console.log(this.noms);
           console.log(this.user._id);
           console.log(this.listeId[index]);
           this.apiService.getNote(this.user._id,this.listeId[index]).subscribe((res: any) => {
