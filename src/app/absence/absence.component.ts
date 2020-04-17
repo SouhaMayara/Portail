@@ -34,7 +34,7 @@ export class AbsenceComponent implements OnInit {
         //console.log(res);
         this.matieres = res.data;
 
-        console.log(this.userG[0].groupe.nom);
+       // console.log(this.userG[0].groupe.nom);
         for (let index = 0; index < this.matieres.length; index++) {
           const idMatiere=this.matieres[index];
           //console.log(idMatiere);
@@ -66,11 +66,11 @@ export class AbsenceComponent implements OnInit {
       });
     });
 
-    this.apiService.getUserInG().subscribe((res: any) => {
-      console.log(res);
-      this.userG = res.data;
-      console.log(this.userG[0].groupe.nom);
-    });
+    // this.apiService.getUserInG().subscribe((res: any) => {
+    //   console.log(res);
+    //   this.userG = res.data;
+    //   console.log(this.userG[0].groupe.nom);
+    // });
     
 
 

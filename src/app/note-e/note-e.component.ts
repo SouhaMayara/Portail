@@ -59,11 +59,11 @@ export class NoteEComponent implements OnInit {
 
 
 
-    this.apiService.getUserInG().subscribe((res: any) => {
-      console.log(res);
-      this.userG = res.data;
-      console.log(this.userG[0].groupe.nom);
-    });
+    // this.apiService.getUserInG().subscribe((res: any) => {
+    //   console.log(res);
+    //   this.userG = res.data;
+    //   console.log(this.userG[0].groupe.nom);
+    // });
   }
 
 }

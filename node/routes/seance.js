@@ -69,7 +69,7 @@ router.get('/seance/:idS/:id', async (req, res) => {
 
 
 //get etudiant in groupe
-router.get('/etudiant/:id', upload.single('image'),async (req, res) => {
+router.get('/etudiant/:id',async (req, res) => {
  // req.body.image=req.file.path;
   const userResult = await user.find({"groupe":req.params.id}).populate({path: 'groupe', populate:{path:'user'}}).exec();
   res.send({ data: userResult })
