@@ -5,7 +5,7 @@ const article = new mongoose.Schema({
   topic: String,
   content: String,
   date: { type: String, default: Date.now() },
-  image: '',
+  image: String,
   type: { type: String, enum: ['professeur', 'Etudiant'], default: 'Etudiant' },
 })
 module.exports = mongoose.model('article', article);

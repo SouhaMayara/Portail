@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  
   userId;
   role: string;
   articles: any;
@@ -45,7 +46,7 @@ export class AuthService {
   getArticles(){
     return this.http.get('http://localhost:3001/article/articles');
   }
-  updateUser( userId, profile) {
+  updateUser(userId, profile) {
     return this.http.post('http://localhost:3001/user/updateProfile/' + userId,profile);
   }
 
@@ -116,5 +117,8 @@ export class AuthService {
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
+ 
+
+
   
 }
