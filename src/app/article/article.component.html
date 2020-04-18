@@ -1,7 +1,12 @@
 <section id="main-content">
     <section class="wrapper site-min-height">
       <h3><i class="fa fa-angle-right" styel="color:white"></i> Actualité</h3>
-    <div class="dmbox center">
+    <div class="dmbox center" style="
+    height: 450px;
+    background-color: white;
+    box-shadow: 3px 3px darkcyan;
+    border-radius: 7px;
+    width: 820px;">
       <div class="service-icon rounded">
         <img class=".img-fluid" src={{article?.image}} width="50%" height="50%"><br>
         <br>
@@ -10,7 +15,15 @@
       </div>
       <br>
       <h4>{{article?.topic}}</h4>
-      <p>{{article?.content}}</p>
+      <p style=" 
+      margin-left:2%; 
+      text-align: left; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 16px;    
+      max-height: 32px;      
+      -webkit-line-clamp: 2; 
+      -webkit-box-orient: vertical;">{{article?.content}}</p>
     </div>
       </section>
     </section>

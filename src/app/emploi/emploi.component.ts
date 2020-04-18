@@ -13,6 +13,7 @@ userG;
 idG;
 jour=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 seances=[];
+term;
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {

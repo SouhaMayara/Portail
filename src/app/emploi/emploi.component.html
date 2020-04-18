@@ -11,7 +11,20 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
+          <div>
+            <div class="row">
+              <div class="col-sm-9">
           <h3><i class="fa fa-angle-right"></i>Calendar</h3>
+        </div>
+        <div class="col-sm-3">
+      <!-- Search form -->
+  <div class="active-cyan-4 mb-4">
+    <input class="form-control" type="text" id="search" placeholder="Search" aria-label="Search" style="margin-top: 3%;" [(ngModel)]="term">
+  </div>
+      </div>
+    </div>
+    </div>
+  
           <!-- /row -->
           <div class="row mt">
             <div class="col-lg-12">
@@ -34,12 +47,12 @@
                     <tbody *ngFor="let i of jour">
                       <tr>
                         <td data-title="Code">{{ i }}</td>
-                          <td ><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S1'" >{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
-                          <td ><div *ngFor="let seance of seances" ><p *ngIf="seance?.jour===i && seance?.nom==='S2'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S3'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S4'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S5'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
-                          <td><div *ngFor="let seance of seances"><p *ngIf="seance?.jour===i && seance?.nom==='S6'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
+                          <td ><div *ngFor="let seance of seances| filter:term"><p *ngIf="seance?.jour===i && seance?.nom==='S1'" >{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
+                          <td ><div *ngFor="let seance of seances| filter:term" ><p *ngIf="seance?.jour===i && seance?.nom==='S2'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances| filter:term"><p *ngIf="seance?.jour===i && seance?.nom==='S3'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances| filter:term"><p *ngIf="seance?.jour===i && seance?.nom==='S4'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances| filter:term"><p *ngIf="seance?.jour===i && seance?.nom==='S5'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
+                          <td><div *ngFor="let seance of seances| filter:term"><p *ngIf="seance?.jour===i && seance?.nom==='S6'">{{ seance?.matiere.nom }}<br>{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname}}<br>{{ seance?.type }}</p></div></td>
                       </tr>
                     </tbody>
               </table>
