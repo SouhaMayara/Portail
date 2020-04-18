@@ -26,9 +26,14 @@ router.get('/getBy/:id', async (req, res) => {
   res.send({ data: matiereResult })
 })
 
+//get matiere by id professeur
+router.get('/getMatByProf/:idPro', async (req, res) => {
+  const matiereResult = await seance.find({"professeur":req.params.idPro }).distinct('matiere').exec() ;
+  res.send({ data: matiereResult })
+})
 //get matiere by idGrp  pour etudiant tache
 router.get('/getByGrp/:idG', async (req, res) => {
-  const seanceResult = await seance.find({"groupe":{$in:req.params.idG}}).distinct('matiere').populate('matiere').exec() ;
+  const seanceResult = await seance.find({"groupe":{$in:req.params.idG}}).distinct("matiere").populate("matiere").exec() ;
   res.send({ data:seanceResult })
 })
 
