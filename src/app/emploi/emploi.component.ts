@@ -12,7 +12,7 @@ user;
 userG;
 idG;
 jour=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-seances;
+seances=[];
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -24,14 +24,15 @@ seances;
       this.apiService.getSeance(this.idG).subscribe((res: any) => {
         console.log(res);
         this.seances = res.data;
+        console.log(this.seances);
         console.log(this.userG[0].groupe.nom);
       });
     });
-    this.apiService.getUserInG().subscribe((res: any) => {
+   /* this.apiService.getUserInG().subscribe((res: any) => {
       console.log(res);
       this.userG = res.data;
       console.log(this.userG[0].groupe.nom);
-    });
+    });*/
   }
   
 

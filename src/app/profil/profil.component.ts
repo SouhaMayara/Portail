@@ -48,13 +48,11 @@ export class ProfilComponent implements OnInit {
       }
   
       this.id = this.activatedRoute.snapshot.paramMap.get('id')
-      this.apiService.updateUser(this.id, user).subscribe((res: any) => {
+      this.apiService.updateUser(this.id, user).subscribe((res: any) => { 
+    
       console.log(this.user.image);
       console.log(res);
-      //console.log(this.onSelectFile(onchange))
-      //console.log(this.user.image);
       this.ngOnInit();
-     // location.reload(); 
       
       })
 
@@ -72,10 +70,11 @@ export class ProfilComponent implements OnInit {
       this.id = this.activatedRoute.snapshot.paramMap.get('id')
       this.apiService.updatePhoto(this.id, formData).subscribe((res: any) => {
       console.log(this.user.image);
-      console.log(res);
+      console.log(res); 
+      this.ngOnInit();
       //console.log(this.onSelectFile(onchange))
       //console.log(this.user.image);
-      this.ngOnInit();
+     
      // location.reload(); 
       
       })

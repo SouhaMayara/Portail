@@ -33,7 +33,7 @@ router.post('/updateProfileImage/:id',upload.single('image'), async (req, res) =
   })
 
   router.post('/updateProfile/:id', upload.single('image'),async (req, res) => {
-    req.body.password = bcrypt.hashSync(req.body.password, 10);
+   
     const userResult = await user.update({ "_id": req.params.id },{ $set: req.body }).exec();
     res.send({ data: userResult })
   })

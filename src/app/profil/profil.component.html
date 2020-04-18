@@ -53,31 +53,31 @@
               <div class="form-group">
                 <label class="col-lg-2 control-label" style="color:aliceblue">Email</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="addr1" class="form-control"  #email value={{user?.email}}>
+                  <input type="text" placeholder=" " id="addr1" class="form-control"  #email value= {{user?.email}}>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label" style="color:aliceblue">First name</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="addr2" class="form-control"  #firstname value={{user?.firstname}}>
+                  <input type="text" placeholder=" " id="addr2" class="form-control"  #firstname value= {{user?.firstname}}>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label" style="color:aliceblue">Last name</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="phone" class="form-control"  #lastname value={{user?.lastname}}>
+                  <input type="text" placeholder=" " id="phone" class="form-control"  #lastname value= {{user?.lastname}}>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-lg-2 control-label" style="color:aliceblue">Grade</label>
                 <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="cell" class="form-control"  #grade value={{user?.grade}}>
+                  <input type="text" placeholder=" " id="cell" class="form-control" #grade value= {{user?.grade}}>
                 </div>
               </div>
    
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
-                  <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value, firstname.value, lastname.value,grade.value)">Save</button>
+                  <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value, firstname.value,lastname.value,grade.value)">Save</button>
                   <button class="btn btn-theme04" type="reset" styel="margin-left:5%">Cancel</button>
                 </div>
               </div>
