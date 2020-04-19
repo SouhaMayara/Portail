@@ -15,6 +15,7 @@ import { MapComponent } from './map/map.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
+import { MarkNoteComponent } from './mark-note/mark-note.component';
 
 
 
@@ -25,14 +26,14 @@ const routes: Routes = [
   , children : [
     { path : '' ,  component : LesArticlesComponent },
     //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
-    {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
-    {path: 'listAbProf/:id', component: ListAbProfComponent, canActivate: [AuthGuard]},
-    {path: 'listepresence/:id', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
-    {path: 'notes', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'document', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'emplois', component: ListePresenceComponent, canActivate: [AuthGuard]},
-    {path: 'mail', component: ListePresenceComponent, canActivate: [AuthGuard]},
+    {path: 'article/:id', component: ArticleComponent},
+    {path: 'listAbProf/:id', component: ListAbProfComponent},
+    {path: 'listepresence/:id', component: ListePresenceComponent},
+    {path: 'profile/:id', component: ProfilComponent},
+    {path: 'notes', component: MarkNoteComponent},
+    {path: 'document', component: ListePresenceComponent},
+    {path: 'emploi/:id', component: EmploiComponent},
+    {path: 'mail', component: ListePresenceComponent},
   ]},
 
   { path : 'home/:id' , component : HomeComponent, canActivate: [AuthGuard]

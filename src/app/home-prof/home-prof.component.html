@@ -4,7 +4,7 @@
       <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.html" class="logo"><b>ISSAT<span>SO</span></b></a>
+    <a routerLink='/homeprof/{{user?._id}}' routerLinkActive="router-link-active"  class="logo"><b>ISSAT<span>SO</span></b></a>
     <!--logo end-->
     <div class="nav notify-row" id="top_menu">
       <!--  notification start -->
@@ -20,58 +20,6 @@
             <li>
               <p class="green">You have 4 pending tasks</p>
             </li>
-            <li>
-              <a href="index.html#">
-                <div class="task-info">
-                  <div class="desc">Dashio Admin Panel</div>
-                  <div class="percent">40%</div>
-                </div>
-                <div class="progress progress-striped">
-                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                    <span class="sr-only">40% Complete (success)</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <div class="task-info">
-                  <div class="desc">Database Update</div>
-                  <div class="percent">60%</div>
-                </div>
-                <div class="progress progress-striped">
-                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                    <span class="sr-only">60% Complete (warning)</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <div class="task-info">
-                  <div class="desc">Product Development</div>
-                  <div class="percent">80%</div>
-                </div>
-                <div class="progress progress-striped">
-                  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                    <span class="sr-only">80% Complete</span>
-                  </div>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <div class="task-info">
-                  <div class="desc">Payments Sent</div>
-                  <div class="percent">70%</div>
-                </div>
-                <div class="progress progress-striped">
-                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                    <span class="sr-only">70% Complete (Important)</span>
-                  </div>
-                </div>
-              </a>
-            </li>
             <li class="external">
               <a href="#">See All Tasks</a>
             </li>
@@ -86,60 +34,8 @@
             </a>
           <ul class="dropdown-menu extended inbox">
             <div class="notify-arrow notify-arrow-green"></div>
-            <li>
-              <p class="green">You have 5 new messages</p>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="photo"><img alt="avatar" src="assets/img/ui-zac.jpg"></span>
-                <span class="subject">
-                <span class="from">Zac Snider</span>
-                <span class="time">Just now</span>
-                </span>
-                <span class="message">
-                Hi mate, how is everything?
-                </span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="photo"><img alt="avatar" src="assets/img/ui-divya.jpg"></span>
-                <span class="subject">
-                <span class="from">Divya Manian</span>
-                <span class="time">40 mins.</span>
-                </span>
-                <span class="message">
-                Hi, I need your help with this.
-                </span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="photo"><img alt="avatar" src="assets/img/ui-danro.jpg"></span>
-                <span class="subject">
-                <span class="from">Dan Rogers</span>
-                <span class="time">2 hrs.</span>
-                </span>
-                <span class="message">
-                Love your new Dashboard.
-                </span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="photo"><img alt="avatar" src="assets/img/ui-sherman.jpg"></span>
-                <span class="subject">
-                <span class="from">Dj Sherman</span>
-                <span class="time">4 hrs.</span>
-                </span>
-                <span class="message">
-                Please, answer asap.
-                </span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">See all messages</a>
-            </li>
+            
+           
           </ul>
         </li>
         <!-- inbox dropdown end -->
@@ -153,34 +49,6 @@
             <div class="notify-arrow notify-arrow-yellow"></div>
             <li>
               <p class="yellow">You have 7 new notifications</p>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="label label-danger"><i class="fa fa-bolt"></i></span>
-                Server Overloaded.
-                <span class="small italic">4 mins.</span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="label label-warning"><i class="fa fa-bell"></i></span>
-                Memory #2 Not Responding.
-                <span class="small italic">30 mins.</span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="label label-danger"><i class="fa fa-bolt"></i></span>
-                Disk Space Reached 85%.
-                <span class="small italic">2 hrs.</span>
-                </a>
-            </li>
-            <li>
-              <a href="index.html#">
-                <span class="label label-success"><i class="fa fa-plus"></i></span>
-                New User Registered.
-                <span class="small italic">3 hrs.</span>
-                </a>
             </li>
             <li>
               <a href="index.html#">See all notifications</a>
@@ -218,14 +86,14 @@
         </li>
 
         <li>
-          <a routerLink="profile/{{user?._id}}" routerLinkActive="active">
+          <a routerLink="profile/{{user?._id}}" >
              <i class="fa fa-user"></i>
              <span>Profile</span>
              </a>
          </li>
 
         <li>
-          <a routerLink="emploi/{{user?._id}}" routerLinkActive="active">
+          <a routerLink="emploi/{{user?._id}}" >
             <i class="fa fa-calendar"></i>
             <span>Calendar</span>
             </a>
@@ -238,20 +106,20 @@
             <span>Students absences</span>
             </a>
           <ul class="sub">
-            <li><a routerLink="listAbProf/{{user?._id}}" routerLinkActive="active">presence list</a></li>
-            <li><a routerLink="listepresence/{{user?._id}}" routerLinkActive="active">Mark absence</a></li>
+            <li><a routerLink="listAbProf/{{user?._id}}" >presence list</a></li>
+            <li><a routerLink="listepresence/{{user?._id}}" >Mark absence</a></li>
           </ul>
         </li>
         
           <li>
-            <a href="/notes">
+            <a routerLink="notes">
               <i class="fa fa-pencil"></i>
               <span>Notes</span>
               </a>
             
           </li>
           <li>
-            <a href="/document">
+            <a href="#">
               <i class="fa fa-book"></i>
               <span>Documents</span>
               </a>
@@ -260,7 +128,7 @@
           
         
         <li>
-          <a href="/mail">
+          <a href="#">
             <i class="fa fa-envelope"></i>
             <span>Mail </span>
             <span class="label label-theme pull-right mail-info">2</span>
@@ -274,8 +142,8 @@
             <span>Chat Room</span>
             </a>
           <ul class="sub">
-            <li><a href="lobby.html">Lobby</a></li>
-            <li><a href="chat_room.html"> Chat Room</a></li>
+            <li><a href="#">Lobby</a></li>
+            <li><a href="#"> Chat Room</a></li>
           </ul>
         </li>
         
@@ -291,17 +159,8 @@
       <footer class="site-footer">
         <div class="text-center">
           <p>
-            &copy; Copyrights <strong>Dashio</strong>. All Rights Reserved
+            &copy; Copyrights <strong><a href="http://www.issatso.rnu.tn/fo/index.php">ISSATSO</a></strong>. All Rights Reserved
           </p>
-          <div class="credits">
-            <!--
-              You are NOT allowed to delete the credit link to TemplateMag with free version.
-              You can delete the credit link only if you bought the pro version.
-              Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/dashio-bootstrap-admin-template/
-              Licensing information: https://templatemag.com/license/
-            -->
-            Created with Dashio template by <a href="https://templatemag.com/">TemplateMag</a>
-          </div>
           <a href="index.html#" class="go-top">
             <i class="fa fa-angle-up"></i>
             </a>

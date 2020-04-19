@@ -22,12 +22,22 @@ term;
       this.user = res.data;
       this.idG=this.user.groupe;
       console.log(this.idG);
-      this.apiService.getSeance(this.idG).subscribe((res: any) => {
-        console.log(res);
-        this.seances = res.data;
-        console.log(this.seances);
-        console.log(this.userG[0].groupe.nom);
-      });
+      if (this.user.role == 'Etudiant') {
+        this.apiService.getSeance(this.idG).subscribe((res: any) => {
+          console.log(res);
+          this.seances = res.data;
+          console.log(this.seances);
+          console.log(this.userG[0].groupe.nom);
+        });
+      } else {
+        this.apiService.getProfId().subscribe((result : any) => {
+          console.log(result);
+          let prof = result.data;
+          this.apiService.getSeancesByProf(prof._id).subscribe((rsSeance : any) => {
+            this.seances= rsSeance.data;
+          });
+        });
+      }
     });
    /* this.apiService.getUserInG().subscribe((res: any) => {
       console.log(res);

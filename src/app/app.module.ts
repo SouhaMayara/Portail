@@ -22,6 +22,7 @@ import { MapComponent } from './map/map.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
+import { MarkNoteComponent } from './mark-note/mark-note.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -42,8 +43,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MapComponent,
     AbsenceComponent,
     NoteEComponent,
-    ListAbProfComponent, 
-    
+    ListAbProfComponent,
+    MarkNoteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

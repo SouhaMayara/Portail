@@ -23,8 +23,10 @@ export class ListePresenceComponent implements OnInit {
   testSeance;
   user ;
   etudiants ;
+  nomGroupe : any;
   prof;
   SeanceCourante;
+  anneScolaire: any;
   
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { 
     this.absent = new Object();
@@ -68,9 +70,11 @@ async ngOnInit(): Promise<any> {
     this.seances = await resultSeance.data;
     console.log("seance",this.seances);
     this.apiService.getGroupBySeance(this.seances[0]['_id'],this.prof['_id']).subscribe(async (resultGroup: any) => {
-      //console.log(resultGroup);
+      console.log("grouuupe",resultGroup);
+
       this.etudiants = await resultGroup.data[0]['groupe'].etudiants;
-      
+      this.anneScolaire = await resultGroup.data[0]['groupe']['annee_scolaire'];
+      this.nomGroupe = await resultGroup.data[0]['groupe']['filiere']+'-0'+resultGroup.data[0]['groupe']['niveau']+'-'+resultGroup.data[0]['groupe']['nom'];
     });
    });
    
@@ -117,6 +121,7 @@ async ngOnInit(): Promise<any> {
         }
       }) 
     });  
+  
   }
 
 }
