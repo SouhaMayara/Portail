@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 @Component({
   selector: 'app-les-articles',
   templateUrl: './les-articles.component.html',
   styleUrls: ['./les-articles.component.css']
 })
 export class LesArticlesComponent implements OnInit {
-  articles: any;
+  articles;
   user: any;
-
+  title:any;
+  term;
+  p;
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -29,5 +32,6 @@ export class LesArticlesComponent implements OnInit {
       console.log(res);
       this.articles = res.data });
   }
+
 
 }

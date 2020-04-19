@@ -24,6 +24,10 @@ import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,13 +51,17 @@ import { MarkNoteComponent } from './mark-note/mark-note.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule,
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent,
               LoginComponent,
               ProfComponent,
-              ListePresenceComponent],
+              ListePresenceComponent,
+            LesArticlesComponent,
+            NgxPaginationModule],
   exports: []
 })
 export class AppModule { };
