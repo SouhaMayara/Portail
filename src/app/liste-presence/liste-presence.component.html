@@ -24,8 +24,8 @@
                         <thead>
                           <tr>
                               <th><i class="fa fa-id-card"></i>CIN</th>
-                              <th>Firstname</th>
-                              <th>Lastname</th>
+                              <th>Last name</th>
+                              <th>First name</th>
                               <th><span class="w3-xxlarge"><i class="fa fa-envelope-square"></i>Email</span></th>
                               <th><i class=" fa fa-edit"></i>Présent/Absent</th>
                           </tr>
@@ -33,8 +33,8 @@
                         <tbody>
                             <tr *ngFor="let etudiant of etudiants">
                                 <td>{{etudiant.cin}}</td>
-                                <td>{{etudiant.firstname}}</td>
                                 <td>{{etudiant.lastname}}</td>
+                                <td>{{etudiant.firstname}}</td>
                                 <td>{{etudiant.email}}</td>
                                 <td><input type="checkbox" name="absent"  id="{{etudiant._id}}" (change)="ajouter(etudiant._id)"></td>
                             </tr>
