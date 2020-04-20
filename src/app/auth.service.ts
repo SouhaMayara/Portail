@@ -108,7 +108,9 @@ export class AuthService {
   getMatiereById(idm){
     return this.http.get('http://localhost:3001/matiere/getBy/'+idm);
   }
-
+  getMatiereByIdProf(idPro){
+    return this.http.get('http://localhost:3001/matiere/getMatByProf/'+idPro);
+  }
   getNote(ids,idm){
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
   }
