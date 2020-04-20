@@ -27,7 +27,7 @@ export class AuthService {
   logoutUser(){
     localStorage.removeItem('token');
     this._router.navigate(['/']);
-    console.log("logout Professeur");
+    console.log("logout");
   }
 
   getu(id) {
@@ -57,14 +57,28 @@ export class AuthService {
   getUserInG(){
     return this.http.get('http://localhost:3001/seance/etudiant/'+ this.userId);
   }
-  
+  getUsersInG(idGrp){
+    return this.http.get('http://localhost:3001/seance/etudiants/'+idGrp);
+  }
   getSeance(idG){
     return this.http.get('http://localhost:3001/seance/byId/'+idG);
+  }
+  getGroupeById(idG){
+    return this.http.get('http://localhost:3001/seance/getGroupeById/'+idG);
   }
   //get prof by IdUser
   getProfId(){
       return this.http.get('http://localhost:3001/user/Prof/'+ this.userId);
-    }
+  }
+  //get Matiere By Prof
+  getMatiereByProf(idP){
+    return this.http.get('http://localhost:3001/matiere/getMatByProf/'+idP);
+  }
+  //get Groupe by Matiere
+  getGroupesByMat(idMat){
+    return this.http.get('http://localhost:3001/matiere/getGrpByMat/'+idMat);
+  }
+
     //pour emploi du prof
   getSeancesByProf(idP){
     //console.log("userId*******",this.userId);
@@ -107,6 +121,10 @@ export class AuthService {
  
   getMatiereById(idm){
     return this.http.get('http://localhost:3001/matiere/getBy/'+idm);
+  }
+
+  getTypeMat(idMat,idGrp,idProf){
+    return this.http.get('http://localhost:3001/matiere/getTypeMat/'+idMat+'/'+idGrp+'/'+idProf);
   }
 
   getNote(ids,idm){

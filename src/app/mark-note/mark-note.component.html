@@ -4,16 +4,22 @@
         <div class="col-lg-12">
           <div class="form-panel">
             
-            <form class="form-inline" role="form">
+            <form class="form-inline" role="form" >
               
   
-<!--               <select id="ListeMat" class="btn btn-theme dropdown-toggle btn-group" >
-                <option *ngFor="let mat of matieres" value="{{mat._id}}">{{mat}}</option>
+               <select id="ListeMat" style="margin: 5px;" class="btn btn-theme dropdown-toggle btn-group" #mat (change)="getGroupe(mat.value)">
+                <option value="" >Matter</option>
+                <option *ngFor="let mat of matieresList"  value="{{mat?._id}}" >{{mat?.nom}}</option>
              </select>
-             <select id="ListeMat" class="btn btn-theme dropdown-toggle btn-group" >
-                <option *ngFor="let grp of groupes" value="{{grp._id}}">{{grp}}</option>
-             </select> -->
-             <button type="submit" class="btn btn-theme">Search</button>
+            <select id="ListeMat" style="margin: 5px;" #grp class="btn btn-theme dropdown-toggle btn-group" (change)="getTypeMat(mat.value,grp.value)" >
+              <option value="" >Group</option>
+                <option *ngFor="let grp of groupesList" value="{{grp?._id}}">{{grp?.nom}}</option>
+             </select>
+             <select id="ListeMat" style="margin: 5px;" #type class="btn btn-theme dropdown-toggle btn-group" (change)="consoler(type.value)" >
+              <option value="" >Type Matiere</option>
+                <option *ngFor="let type of typesMatiere" value="{{type}}">{{type}}</option>
+             </select>
+             <button type="submit" style="margin: 5px;" class="btn btn-theme" (click)="recherche(mat.value,grp.value,type.value)">Search</button>
             </form>
           </div>
           <!-- /form-panel -->
@@ -28,51 +34,21 @@
             
             <thead>
               <tr>
-                <th><i class="fa fa-bullhorn"></i> Student name</th>
-                <th class="hidden-phone"><i class="fa fa-question-circle"></i> Branch</th>
-                <th><i class="fa fa-bookmark"></i> Group</th>
-                <th><i class=" fa fa-edit"></i> Status</th>
-                <th></th>
+                <th><i class="fa fa-bullhorn"></i>N° CIN</th>
+                <th class="hidden-phone"><i class="fa fa-question-circle"></i>Last name</th>
+                <th><i class="fa fa-bookmark"></i>First name</th>
+                <th><i class=" fa fa-envelope-open"></i>E-mail</th>
+                <th><i class=" fa fa-edit"></i>Note {{typeNote}}</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <a href="basic_table.html#">Company Ltd</a>
-                </td>
-                <td class="hidden-phone">Lorem Ipsum dolor</td>
-                <td>12000.00$ </td>
-                <td><span class="label label-info label-mini">Due</span></td>
-                <td>
-                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="basic_table.html#">
-                    Dashio co
-                    </a>
-                </td>
-                <td class="hidden-phone">Lorem Ipsum dolor</td>
-                <td>17900.00$ </td>
-                <td><span class="label label-warning label-mini">Due</span></td>
-                <td>
-                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a href="basic_table.html#">
-                    Another Co
-                    </a>
-                </td>
-                <td class="hidden-phone">Lorem Ipsum dolor</td>
-                <td>14400.00$ </td>
-                <td><span class="label label-success label-mini">Paid</span></td>
-                <td>
-                  <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                </td>
-              </tr>
+              <tr *ngFor="let etudiant of etudiantsList">
+                <td>{{etudiant.cin}}</td>
+                <td>{{etudiant.lastname}}</td>
+                <td>{{etudiant.firstname}}</td>
+                <td>{{etudiant.email}}</td>
+                <td><input type="text" name="absent"  id="{{etudiant._id}}" ></td>
+            </tr>
               
             </tbody>
           </table>

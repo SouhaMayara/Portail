@@ -37,6 +37,10 @@ router.post('/addGrp', async (req, res) => {
     
   })
 
+router.get('/getGroupeById/:idg', async (req,res) => {
+  const grpResult = await groupe.findOne({"_id": req.params.idg}).exec();
+  res.send({ data: grpResult})
+})
 
 //get seances par groupe api pour emploi des etudiants
 // from this api you can find also the information of "matiere","prof","groupe" for each "seance"
@@ -75,6 +79,12 @@ router.get('/etudiant/:id',async (req, res) => {
   res.send({ data: userResult })
 })
 
+//get etudiants by groupe 
+router.get('/etudiants/:idg', async (req, res) => {
+  const userResult = await user.find({ "groupe": req.params.idg }).exec();
+  res.send({ data: userResult })
+})
+
 //add etudiants dans un groupe 
 router.post('/addEtudiants/:idgrp', upload.single('image'),async (req, res) => {
   req.body.groupe = req.params.idgrp;
@@ -101,10 +111,6 @@ router.post('/addEtudiants/:idgrp', upload.single('image'),async (req, res) => {
 //     res.send({ data: groupeResult })
 //   })
 
-//get etudiants by groupe 
-// router.get('/etudiants/:idg', async (req, res) => {
-//   const userResult = await user.find({ "groupe": req.params.idg }).exec();
-//   res.send({ data: userResult })
-// })
+
 
 module.exports = router;
