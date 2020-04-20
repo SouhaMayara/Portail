@@ -79,72 +79,65 @@
         
         
         <li class="mt">
-          <a class="active" routerLink="/homeprof/{{user?._id}}" routerLinkActive="active">
+          <a class="active" routerLink="/homeprof/{{user?._id}}">
             <i class="fa fa-dashboard"></i>
             <span>Home</span>
-            </a>
+          </a>
         </li>
 
         <li>
           <a routerLink="profile/{{user?._id}}" >
              <i class="fa fa-user"></i>
              <span>Profile</span>
-             </a>
+          </a>
          </li>
 
         <li>
           <a routerLink="emploi/{{user?._id}}" >
             <i class="fa fa-calendar"></i>
             <span>Calendar</span>
-            </a>
-          
+          </a>
         </li>
-
         <li class="sub-menu">
           <a href="javascript:;">
             <i class="fa fa-clipboard"></i>
             <span>Students absences</span>
-            </a>
+          </a>
           <ul class="sub">
             <li><a routerLink="listAbProf/{{user?._id}}" >presence list</a></li>
             <li><a routerLink="listepresence/{{user?._id}}" >Mark absence</a></li>
           </ul>
         </li>
-        
-          <li>
-            <a routerLink="notes">
-              <i class="fa fa-pencil"></i>
-              <span>Notes</span>
-              </a>
-            
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Documents</span>
-              </a>
-            
-          </li>
-          
-        
+        <li>
+          <a routerLink="notes">
+            <i class="fa fa-pencil"></i>
+            <span>Notes</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-book"></i>
+            <span>Documents</span>
+          </a>
+        </li>
         <li>
           <a href="#">
             <i class="fa fa-envelope"></i>
             <span>Mail </span>
             <span class="label label-theme pull-right mail-info">2</span>
-            </a>
+          </a>
         </li>
-
-        
-        <li class="sub-menu">
-          <a href="javascript:;">
+        <li>
+          <a  routerLink="#" routerLinkActive="active">
             <i class="fa fa-comments-o"></i>
             <span>Chat Room</span>
-            </a>
-          <ul class="sub">
-            <li><a href="#">Lobby</a></li>
-            <li><a href="#"> Chat Room</a></li>
-          </ul>
+          </a>
+          </li>
+          <li>
+          <a routerLink="map" routerLinkActive="active">
+            <i class="fa fa-map-marker"></i>
+            <span>Google Maps </span>
+          </a>
         </li>
         
       </ul>
