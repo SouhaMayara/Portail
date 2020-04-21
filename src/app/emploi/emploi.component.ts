@@ -33,8 +33,10 @@ term;
         this.apiService.getProfId().subscribe((result : any) => {
           console.log(result);
           let prof = result.data;
-          this.apiService.getSeancesByProf(prof._id).subscribe((rsSeance : any) => {
-            this.seances= rsSeance.data;
+          this.apiService.getSeancesByProf(prof._id).subscribe(async (rsSeance : any) => {
+            this.seances= await rsSeance.data;
+            
+         await console.log(rsSeance.data);
           });
         });
       }
