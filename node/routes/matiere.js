@@ -25,7 +25,10 @@ router.get('/getBy/:id', async (req, res) => {
   const matiereResult = await matiere.findOne({ "_id": req.params.id}).exec();
   res.send({ data: matiereResult })
 })
-
+router.get('/getTypeMat/:idMat/:idGrp/:idProf', async (req, res) => {
+  const matiereResult = await seance.find({ "matiere": req.params.idMat,"groupe": req.params.idGrp,"professeur": req.params.idProf}).distinct('type').exec();
+  res.send({ data: matiereResult })
+})
 //get matiere by id professeur
 router.get('/getMatByProf/:idPro', async (req, res) => {
   const matiereResult = await seance.find({"professeur":req.params.idPro }).distinct('matiere').exec() ;
@@ -36,7 +39,11 @@ router.get('/getByGrp/:idG', async (req, res) => {
   const seanceResult = await seance.find({"groupe":{$in:req.params.idG}}).distinct("matiere").populate("matiere").exec() ;
   res.send({ data:seanceResult })
 })
-
+//get groupes by idMat  pour professeur "note"
+router.get('/getGrpByMat/:idMAt', async (req, res) => {
+  const groupeResult = await seance.find({"matiere":req.params.idMAt}).distinct("groupe").populate("groupe").exec() ;
+  res.send({ data:groupeResult })
+})
 
 
 //add absence by id matiere and id etudiant

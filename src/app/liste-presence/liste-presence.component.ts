@@ -18,7 +18,6 @@ export class ListePresenceComponent implements OnInit {
   test = '';
   
   etudiantsPresent: Number[] = [];
-  absent : Absence ;
   seances;
   testSeance;
   user ;
@@ -29,7 +28,6 @@ export class ListePresenceComponent implements OnInit {
   anneScolaire: any;
   
   constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { 
-    this.absent = new Object();
   }
   
 async ngOnInit(): Promise<any> {
@@ -52,33 +50,34 @@ async ngOnInit(): Promise<any> {
     this.user = await res.data;
     this.apiService.getProfId().subscribe(async (resProf: any) =>{
       this.prof = await resProf.data;
-  this.apiService.decodeToken();
+      this.apiService.decodeToken();
 
-  if(tempsCourant >='8:30'  && tempsCourant <= '10:00' ){
-      this.SeanceCourante ='S1';}
-  else if (tempsCourant >= '10:10' && tempsCourant <= '11:40' ){
-      this.SeanceCourante ='S2';}
-  else if (tempsCourant >= '11:50' && tempsCourant <= '13:20' ){
-      this.SeanceCourante ='S3';}
-  else if (tempsCourant >= '13:50' && tempsCourant <= '15:20' ){
-      this.SeanceCourante ='S4';}
-  else if (tempsCourant >= '15:30' && tempsCourant <= '17:00' ){
-      this.SeanceCourante ='S5';}    
-  else if (tempsCourant >= '17:10' && tempsCourant <= '18:40' ){
-      this.SeanceCourante ='S6';}
-  this.apiService.getSeanceByProf(this.prof['_id'],dayName,this.SeanceCourante).subscribe(async (resultSeance: any) => {
-    this.seances = await resultSeance.data;
-    console.log("seance",this.seances);
-    this.apiService.getGroupBySeance(this.seances[0]['_id'],this.prof['_id']).subscribe(async (resultGroup: any) => {
-      console.log("grouuupe",resultGroup);
+      if(tempsCourant >='8:30'  && tempsCourant <= '10:00' ){
+          this.SeanceCourante ='S1';}
+      else if (tempsCourant >= '10:10' && tempsCourant <= '11:40' ){
+          this.SeanceCourante ='S2';}
+      else if (tempsCourant >= '11:50' && tempsCourant <= '13:20' ){
+          this.SeanceCourante ='S3';}
+      else if (tempsCourant >= '13:50' && tempsCourant <= '15:20' ){
+          this.SeanceCourante ='S4';}
+      else if (tempsCourant >= '15:30' && tempsCourant <= '17:00' ){
+          this.SeanceCourante ='S5';}    
+      else if (tempsCourant >= '17:10' && tempsCourant <= '18:40' ){
+          this.SeanceCourante ='S6';}
+      this.apiService.getSeanceByProf(this.prof['_id'],dayName,this.SeanceCourante).subscribe(async (resultSeance: any) => {
+        this.seances = await resultSeance.data;
+        console.log("seance",this.seances);
+        this.apiService.getGroupBySeance(this.seances[0]['_id'],this.prof['_id']).subscribe(async (resultGroup: any) => {
+          console.log("grouuupe",resultGroup);
 
-      this.etudiants = await resultGroup.data[0]['groupe'].etudiants;
-      this.anneScolaire = await resultGroup.data[0]['groupe']['annee_scolaire'];
-      this.nomGroupe = await resultGroup.data[0]['groupe']['filiere']+'-0'+resultGroup.data[0]['groupe']['niveau']+'-'+resultGroup.data[0]['groupe']['nom'];
-    });
-   });
-   
-  });
+          this.etudiants = await resultGroup.data[0]['groupe'].etudiants;
+          this.etudiants.sort((a, b) => (a.lastname > b.lastname) ? 1 : ((b.lastname > a.lastname) ? -1 : 0) );
+          this.anneScolaire = await resultGroup.data[0]['groupe']['annee_scolaire'];
+          this.nomGroupe = await resultGroup.data[0]['groupe']['filiere']+'-0'+resultGroup.data[0]['groupe']['niveau']+'-'+resultGroup.data[0]['groupe']['nom'];
+        });
+      });
+      
+      });
   });
   }
   
