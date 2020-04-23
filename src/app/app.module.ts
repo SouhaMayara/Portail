@@ -28,6 +28,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { NotificationsComponent } from './notifications/notifications.component';
 //import { ToastrModule } from 'ngx-toastr';
 //import { TIMEOUT } from 'dns';
 
@@ -47,7 +48,8 @@ import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-
     AbsenceComponent,
     NoteEComponent,
     ListAbProfComponent,
-    MarkNoteComponent
+    MarkNoteComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

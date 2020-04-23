@@ -1,0 +1,24 @@
+<!--main content start-->
+<section id="main-content">
+    <section class="wrapper site-min-height" >
+      <h3><i class="fa fa-angle-right"></i> Inline Editor</h3>
+     
+   
+      <div class="mt"></div>
+      <div class="row content-panel mt mb"*ngFor="let n of notifications| paginate:{itemsPerPage: 6, currentPage:p}">
+        <div class="col-md-6 mt">
+          <p contenteditable="true">{{n}}</p>
+          
+        </div>
+     
+      </div>
+    </section>
+    <div class="row">
+        <div class="col-sm-12 " id="pagination" style="padding-left: 38%;color: white;">
+          <pagination-controls (pageChange)="p=$event"class="my-pagination" ></pagination-controls>
+        </div>
+         </div>
+    <!-- /wrapper -->
+  </section>
+  <!-- /MAIN CONTENT -->
+  
