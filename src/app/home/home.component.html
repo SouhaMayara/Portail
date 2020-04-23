@@ -145,46 +145,28 @@
             <!-- inbox dropdown end -->
             <!-- notification dropdown start-->
             <li id="header_notification_bar" class="dropdown">
-              <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                 <i class="fa fa-bell-o"></i>
-                <span class="badge bg-warning">7</span>
+                <span class="badge bg-warning">{{notifications.length}}</span>
                 </a>
-              <ul class="dropdown-menu extended notification">
+              <ul  class="dropdown-menu extended notification" style="width:20%">
                 <div class="notify-arrow notify-arrow-yellow"></div>
                 <li>
-                  <p class="yellow">You have 7 new notifications</p>
-                </li>
-                <li>
-                  <a href="index.html#">
+                  <p class="yellow">You have {{notifications.length}} new notifications</p>
+                </li >
+                <li *ngFor="let n of notifications | paginate:{  itemsPerPage: 1, currentPage:p}" style="width:20%">
+                  <a style="font-size:20pw" href="index.html#">
                     <span class="label label-danger"><i class="fa fa-bolt"></i></span>
-                    Server Overloaded.
-                    <span class="small italic">4 mins.</span>
+                    {{n}}
+                    
+                    </a>
+                    <a style="width:0%">
+                    <pagination-controls (pageChange)="p=$event"    directionLinks="true"
+                    autoHide="true"
+                    responsive="true"class="my-pagination center"  style="padding-left:-20%"></pagination-controls>
                     </a>
                 </li>
-                <li>
-                  <a href="index.html#">
-                    <span class="label label-warning"><i class="fa fa-bell"></i></span>
-                    Memory #2 Not Responding.
-                    <span class="small italic">30 mins.</span>
-                    </a>
-                </li>
-                <li>
-                  <a href="index.html#">
-                    <span class="label label-danger"><i class="fa fa-bolt"></i></span>
-                    Disk Space Reached 85%.
-                    <span class="small italic">2 hrs.</span>
-                    </a>
-                </li>
-                <li>
-                  <a href="index.html#">
-                    <span class="label label-success"><i class="fa fa-plus"></i></span>
-                    New User Registered.
-                    <span class="small italic">3 hrs.</span>
-                    </a>
-                </li>
-                <li>
-                  <a href="index.html#">See all notifications</a>
-                </li>
+
               </ul>
             </li>
             <!-- notification dropdown end -->
@@ -208,6 +190,8 @@
           <ul class="sidebar-menu" id="nav-accordion">
             <p class="centered"><a href="profile.html"><img src="http://localhost:3001/{{user?.image}}" class="img-circle" width="80" ></a></p>
             <h5 class="centered">{{user?.firstname}}{{user?.lastname}}</h5>
+            
+
             <!--Sam Soffes************************************************-->
             <li class="mt">
               <a class="active" routerLink="/home/{{user?._id}}" routerLinkActive="active">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-note-e',
@@ -16,7 +17,9 @@ export class NoteEComponent implements OnInit {
   pourcentage=[];
   mat;
   listeId=[];
-  constructor(private apiService: AuthService) {}
+  notifications=[];
+  value;
+  constructor(private toastr: ToastrService,private apiService: AuthService) {}
   ngOnInit(): void {
     this.apiService.getUser().subscribe((res: any) => {
       console.log(res);
@@ -37,15 +40,20 @@ export class NoteEComponent implements OnInit {
           console.log(this.noms);
           console.log(this.user._id);
           console.log(this.listeId[index]);
-          this.apiService.getNote(this.user._id,this.listeId[index]).subscribe((res: any) => {
-            console.log(res);
+          this.apiService.getNote(this.user._id,this.listeId[index]).subscribe((res: any) => { 
             this.nb = res.data;
-            console.log(this.nb);  
+            console.log("ghada");
+            console.log( this.noms[index][0],this.nb[index].note);
+           
+         
+         
           });
+         
+          // console.log(this.nb);  
           });
         }
-        console.log(this.noms);
-        console.log(this.nb);
+        // console.log(this.noms);
+        // console.log(this.nb);
 
     
       });
