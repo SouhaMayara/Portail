@@ -103,13 +103,18 @@ async supprimerAb(_id) {
  
   this.apiService.getAbByuser(_id).subscribe(async (resus : any) =>{
     this.etu=await resus.data;
-    
+    console.log(this.etu)
     console.log(this.etu._id);
-  this.apiService.deleteAB(this.etu._id).subscribe(async (resAbsence : any) =>{
+  this.apiService.deleteAB(this.etu._id).subscribe(
+    data => {
+      this.listUser = data
+    }
+    //this.listUser=data;
    
-    this.listUser=resAbsence.data;
-    console.log(this.listUser);
-  })
+   // console.log(this.listUser);
+   // this.ngOnInit()
+  
+  )
   });
 }
 }

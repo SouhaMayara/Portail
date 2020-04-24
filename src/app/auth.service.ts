@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Absence } from "../../node/models/absence";
-import { Observable } from 'rxjs';
-
+import { Observable, throwError } from 'rxjs';
+import { map, take, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -99,7 +99,9 @@ export class AuthService {
   }
 
   deleteAB(idAB){
-    return this.http.post('http://localhost:3001/matiere/deleteAbs/'+idAB,Absence);
+    return this.http.post('http://localhost:3001/matiere/deleteAbs/'+idAB,Absence).pipe(map((res: any) => res.result ), 
+    catchError(error => { return throwError('Its a Trap!')})
+);
   }
 
   getAbsence(idMat,idS,idEt){
