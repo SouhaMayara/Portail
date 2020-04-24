@@ -113,7 +113,7 @@ export class MarkNoteComponent implements OnInit {
           await console.log(idUser);
           this.apiService.getUser()
         }); */
-      })
+      });
 
     }
   }

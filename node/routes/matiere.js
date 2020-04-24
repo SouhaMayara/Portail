@@ -81,6 +81,23 @@ router.post('/deleteAbs/:id', async (req, res) => {
     res.send({ data: absenceResult })
     
 })
+
+router.post('/deleteSceance/:idS', async (req, res) => {
+  const profResult = await professeur.findOne({ seances: req.params.idS }).exec()
+  const groupeRes = await groupe.findOne({ seances: req.params.idS }).exec()
+  const matiereRes = await matiere.findOne({ seances: req.params.idS }).exec()
+  const profUpdateResult = await professeur.updateOne({ _id: profResult._id },
+    { $pull: { seances: req.params.idS } }).exec() 
+  const groupUpdateResult = await groupe.updateOne({ _id: groupeRes._id },
+      { $pull: { seances: req.params.idS } }).exec()
+  const matiereUpdateResult = await matiere.updateOne({ _id: matiereRes._id },
+      { $pull: { seances: req.params.idS } }).exec()
+  
+  const Result = await seance.deleteOne({ _id: req.params.idS }).exec()
+  // const delResult = await comments.update({ "_id": ObjectId(req.params.id) }, { $set: { [`articles.${i}`]: req.body } }).exec();
+  res.send({ data: Result })
+  
+})
 //get matieres by user
 // router.get('/matieres/:idU', async (req, res) => {
 //   const matiereResult = await matiere.find({ "user": req.params.idU}).exec(); 
