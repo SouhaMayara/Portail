@@ -135,8 +135,9 @@ export class AuthService {
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
- 
 
-
+  deleteS(ids){
+    return this.http.post('http://localhost:3001/matiere/deleteSceance/'+ ids,"");
+  }
   
 }
