@@ -43,7 +43,8 @@ export class NoteEComponent implements OnInit {
           this.apiService.getNote(this.user._id,this.listeId[index]).subscribe((res: any) => { 
             this.nb = res.data;
             console.log("ghada");
-            console.log( this.noms[index][0],this.nb[index].note);
+
+            console.log( this.noms[index][0],this.nb[index].note,this.nb[index].date);
            
          
          

@@ -125,8 +125,9 @@ export class HomeComponent implements OnInit {
             this.nb = res.data;
             console.log("ghada");
             console.log( this.noms[index][0],this.nb[index].note);
+            
             this.value=this.nb[index].note.toString()
-            if(this.value !== null)
+            if(this.value !== null )
             {
               
               //console.log(this.noms[index])
@@ -135,10 +136,9 @@ export class HomeComponent implements OnInit {
               this.notifications.push(notif.message)
               console.log("notifications",this.notifications); 
               console.log(notif.message)
+              console.log('11111111'+this.noms[index])
             }
-            else{
-              //console.log(this.value)
-            }
+           
            
             
          

@@ -131,15 +131,24 @@ export class NotificationsComponent implements OnInit {
           this.apiService.getNote(this.user._id,this.listeId[index]).subscribe((res: any) => { 
             this.nb = res.data;
             console.log("ghada");
+            console.log(this.nb[index].date);
+            var k=this.nb[index].date
+            //k=this.datePipe .transform( k , 'yyyy-MM-ddThh:mm')
+            //var h = k.getHours(); 
+           // var m = this.nb[index].date.getMinutes();
+            //var d = this.nb[index].date.getHours();
             console.log( this.noms[index][0],this.nb[index].note);
+            //console.log(d);
+            var d=new Date(k);
+            
             this.value=this.nb[index].note.toString()
             if(this.value !== null)
             {
-              
+               
               //console.log(this.noms[index])
-               setTimeout(() => this.toastr.warning(this.user.firstname +' check your grades in  '+ this.noms[index][0]))
-               const notif=this.toastr.warning(this.user.firstname +' check your grades in  '+ this.noms[index][0]);
-               this.notifications.push(notif.message)
+              //this.toastr.warning(this.user.firstname +' check your grades in '+ this.noms[index][0]))
+               const notif=this.toastr.warning(this.user.firstname +' check your grades in '+ this.noms[index][0]);
+               this.notifications.push(notif.message +" "+ k )
               console.log("notifications",this.notifications); 
               console.log(notif.message)
             }
