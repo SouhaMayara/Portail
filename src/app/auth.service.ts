@@ -29,7 +29,7 @@ export class AuthService {
     this._router.navigate(['/']);
     console.log("logout");
   }
-
+//*********************************************************************** */
   getu(id) {
     return this.http.get('http://localhost:3001/user/byUser/'+id);
   }
@@ -98,10 +98,19 @@ export class AuthService {
     return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt+'/'+dateAbs,Absence);
   }
 
+  deleteAB(idAB){
+    return this.http.post('http://localhost:3001/matiere/deleteAbs/'+idAB,Absence);
+  }
+
   getAbsence(idMat,idS,idEt){
     return this.http.get('http://localhost:3001/matiere/Abs/'+idMat+'/'+idS+'/'+idEt);
   }
 
+  getAbsenceMatDate(idMat,DateAbs){
+    console.log('http://localhost:3001/matiere/Abs/'+idMat+'/'+DateAbs);
+    return this.http.get('http://localhost:3001/matiere/Abs/'+idMat+'/'+DateAbs);
+    
+  }
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
@@ -138,8 +147,10 @@ export class AuthService {
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
- 
-
-
+  
+  getAbByuser(id){
+    return this.http.get('http://localhost:3001/matiere/Abs/'+id);
+  }
+  
   
 }

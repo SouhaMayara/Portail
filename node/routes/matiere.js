@@ -61,6 +61,20 @@ router.get('/Abs/:idm/:idS/:id', async (req, res) => {
    const absResult = await absence.findOne({"matiere":req.params.idm ,"seance": req.params.idS,"user": req.params.id }).populate("absence").exec();
   res.send({ data: absResult })
 })
+
+//getAbsenceByUser
+router.get('/Abs/:id', async (req, res) => {
+  const absResult = await absence.findOne({"user": req.params.id }).populate("absence").exec();
+ res.send({ data: absResult })
+})
+
+
+//getAbsenceByMatDate
+router.get('/Abs/:idm/:DateAbs', async (req, res) => {
+  const absResult = await absence.find({"matiere":req.params.idm ,"DateAbs": req.params.DateAbs}).populate("absence").exec();
+ res.send({ data: absResult })
+})
+
 //delete absence
 router.post('/deleteAbs/:id', async (req, res) => {
     const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec();

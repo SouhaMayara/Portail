@@ -16,6 +16,7 @@ export class MarkNoteComponent implements OnInit {
   groupesList: any [] = new Array();
 
   etudiantsList: any ;
+  dateAb : any;
   matieres: any;
   groupes: any;
   typesMatiere: any;
