@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { async } from '@angular/core/testing';
+import { noteEtudiant } from './noteEtudiant';
 
 @Component({
   selector: 'app-mark-note',
@@ -14,17 +15,25 @@ export class MarkNoteComponent implements OnInit {
 
   matieresList: any [] = new Array();
   groupesList: any [] = new Array();
-
+  noteEtudiants : noteEtudiant[] = new Array();
+  noteEt : noteEtudiant;
   etudiantsList: any ;
   matieres: any;
   groupes: any;
   typesMatiere: any;
-  typeNote: any = "of ";
+  typeNote: any;
+  idMatiere: any;
+  idGroupe: any;
+  test: string;
 
   constructor(private apiService: AuthService) { }
   
   async ngOnInit(): Promise<any> {
-
+    this.matieresList = [];
+    this.groupesList = [];
+    this.etudiantsList = [];
+    this.idMatiere = null;
+    this.idGroupe = null;
     this.apiService.decodeToken();
 
     this.apiService.getUser().subscribe(async (resUser: any) => {
@@ -33,13 +42,13 @@ export class MarkNoteComponent implements OnInit {
         this.prof = await resProf.data;
         this.apiService.getMatiereByProf(this.prof._id).subscribe(async (resMats : any) => {
           this.matieres = resMats.data;
-          console.log(this.matieres);
+          //console.log(this.matieres);
           this.matieres.forEach(async mat => {
-            console.log(mat);
+            //console.log(mat);
             this.apiService.getMatiereById(mat).subscribe(async (resMat : any) => {
               //console.log(resMat.data);
               await this.matieresList.push(resMat.data);
-              await console.log("ffffffffffffffffffffffff",this.matieresList);
+              //await console.log(this.matieresList);
             });
             //console.log(this.matieresList);
             
@@ -53,16 +62,15 @@ export class MarkNoteComponent implements OnInit {
 
   async getGroupe(idMAt): Promise<any>{
     this.groupesList = await [];
-    console.log("sdfgnh",idMAt)
     if (idMAt != null){
       this.apiService.getGroupesByMat(idMAt).subscribe( async (resGrps : any) => {
         this.groupes = await resGrps.data;
         this.groupes.forEach(async grp => {
-          await console.log(grp);
+          //await console.log(grp);
           this.apiService.getGroupeById(grp).subscribe(async (resGrp : any) => {
             //console.log(resGrp.data);
             await this.groupesList.push(resGrp.data);
-            await console.log(this.groupesList);
+            //await console.log(this.groupesList);
           });
           //console.log(this.matieresList);
           
@@ -70,38 +78,38 @@ export class MarkNoteComponent implements OnInit {
       });
     }
   }
-  getTypeMat(idMat, idGrp){
-    console.log("matiere:",idMat,"Groupe",idGrp);
+  async getTypeMat(idMat, idGrp): Promise<any>{
+    this.typesMatiere = await [];
+    //console.log("matiere:",idMat,"Groupe",idGrp);
     if ((idMat != "") && (idGrp != "")){
-      console.log('good job mira <3 ');
+      //console.log('good job mira <3 ');
       this.apiService.getTypeMat(idMat,idGrp,this.prof._id).subscribe((resType : any) => {
         this.typesMatiere = resType.data;
-        console.log(this.typesMatiere);
+        //console.log(this.typesMatiere);
       });
 
     }
   }
-  consoler(type){
-    console.log('type',type);
-  }
 
-  async recherche(idMat, idGrp,type){
-    this.typeNote = await "of ";
+  async recherche(idMat, idGrp,type): Promise<any>{
+    //this.typeNote = await "";
+    this.idMatiere = await idMat;
+    this.idGroupe = await idGrp;
     switch (type) {
       case "Course":
-        this.typeNote = await this.typeNote+"Exam";
+        this.typeNote = "Examen";
         break;
       case "TD":
-        this.typeNote = await this.typeNote+"DS";
+        this.typeNote = "DS";
         break;
     
       default:
-        this.typeNote = await this.typeNote+type;
+        this.typeNote = type;
         break;
     }
-    console.log("matiere:",idMat,"Groupe",idGrp);
+    //console.log("matiere:",idMat,"Groupe",idGrp);
     if ((idMat != "") && (idGrp != "") && (type != "")){
-      console.log('good job mira <3 ');
+      //console.log('good job mira <3 ');
       this.apiService.getUsersInG(idGrp).subscribe(async (resEtudiants : any) => {
         //resEtudiants.data
         this.etudiantsList= await resEtudiants.data;
@@ -115,6 +123,46 @@ export class MarkNoteComponent implements OnInit {
       });
 
     }
+  }
+
+  async noterEtudiant(id, note) : Promise <any>{
+   // console.log("Etudiant ",id," noteee",note);
+    /* this.noteEt["idEt"] = id;
+    this.noteEt["note"] = note; */
+    
+    //console.log("noteEtudiants",this.noteEtudiants);
+    if (note > 20) {
+       this.test = null;
+       alert('Notes must between 0 and 20 !');
+    } else {
+    this.apiService.getOneNote(id, this.idMatiere, this.typeNote).subscribe(async (res:any) => {
+      if (res.data == null) {
+        let index: any = this.noteEtudiants.findIndex((element) => element.idEt == id);
+        if (index !== -1) {
+          this.noteEtudiants.splice(index, 1);
+          this.noteEt ={idEt : id, noteEt : note};
+          this.noteEtudiants.push(this.noteEt);
+        } else{
+          this.noteEt ={idEt : id, noteEt : note};
+          this.noteEtudiants.push(this.noteEt);
+        }
+      } else {
+        console.log(res.data);
+      }
+    })
+    
+    }
+  }
+
+  async validate(){
+    console.log(this.noteEtudiants);
+    this.noteEtudiants.forEach(noEt => {
+      this.apiService.addNote(noEt.idEt,this.idMatiere,this.prof._id,noEt.noteEt,this.typeNote).subscribe( async (resNote : any) => {
+        await console.log(resNote.data);
+        await this.ngOnInit();
+        alert('Notes are updated !')
+      });
+    });
   }
 
 }

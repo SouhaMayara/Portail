@@ -15,7 +15,7 @@
               <option value="" >Group</option>
                 <option *ngFor="let grp of groupesList" value="{{grp?._id}}">{{grp?.nom}}</option>
              </select>
-             <select id="ListeMat" style="margin: 5px;" #type class="btn btn-theme dropdown-toggle btn-group" (change)="consoler(type.value)" >
+             <select id="ListeMat" style="margin: 5px;" #type class="btn btn-theme dropdown-toggle btn-group" >
               <option value="" >Type Matiere</option>
                 <option *ngFor="let type of typesMatiere" value="{{type}}">{{type}}</option>
              </select>
@@ -29,29 +29,41 @@
   <div class="row mt">
       <div class="col-md-12">
         <div class="content-panel">
-          <table class="table table-striped table-advance table-hover">
-           
-            
-            <thead>
-              <tr>
-                <th><i class="fa fa-bullhorn"></i>N° CIN</th>
-                <th class="hidden-phone"><i class="fa fa-question-circle"></i>Last name</th>
-                <th><i class="fa fa-bookmark"></i>First name</th>
-                <th><i class=" fa fa-envelope-open"></i>E-mail</th>
-                <th><i class=" fa fa-edit"></i>Note {{typeNote}}</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let etudiant of etudiantsList">
-                <td>{{etudiant.cin}}</td>
-                <td>{{etudiant.lastname}}</td>
-                <td>{{etudiant.firstname}}</td>
-                <td>{{etudiant.email}}</td>
-                <td><input type="text" name="absent"  id="{{etudiant._id}}" ></td>
-            </tr>
-              
-            </tbody>
-          </table>
+          <form (ngSubmit)="validate()">
+            <table class="table table-striped table-advance table-hover">
+              <thead>
+                <tr>
+                  <th><i class="fa fa-bullhorn"></i>N° CIN</th>
+                  <th class="hidden-phone"><i class="fa fa-question-circle"></i>Last name</th>
+                  <th><i class="fa fa-bookmark"></i>First name</th>
+                  <th><i class=" fa fa-envelope-open"></i>E-mail</th>
+                  <th><i class=" fa fa-edit"></i>Note of {{typeNote}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let etudiant of etudiantsList">
+                  <td>{{etudiant.cin}}</td>
+                  <td>{{etudiant.lastname}}</td>
+                  <td>{{etudiant.firstname}}</td>
+                  <td>{{etudiant.email}}</td>
+                  <td>
+                    <div class="form-group mx-sm-3 mb-2">
+                      <input type="number" #note class="form-control" [value]="test" id="{{etudiant._id}}" min="0" max="20" (change)="noterEtudiant(etudiant._id,note.value)">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                      <button class="btn btn-theme w3-xlarge"  type="submit"  value="">Valider</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
         </div>
         <!-- /content-panel -->
       </div>
