@@ -151,13 +151,19 @@ export class AuthService {
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm+'/'+type);
   }
 
+  addNote(idEt,idMat,idPro,note,type){
+    return this.http.post('http://localhost:3001/note/addNotes/'+idEt+'/'+idMat+'/'+idPro+'/'+note+'/'+type, Note);
+  }
+
+  deleteNote(id){
+    return this.http.post('http://localhost:3001/note/delete/'+id,Note);
+  }
+
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
  
-  addNote(idEt,idMat,idPro,note,type){
-    return this.http.post('http://localhost:3001/note/addNotes/'+idEt+'/'+idMat+'/'+idPro+'/'+note+'/'+type, Note);
-  }
+  
 
   
   getAbByuser(id){

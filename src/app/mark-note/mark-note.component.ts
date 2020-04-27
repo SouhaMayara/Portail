@@ -45,20 +45,16 @@ export class MarkNoteComponent implements OnInit {
           this.matieres = resMats.data;
           //console.log(this.matieres);
           this.matieres.forEach(async mat => {
-            //console.log(mat);
             this.apiService.getMatiereById(mat).subscribe(async (resMat : any) => {
-              //console.log(resMat.data);
               await this.matieresList.push(resMat.data);
               //await console.log(this.matieresList);
             });
-            //console.log(this.matieresList);
             
           });
         });
       });
     });
     
-    //await console.log(this.matieresList);
   }
 
   async getGroupe(idMAt): Promise<any>{
@@ -73,7 +69,6 @@ export class MarkNoteComponent implements OnInit {
             await this.groupesList.push(resGrp.data);
             //await console.log(this.groupesList);
           });
-          //console.log(this.matieresList);
           
         });
       });
@@ -83,7 +78,6 @@ export class MarkNoteComponent implements OnInit {
     this.typesMatiere = await [];
     //console.log("matiere:",idMat,"Groupe",idGrp);
     if ((idMat != "") && (idGrp != "")){
-      //console.log('good job mira <3 ');
       this.apiService.getTypeMat(idMat,idGrp,this.prof._id).subscribe((resType : any) => {
         this.typesMatiere = resType.data;
         //console.log(this.typesMatiere);
@@ -93,7 +87,6 @@ export class MarkNoteComponent implements OnInit {
   }
 
   async recherche(idMat, idGrp,type): Promise<any>{
-    //this.typeNote = await "";
     this.idMatiere = await idMat;
     this.idGroupe = await idGrp;
     switch (type) {
@@ -108,30 +101,19 @@ export class MarkNoteComponent implements OnInit {
         this.typeNote = type;
         break;
     }
-    //console.log("matiere:",idMat,"Groupe",idGrp);
+
     if ((idMat != "") && (idGrp != "") && (type != "")){
       //console.log('good job mira <3 ');
       this.apiService.getUsersInG(idGrp).subscribe(async (resEtudiants : any) => {
-        //resEtudiants.data
         this.etudiantsList= await resEtudiants.data;
-        //this.etudiantsList._proto_.sort(firstname);
         this.etudiantsList.sort((a, b) => (a.lastname > b.lastname) ? 1 : ((b.lastname > a.lastname) ? -1 : 0) );
         await console.log(resEtudiants.data);
-        /* this.etudiantsList.etudiants.forEach(async idUser => {
-          await console.log(idUser);
-          this.apiService.getUser()
-        }); */
       });
 
     }
   }
 
   async noterEtudiant(id, note) : Promise <any>{
-   // console.log("Etudiant ",id," noteee",note);
-    /* this.noteEt["idEt"] = id;
-    this.noteEt["note"] = note; */
-    
-    //console.log("noteEtudiants",this.noteEtudiants);
     if (note > 20) {
        this.test = null;
        alert('Notes must between 0 and 20 !');
@@ -149,6 +131,9 @@ export class MarkNoteComponent implements OnInit {
         }
       } else {
         console.log(res.data);
+        this.apiService.deleteNote(res.data._id).subscribe();
+        this.noteEt ={idEt : id, noteEt : note};
+        this.noteEtudiants.push(this.noteEt);
       }
     })
     
@@ -159,7 +144,7 @@ export class MarkNoteComponent implements OnInit {
     console.log(this.noteEtudiants);
     this.noteEtudiants.forEach(noEt => {
       this.apiService.addNote(noEt.idEt,this.idMatiere,this.prof._id,noEt.noteEt,this.typeNote).subscribe( async (resNote : any) => {
-        await console.log(resNote.data);
+        //console.log(resNote.data);
         await this.ngOnInit();
         alert('Notes are updated !')
       });
