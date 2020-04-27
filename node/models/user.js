@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     //professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
-    cin:{type: String , unique: true },
+    cin:{type: Number , unique: true },
     email: {type: String, unique: true, required: true,match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]},
     password: {type: String, required: true},
     firstname: {type: String},

@@ -31,7 +31,7 @@ export class AuthService {
     this._router.navigate(['/']);
     console.log("logout");
   }
-
+//*********************************************************************** */
   getu(id) {
     return this.http.get('http://localhost:3001/user/byUser/'+id);
   }
@@ -100,10 +100,21 @@ export class AuthService {
     return this.http.post('http://localhost:3001/matiere/addAbs/'+idMat+'/'+idS+'/'+idEt+'/'+dateAbs,Absence);
   }
 
+  deleteAB(idAB){
+    return this.http.post('http://localhost:3001/matiere/deleteAbs/'+idAB,Absence).pipe(map((res: any) => res.result ), 
+    catchError(error => { return throwError('Its a Trap!')})
+);
+  }
+
   getAbsence(idMat,idS,idEt){
     return this.http.get('http://localhost:3001/matiere/Abs/'+idMat+'/'+idS+'/'+idEt);
   }
 
+  getAbsenceMatDate(idMat,DateAbs){
+    console.log('http://localhost:3001/matiere/Abs/'+idMat+'/'+DateAbs);
+    return this.http.get('http://localhost:3001/matiere/Abs/'+idMat+'/'+DateAbs);
+    
+  }
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
@@ -123,6 +134,9 @@ export class AuthService {
  
   getMatiereById(idm){
     return this.http.get('http://localhost:3001/matiere/getBy/'+idm);
+  }
+  getMatiereByIdProf(idPro){
+    return this.http.get('http://localhost:3001/matiere/getMatByProf/'+idPro);
   }
 
   getTypeMat(idMat,idGrp,idProf){
@@ -145,6 +159,16 @@ export class AuthService {
     return this.http.post('http://localhost:3001/note/addNotes/'+idEt+'/'+idMat+'/'+idPro+'/'+note+'/'+type, Note);
   }
 
+  
+  getAbByuser(id){
+    return this.http.get('http://localhost:3001/matiere/Abs/'+id);
+  }
+  
+
+
+  deleteS(ids){
+    return this.http.post('http://localhost:3001/matiere/deleteSceance/'+ ids,"");
+  }
 
   
 }

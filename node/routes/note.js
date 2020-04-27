@@ -39,5 +39,18 @@ router.get('/:idS/:idm', async (req, res) => {
     res.send({ data: noteResult })
   })
 
+  router.post('/edit/:id',async (req, res) => {
+   
+    const noteResult = await note.updateOne({ "_id": req.params.id },{ $set: req.body }).exec();
+    res.send({ data: noteResult })
+  })
+
+  router.post('/delete/:id',async (req, res) => {
+   
+    const noteResult = await note.deleteOne({ "_id": req.params.id }).exec();
+    res.send({ data: noteResult })
+  })
+
+
 
 module.exports = router;

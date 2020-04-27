@@ -18,6 +18,7 @@ export class MarkNoteComponent implements OnInit {
   noteEtudiants : noteEtudiant[] = new Array();
   noteEt : noteEtudiant;
   etudiantsList: any ;
+  dateAb : any;
   matieres: any;
   groupes: any;
   typesMatiere: any;

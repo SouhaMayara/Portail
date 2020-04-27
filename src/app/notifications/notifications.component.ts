@@ -1,19 +1,21 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../auth.service';
-//import * as jwt_decode from 'jwt-decode';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { json } from 'body-parser';
+import { Component, OnInit } from '@angular/core';
+import { HomeComponent } from '../home/home.component';
+import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-notifications',
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.css'],
+  providers: [DatePipe]
 })
-export class HomeComponent implements OnInit {
+export class NotificationsComponent implements OnInit {
+  
 
-  @ViewChild(ToastContainerDirective, {static: true}) toastContainer: ToastContainerDirective;
-
+  
   user:any;
   id:any;
   selectedFile=null;
@@ -34,10 +36,12 @@ export class HomeComponent implements OnInit {
   listeId=[];
   n=0;  
   value: any;
-  get notif() {
-    return this.notifications=[];
-}
-  constructor(private toastr: ToastrService,private http:HttpClient,private apiService: AuthService, private activatedRoute: ActivatedRoute) {console.log("homeComponent*********************************");}
+  toastContainer: any;
+  myDate = new Date();
+  test: string;
+  constructor(private toastr: ToastrService,private http:HttpClient,private apiService: AuthService, private activatedRoute: ActivatedRoute,private datePipe: DatePipe ) {
+    //console.log("homeComponent*********************************");
+    }
 
   ngOnInit() {
     
@@ -83,15 +87,18 @@ export class HomeComponent implements OnInit {
             console.log(this.pourcentage[index]);  
             if(this.pourcentage[index] < 30 && this.pourcentage[index] >=5){
               setTimeout(() => this.toastr.warning(this.user.firstname +' watch your absence in '+ this.noms[index][0]))
+              
               //this.n++; 
               const notif=this.toastr.warning(this.user.firstname +' watch your absence in '+ this.noms[index][0]);
-              this.notifications.push(notif.message)
+              this.notifications.push(notif.message + this.nb[index])
               console.log("notifications",this.notifications); 
               console.log(notif.message)
               //console.log(this.pourcentage[index]);  
             }else if(this.pourcentage[index] >= 30){
 
               setTimeout(() => this.toastr.error("You are eliminated in "+ this.noms[index])) 
+              const notif=this.toastr.warning(this.user.firstname +' watch your absence in '+ this.noms[index][0]);
+              this.notifications.push(notif.message)
              //this.n++;
             //console.log(this.n)
           }
@@ -124,21 +131,30 @@ export class HomeComponent implements OnInit {
           this.apiService.getNote(this.user._id,this.listeId[index]).subscribe((res: any) => { 
             this.nb = res.data;
             console.log("ghada");
+            console.log(this.nb[index].date);
+            var k=this.nb[index].date
+            //k=this.datePipe .transform( k , 'yyyy-MM-ddThh:mm')
+            //var h = k.getHours(); 
+           // var m = this.nb[index].date.getMinutes();
+            //var d = this.nb[index].date.getHours();
             console.log( this.noms[index][0],this.nb[index].note);
+            //console.log(d);
+            var d=new Date(k);
             
             this.value=this.nb[index].note.toString()
-            if(this.value !== null )
+            if(this.value !== null)
             {
-              
+               
               //console.log(this.noms[index])
-               setTimeout(() => this.toastr.warning(this.user.firstname +' check your grades in  '+ this.noms[index][0]))
-               const notif=this.toastr.warning(this.user.firstname +' check your grades in  '+ this.noms[index][0]);
-              this.notifications.push(notif.message)
+              //this.toastr.warning(this.user.firstname +' check your grades in '+ this.noms[index][0]))
+               const notif=this.toastr.warning(this.user.firstname +' check your grades in '+ this.noms[index][0]);
+               this.notifications.push(notif.message +" "+ k )
               console.log("notifications",this.notifications); 
               console.log(notif.message)
-              console.log('11111111'+this.noms[index])
             }
-           
+            else{
+              //console.log(this.value)
+            }
            
             
          
@@ -163,7 +179,4 @@ export class HomeComponent implements OnInit {
 
   }
  
-
-  
-
 }

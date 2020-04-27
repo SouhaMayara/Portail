@@ -6,6 +6,8 @@ const seance = new mongoose.Schema({
   nomProf:String,
   duree: String,
   jour: String,
+  DateS: Date.UTC('dd-mm-yyyy'),
+  rattrap:{type: String, enum: ['catching up','regular'], defaut:'regular'},
   nom: { type: String, enum: ['S1', 'S2','S3','S4','S5','S6'], required:true },
   type: { type: String, enum: ['Course', 'TD','TP'], required:true },
   groupe:{ type: mongoose.Schema.Types.ObjectId, ref: 'groupe' },

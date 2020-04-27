@@ -26,7 +26,11 @@ import { MarkNoteComponent } from './mark-note/mark-note.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { NotificationsComponent } from './notifications/notifications.component';
+//import { ToastrModule } from 'ngx-toastr';
+//import { TIMEOUT } from 'dns';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AbsenceComponent,
     NoteEComponent,
     ListAbProfComponent,
-    MarkNoteComponent
+    MarkNoteComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -54,11 +59,20 @@ import {NgxPaginationModule} from 'ngx-pagination';
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      closeButton:true,
+      onActivateTick:true,
+      preventDuplicates: true,
+      
+    }),
+    ToastContainerModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent,
               LoginComponent,
               ProfComponent,
+              HomeComponent,
               ListePresenceComponent,
             LesArticlesComponent,
             NgxPaginationModule],

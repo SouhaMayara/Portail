@@ -61,11 +61,42 @@ router.get('/Abs/:idm/:idS/:id', async (req, res) => {
    const absResult = await absence.findOne({"matiere":req.params.idm ,"seance": req.params.idS,"user": req.params.id }).populate("absence").exec();
   res.send({ data: absResult })
 })
+
+//getAbsenceByUser
+router.get('/Abs/:id', async (req, res) => {
+  const absResult = await absence.findOne({"user": req.params.id }).populate("absence").exec();
+ res.send({ data: absResult })
+})
+
+
+//getAbsenceByMatDate
+router.get('/Abs/:idm/:DateAbs', async (req, res) => {
+  const absResult = await absence.find({"matiere":req.params.idm ,"DateAbs": req.params.DateAbs}).populate("absence").exec();
+ res.send({ data: absResult })
+})
+
 //delete absence
 router.post('/deleteAbs/:id', async (req, res) => {
     const absenceResult = await absence.deleteOne({ "_id": req.params.id }).exec();
     res.send({ data: absenceResult })
     
+})
+
+router.post('/deleteSceance/:idS', async (req, res) => {
+  const profResult = await professeur.findOne({ seances: req.params.idS }).exec()
+  const groupeRes = await groupe.findOne({ seances: req.params.idS }).exec()
+  const matiereRes = await matiere.findOne({ seances: req.params.idS }).exec()
+  const profUpdateResult = await professeur.updateOne({ _id: profResult._id },
+    { $pull: { seances: req.params.idS } }).exec() 
+  const groupUpdateResult = await groupe.updateOne({ _id: groupeRes._id },
+      { $pull: { seances: req.params.idS } }).exec()
+  const matiereUpdateResult = await matiere.updateOne({ _id: matiereRes._id },
+      { $pull: { seances: req.params.idS } }).exec()
+  
+  const Result = await seance.deleteOne({ _id: req.params.idS }).exec()
+  // const delResult = await comments.update({ "_id": ObjectId(req.params.id) }, { $set: { [`articles.${i}`]: req.body } }).exec();
+  res.send({ data: Result })
+  
 })
 //get matieres by user
 // router.get('/matieres/:idU', async (req, res) => {

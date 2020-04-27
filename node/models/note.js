@@ -7,7 +7,7 @@ const note = new mongoose.Schema({
   professeur: { type: mongoose.Schema.Types.ObjectId, ref: 'professeur' },
   note: {type:Number, required:true},
   type: { type: String, enum: ['DS', 'Examen','TP'], required:true},
-
+  date:{type:Date, default: new Date()}
 })
 
 module.exports = mongoose.model('note', note);

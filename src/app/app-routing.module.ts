@@ -16,6 +16,7 @@ import { AbsenceComponent } from './absence/absence.component';
 import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
       {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]},
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]},
-      {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]}
+      {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]},
+      {path: 'notification', component: NotificationsComponent, canActivate: [AuthGuard]}
 ]}
 ,
   { path : "**" , 

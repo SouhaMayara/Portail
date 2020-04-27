@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { json } from 'body-parser';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-absence',
   templateUrl: './absence.component.html',
@@ -20,11 +20,11 @@ export class AbsenceComponent implements OnInit {
 
   mat;
   listeId=[];
-
-  constructor(private apiService: AuthService) { }
+  n=0;  
+  constructor(private toastr: ToastrService,private apiService: AuthService) { }
 
   ngOnInit(): void {
-
+    setTimeout(() => this.toastr.info("Check your absences")) 
     this.apiService.getUser().subscribe((res: any) => {
       console.log(res);
       this.user = res.data;
@@ -56,9 +56,12 @@ export class AbsenceComponent implements OnInit {
             this.nb[index] = res.data;
             this.pourcentage[index]=(parseInt(this.nb[index])/(parseInt(this.ntotal[index])))*100;
             console.log(this.pourcentage[index]);  
+            
           });
           });
+        
         }
+        
         console.log(this.noms);
         console.log(this.nb);
         //console.log(this.matiere.nom);
