@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Absence } from "../../node/models/absence";
+import { Note } from "../../node/models/note";
 import { Observable, throwError } from 'rxjs';
 import { map, take, catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -116,11 +118,11 @@ export class AuthService {
   decodeToken() {
     if (localStorage.getItem('token')) {
       const token = localStorage.getItem('token');
-      console.log(jwt_decode(token));
+      //console.log(jwt_decode(token));
       this.userId = jwt_decode(token).data._id;
       this.image=jwt_decode(token).data.image
       this.professeurId = jwt_decode(token).data.professeur;
-      console.log(this.userId);
+      //console.log(this.userId);
     }
   }
 
@@ -141,14 +143,27 @@ export class AuthService {
     return this.http.get('http://localhost:3001/matiere/getTypeMat/'+idMat+'/'+idGrp+'/'+idProf);
   }
 
-  getNote(ids,idm){
+  getNote(ids : any ,idm : any){
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
   }
 
+  getOneNote(ids: any,idm: any ,type: string) {
+    return this.http.get('http://localhost:3001/note/'+ids+'/'+idm+'/'+type);
+  }
+
+  addNote(idEt,idMat,idPro,note,type){
+    return this.http.post('http://localhost:3001/note/addNotes/'+idEt+'/'+idMat+'/'+idPro+'/'+note+'/'+type, Note);
+  }
+
+  deleteNote(id){
+    return this.http.post('http://localhost:3001/note/delete/'+id,Note);
+  }
 
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
+ 
+  
 
   
   getAbByuser(id){

@@ -17,11 +17,25 @@ router.post('/addNote/:idSt/:idM/:id', async (req, res) => {
     const noteResult = await note.create(req.body).catch(err => err);
     res.send({ data:noteResult })
 })
+
+router.post('/addNotes/:idSt/:idM/:id/:note/:type', async (req, res) => {
+  req.body.user = req.params.idSt;
+  req.body.matiere = req.params.idM;
+  req.body.professeur = req.params.id;
+  req.body.note = req.params.note;
+  req.body.type = req.params.type;
+  const noteResult = await note.create(req.body).catch(err => err);
+  res.send({ data:noteResult })
+})
 // get notes by students and matiere
 
 router.get('/:idS/:idm', async (req, res) => {
     req.body.matiere = req.params.idm;
     const noteResult = await note.find({ "user": req.params.idS }).exec();
+    res.send({ data: noteResult })
+  })
+  router.get('/:idS/:idm/:type', async (req, res) => {
+    const noteResult = await note.findOne({ "user": req.params.idS, "matiere": req.params.idm, "type" : req.params.type }).exec();
     res.send({ data: noteResult })
   })
 

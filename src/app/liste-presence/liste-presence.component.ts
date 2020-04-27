@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Absence } from "../../../node/models/absence";
 
 @Component({
   selector: 'app-liste-presence',
@@ -12,7 +10,6 @@ import { Absence } from "../../../node/models/absence";
 })
 export class ListePresenceComponent implements OnInit {
   
-  presentForm: FormGroup;
   today= new Date();
   jstoday = '';
   test = '';
