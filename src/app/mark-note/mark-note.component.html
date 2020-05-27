@@ -49,6 +49,10 @@
                   <td>
                     <div class="form-group mx-sm-3 mb-2">
                       <input type="number" #note class="form-control" [value]="test" id="{{etudiant._id}}" min="0" max="20" (change)="noterEtudiant(etudiant._id,note.value)">
+                      <!-- <div class="alert alert-danger alert-dismissible" *ngIf="testNote" >
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" name="test{{etudiant._id}}" data-target="{{'#test'+etudiant._id}}" onclick="document.getElementById('test'+etudiant._id).value =''">&times;</a>
+                        <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                      </div> -->
                     </div>
                   </td>
                 </tr>
