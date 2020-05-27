@@ -17,6 +17,7 @@ import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
 
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
     {path: 'listepresence/:id', component: ListePresenceComponent},
     {path: 'profile/:id', component: ProfilComponent},
     {path: 'notes', component: MarkNoteComponent},
+    {path: 'rattrapage', component: AddRAttrapageComponent},
     {path: 'document', component: ListePresenceComponent},
     {path: 'emploi/:id', component: EmploiComponent},
     {path: 'mail', component: ListePresenceComponent},

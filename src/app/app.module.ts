@@ -31,6 +31,7 @@ import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-
 import { NotificationsComponent } from './notifications/notifications.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
 //import { ToastrModule } from 'ngx-toastr';
 //import { TIMEOUT } from 'dns';
 
@@ -51,7 +52,8 @@ import { CommonModule } from '@angular/common';
     NoteEComponent,
     ListAbProfComponent,
     MarkNoteComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    AddRAttrapageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -80,6 +82,7 @@ import { CommonModule } from '@angular/common';
               HomeComponent,
               ListePresenceComponent,
             LesArticlesComponent,
+            AddRAttrapageComponent,
             NgxPaginationModule],
   exports: []
 })
