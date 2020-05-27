@@ -9,8 +9,8 @@
       </div>
       <div class="col-sm-3">
     <!-- Search form -->
-<div class="active-cyan-4 mb-4">
-  <input class="form-control" type="text" id="search" placeholder="Search" aria-label="Search" style="margin-top: 3%;" [(ngModel)]="term">
+<div class="active-cyan-4 mb-4" >
+  <input class="form-control" type="text" id="search" placeholder="Search" aria-label="Search" style="margin-top: 5%;" [(ngModel)]="term">
 </div>
     </div>
   </div>
@@ -22,7 +22,8 @@
            <!-- Product Panel -->
            <div class="row"  >
              <div class="col-lg-4 col-md-4 col-sm-4 mb" *ngFor="let article of articles| filter:term | paginate:{itemsPerPage: 6, currentPage:p} ">
-               <div class="product-panel-2 pn" *ngIf="article?.type===user?.role" style="
+               <div *ngIf="article?.type===user?.role || article?.type==='both'">
+               <div class="product-panel-2 pn"  style="
                height: 400px;
                background-color: white;
                box-shadow: 3px 3px darkcyan;
@@ -30,7 +31,7 @@
                width: 420px;">
                  <!--<h5 class="mt"></h5>-->
                  <img src="http://localhost:3001/{{ article?.image }}" width="180" height="100" style="width: 100%;height: 200px;margin-top:2%"alt="">
-                 <h5 class="mt">{{ article?.topic}} | {{ article?.title}}</h5>
+                 <h5 class="mt">{{ article?.topic}} | {{ article?.title}}</h5><h6>{{article?.date}}</h6>
                  <h6 style=" 
                  margin-left:2%; 
                  text-align: left; 
@@ -40,9 +41,10 @@
                  max-height: 32px;      
                  -webkit-line-clamp: 2; 
                  -webkit-box-orient: vertical;">{{ article?.content}}...</h6>
-                 <button class="btn btn-theme flow-right" routerLink="article/{{article?._id}}" style="margin-top:15%">READ MORE</button>
+                 <button class="btn btn-theme flow-right" routerLink="article/{{article?._id}}" style="margin-top:7%">READ MORE</button>
                </div>
              </div>
+            </div>
              <div class="row">
             <div class="col-sm-12 " id="pagination" style="padding-left: 38%;color: white;">
               <pagination-controls (pageChange)="p=$event"class="my-pagination" ></pagination-controls>

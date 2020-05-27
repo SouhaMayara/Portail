@@ -46,7 +46,7 @@ const routes: Routes = [
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]},
       {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]},
-      {path: 'notification', component: NotificationsComponent, canActivate: [AuthGuard]}
+      {path: 'notification/:id', component: NotificationsComponent, canActivate: [AuthGuard]}
 ]}
 ,
   { path : "**" , 

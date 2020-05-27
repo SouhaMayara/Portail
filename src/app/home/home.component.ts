@@ -34,12 +34,14 @@ export class HomeComponent implements OnInit {
   listeId=[];
   n=0;  
   value: any;
-  get notif() {
-    return this.notifications=[];
-}
-  constructor(private toastr: ToastrService,private http:HttpClient,private apiService: AuthService, private activatedRoute: ActivatedRoute) {console.log("homeComponent*********************************");}
+  collapsed = true;
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
+  }
+  constructor(private toastr: ToastrService,private http:HttpClient,public apiService: AuthService, private activatedRoute: ActivatedRoute) {console.log("homeComponent*********************************");}
 
   ngOnInit() {
+    
     
     //setTimeout(() => this.toastr.success('sup'))
     //this.toastrService.overlayContainer = this.toastContainer;
@@ -127,7 +129,7 @@ export class HomeComponent implements OnInit {
             console.log( this.noms[index][0],this.nb[index].note);
             
             this.value=this.nb[index].note.toString()
-            if(this.value !== null )
+            if(this.value !== null && this.nb[index+1].date<this.nb[index].date)
             {
               
               //console.log(this.noms[index])
@@ -162,6 +164,7 @@ export class HomeComponent implements OnInit {
   
 
   }
+
  
 
   

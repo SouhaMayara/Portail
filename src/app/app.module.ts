@@ -29,6 +29,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 //import { ToastrModule } from 'ngx-toastr';
 //import { TIMEOUT } from 'dns';
 
@@ -66,7 +68,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
       preventDuplicates: true,
       
     }),
-    ToastContainerModule
+    ToastContainerModule,
+    CommonModule,
+    RouterModule,
+    
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent,

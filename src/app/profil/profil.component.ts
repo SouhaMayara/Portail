@@ -38,18 +38,19 @@ export class ProfilComponent implements OnInit {
       }
     
     }
-    updateProfile(email, firstname, lastname,grade) {
+    updateProfile(email, firstname, lastname,grade,password) {
     
       const user = {
         email: email,
         firstname: firstname,
         lastname: lastname,
-        grade:grade 
+        grade:grade,
+        password :password
       }
   
       this.id = this.activatedRoute.snapshot.paramMap.get('id')
       this.apiService.updateUser(this.id, user).subscribe((res: any) => { 
-    
+        this.user.password=
       console.log(this.user.image);
       console.log(res);
       this.ngOnInit();
