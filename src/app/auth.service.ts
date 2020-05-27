@@ -81,6 +81,13 @@ export class AuthService {
     return this.http.get('http://localhost:3001/matiere/getGrpByMat/'+idMat);
   }
 
+  addSeance(idG,idMat,idP, reqBody){
+    return this.http.post('http://localhost:3001/seance/addSeanceGrp/'+idG+'/'+idMat+'/'+idP,reqBody);
+  }
+   //pour seance de rattrapage
+  getSeancesByDay(day,mat,grp){
+    return this.http.get('http://localhost:3001/seance/seanceByDay/'+day+'/'+mat+'/'+grp);
+  }
     //pour emploi du prof
   getSeancesByProf(idP){
     //console.log("userId*******",this.userId);

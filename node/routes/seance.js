@@ -23,11 +23,12 @@ router.post('/addSeanceGrp/:idG/:idM/:id', async (req, res) => {
   req.body.groupe = req.params.idG;
   req.body.matiere = req.params.idM;
   req.body.professeur = req.params.id;
+  console.log("boooooooooooooody",req.body);
   const seanceResult = await seance.create(req.body).catch(err => err);
   const grpResult = await groupe.updateOne({ "_id": req.params.idG }, { $push: { seances: seanceResult._id } }).exec();
   const matiereResult = await matiere.updateOne({ "_id": req.params.idM }, { $push: { seances: seanceResult._id } }).exec();
   const profResult = await professeur.updateOne({ "_id": req.params.id }, { $push: { seances: seanceResult._id } }).exec();
-  res.send({ data: grpResult, matiereResult, profResult})
+  res.send({ data: grpResult, matiereResult, profResult, seanceResult})
 })
 
 //add groupe 
@@ -71,6 +72,10 @@ router.get('/seance/:idS/:id', async (req, res) => {
   res.send({ data: seanceResult })
 })
 
+router.get('/seanceByDay/:day/:mat/:grp', async (req, res) => {
+  const seanceResult = await seance.find({ "jour": req.params.day , "matiere": req.params.mat ,"groupe": req.params.grp ,}).exec();
+  res.send({ data: seanceResult })
+})
 
 //get etudiant in groupe
 router.get('/etudiant/:id',async (req, res) => {
