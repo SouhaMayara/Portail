@@ -40,6 +40,7 @@ import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.componen
     AppComponent,
     LoginComponent,
     ProfComponent,
+    ProfilComponent,
     HomeComponent,
     ListePresenceComponent,
     HomeProfComponent,
@@ -79,11 +80,12 @@ import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.componen
   bootstrap: [AppComponent,
               LoginComponent,
               ProfComponent,
+              ProfilComponent,
               HomeComponent,
               ListePresenceComponent,
-            LesArticlesComponent,
-            AddRAttrapageComponent,
-            NgxPaginationModule],
+              LesArticlesComponent,
+              AddRAttrapageComponent,
+              NgxPaginationModule],
   exports: []
 })
 export class AppModule { };

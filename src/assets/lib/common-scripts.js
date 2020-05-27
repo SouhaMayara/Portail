@@ -72,7 +72,7 @@ var Script = function() {
   });
 
   // custom scrollbar
-  $(document).ready(function(){
+  $("#sidebar").scroll(function(){
     $("#sidebar").niceScroll.remove({
     styler: "fb",
     cursorcolor: "#4ECDC4",

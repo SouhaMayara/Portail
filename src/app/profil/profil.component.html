@@ -1,107 +1,99 @@
 <!--main content start-->
 <section id="main-content">
-    <section class="wrapper site-min-height">
-      <section class="wrapper">
-        <div>
-          <div class="row">
-            <div class="col-sm-9" style="margin-top: -5%;margin-left:-2%">
-        <h3><i class="fa fa-angle-right"></i>Profile</h3>
-      </div>
-      <div class="row mt">
- 
-      
-        <div class="col-lg-12">
-          <div class="row content-panel">
-            <div class="col-md-4 profile-text mt mb centered">
-              <div class="right-divider hidden-sm hidden-xs">
-                <h6 style="font-size: larger;">CIN</h6>
-                <h4 style="font-size: large;">{{user?.cin}}</h4>
-                
-              </div>
+  <section class="wrapper site-min-height">
+    <section class="wrapper">
+      <div>
+        <div class="row">
+          <div class="col-sm-9" style="margin-top: -5%;margin-left:-2%">
+      <h3><i class="fa fa-angle-right"></i>Profile</h3>
+    </div>
+    <div class="row mt">
+
+    
+      <div class="col-lg-12">
+        <div class="row content-panel">
+          <div class="col-md-4 profile-text mt mb centered">
+            <div class="right-divider hidden-sm hidden-xs">
+              <h6 style="font-size: larger;">CIN</h6>
+              <h4 style="font-size: large;">{{user?.cin}}</h4>
+              
             </div>
-            <!-- /col-md-4 -->
-            <div class="col-md-4 profile-text">
-              <h3>{{user?.firstname}} {{user?.lastname}}</h3>
-              <br>
-              <h6 style="font-size: large;">{{user?.role}}</h6>
-              <h6 style="font-size: large;">{{user?.grade}}</h6>
-              <p style="font-size: large;">{{user?.email}}</p>
-              <br>
-             
-            </div>
-            <!-- /col-md-4 -->
-            <div class="col-md-4 centered">
-              <div class="profile-pic">
-                <p><img src="http:\\localhost:3001\{{user?.image}}" class="img-circle"></p>
-             
-              </div>
-              <form>
-                <div class="form-group" >
-                  <div class="col-lg-6" style="color:grey">
-                    <input type="file" id="exampleInputFile" style="margin-left: 35%;" class="file-pos"  #formData value={{user?.image}} (change)="SelectImage($event)">
-                  </div>
-                </div>
-                <br>
-                <br>
-                <div class="form-group"style="margin-left:-15%">
-                  <div class="col-lg-offset-2 col-lg-10" > 
-                    <button class="btn btn-theme" type="submit"  style="margin-top: -20%;
-                    margin-left: 60%;" (click)="updateProfileImage(formData.value)">Upload</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <!-- /col-md-4 -->
           </div>
-          <!-- /row -->
-        </div>
-        <div class="col-lg-8 col-lg-offset-2 detailed mt" style=" margin-top: 5%;">
-            <h4 class="mb center">Update Profile</h4>
-            <form role="form" class="form-horizontal">
-              <div class="form-group">
-                <label class="col-lg-2 control-label" style="color:aliceblue">Email</label>
-                <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="addr1" class="form-control"  #email value= {{user?.email}}>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-2 control-label" style="color:aliceblue">First name</label>
-                <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="addr2" class="form-control"  #firstname value= {{user?.firstname}}>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-lg-2 control-label" style="color:aliceblue">Last name</label>
-                <div class="col-lg-6">
-                  <input type="text" placeholder=" " id="phone" class="form-control"  #lastname value= {{user?.lastname}}>
-                </div>
-              </div>
+          <!-- /col-md-4 -->
+          <div class="col-md-4 profile-text">
+            <h4>{{user?.firstname}} {{user?.lastname}}</h4>
+            <br>
+            <h6 style="font-size: large;">{{user?.role}}</h6>
+            <h6 style="font-size: large;">{{user?.grade}}</h6>
+            <p style="font-size: large;">{{user?.email}}</p>
+            <br>
+           
+          </div>
+          <!-- /col-md-4 -->
+          <div class="col-md-4 centered">
+            <div class="profile-pic">
+              <p><img src="http:\\localhost:3001\{{user?.image}}" class="img-circle"></p>
+           
+            </div>
+            <form>
               <div class="form-group" >
-                <label class="col-lg-2 control-label" style="color:aliceblue">Grade</label>
-                <div class="col-lg-6" >
-                  <input type="text" placeholder=" " id="cell" class="form-control" #grade value= {{user?.grade}}>
+                <div class="col-lg-6" style="color:grey">
+                  <input type="file" id="exampleInputFile" style="margin-left: 35%;" class="file-pos"  #formData value={{user?.image}} (change)="SelectImage($event)">
                 </div>
               </div>
-              <div class="form-group" >
-                <label class="col-lg-2 control-label" style="color:aliceblue">Password</label>
-                <div class="col-lg-6" >
-                  <input type="password" placeholder=" " id="cell" class="form-control" #password value= {{user?.password}}>
-                </div>
-              </div>
-   
-              <div class="form-group">
-                <div class="col-lg-offset-2 col-lg-10">
-                  <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value, firstname.value,lastname.value,grade.value,password.value)">Save</button>
-                  <button class="btn btn-theme04" type="reset" style="margin-left:2%">Cancel</button>
+              <br>
+              <br>
+              <div class="form-group"style="margin-left:-15%">
+                <div class="col-lg-offset-2 col-lg-10" > 
+                  <button class="btn btn-theme" type="submit"  style="margin-top: -20%;
+                  margin-left: 60%;" (click)="updateProfileImage(formData.value)">Upload</button>
                 </div>
               </div>
             </form>
-            <br>
-           
-            
-       
           </div>
-          <!-- /col-lg-8 -->
+          <!-- /col-md-4 -->
         </div>
         <!-- /row -->
-   
+      </div>
+      <div class="col-lg-8 col-lg-offset-2 detailed mt" style=" margin-top: 5%;">
+          <h4 class="mb center">Update Profile</h4>
+          <form role="form" class="form-horizontal">
+            <div class="form-group" >
+              <label class="col-lg-2 control-label" style="color:aliceblue">Email :</label>
+              <div class="col-lg-6" >
+                <input type="text" placeholder=" " id="cell" class="form-control" #email value={{user?.email}}></div>
+            </div>
+            <div class="form-group" >
+              <label class="col-lg-2 control-label" style="color:aliceblue">Firstname :</label>
+              <div class="col-lg-6" >
+                <input type="text" placeholder=" " id="cell" class="form-control" #firstname value={{user?.firstname}}></div>
+            </div>
+            <div class="form-group" >
+              <label class="col-lg-2 control-label" style="color:aliceblue">Lastname :</label>
+              <div class="col-lg-6" >
+                <input type="text" placeholder=" " id="cell" class="form-control" #lastname value="{{user?.lastname}}"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-2 control-label" style="color:aliceblue">Grade :</label>
+              <div class="col-lg-6" >
+                <input type="text" placeholder=" " id="cell" class="form-control" #grade value={{user?.grade}}></div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value,firstname.value,lastname.value,grade.value)">Save</button>
+                
+              </div>
+              
+            </div>
+            
+          </form>
+          <br>
+         
+          
+     
+        </div>
+        <!-- /col-lg-8 -->
+      </div>
+      <!-- /row -->
+ 

@@ -49,7 +49,7 @@ export class AuthService {
     return this.http.get('http://localhost:3001/article/articles');
   }
   updateUser(userId, profile) {
-    return this.http.post('http://localhost:3001/user/updateProfile/' + userId,profile);
+    return this.http.post('http://localhost:3001/user/updateProfile/' + userId, profile);
   }
 
   updatePhoto( userId, fd) {

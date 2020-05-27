@@ -23,20 +23,19 @@ import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.componen
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
-  {path : 'homeprof/:id', component : HomeProfComponent, 
-  canActivate: [AuthGuard]
+  {path : 'homeprof/:id', component : HomeProfComponent, canActivate: [AuthGuard]
   , children : [
     { path : '' ,  component : LesArticlesComponent },
     //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
-    {path: 'article/:id', component: ArticleComponent},
-    {path: 'listAbProf/:id', component: ListAbProfComponent},
-    {path: 'listepresence/:id', component: ListePresenceComponent},
-    {path: 'profile/:id', component: ProfilComponent},
-    {path: 'notes', component: MarkNoteComponent},
-    {path: 'rattrapage', component: AddRAttrapageComponent},
-    {path: 'document', component: ListePresenceComponent},
-    {path: 'emploi/:id', component: EmploiComponent},
-    {path: 'mail', component: ListePresenceComponent},
+    {path: 'article/:id', component: ArticleComponent,canActivate: [AuthGuard]},
+    {path: 'listAbProf/:id', component: ListAbProfComponent,canActivate: [AuthGuard]},
+    {path: 'listepresence/:id', component: ListePresenceComponent,canActivate: [AuthGuard]},
+    {path: 'profile/:id', component: ProfilComponent,canActivate: [AuthGuard]},
+    {path: 'notes', component: MarkNoteComponent,canActivate: [AuthGuard]},
+    {path: 'rattrapage', component: AddRAttrapageComponent,canActivate: [AuthGuard]},
+    {path: 'document', component: ListePresenceComponent,canActivate: [AuthGuard]},
+    {path: 'emploi/:id', component: EmploiComponent,canActivate: [AuthGuard]},
+    {path: 'mail', component: ListePresenceComponent,canActivate: [AuthGuard]},
   ]},
 
   { path : 'home/:id' , component : HomeComponent, canActivate: [AuthGuard]
