@@ -46,20 +46,23 @@
             <span>Calendar</span>
           </a>
         </li>
-        <li class="sub-menu">
-          <a href="javascript:;">
-            <i class="fa fa-clipboard"></i>
-            <span>Students absences</span>
+        <li>
+          <a routerLink="listAbProf/{{user?._id}}" >
+            <i class="fa fa-th"></i>
+            <span>presence list</span>
           </a>
-          <ul class="sub">
-            <li><a routerLink="listAbProf/{{user?._id}}" >presence list</a></li>
-            <li><a routerLink="listepresence/{{user?._id}}" >Mark absence</a></li>
-          </ul>
         </li>
         <li>
-          <a routerLink="notes">
+          <a routerLink="listepresence/{{user?._id}}" >
             <i class="fa fa-pencil"></i>
-            <span>Notes</span>
+            <span>Mark absence</span>
+          </a>
+        </li>
+        
+        <li>
+          <a routerLink="notes">
+            <i class="fa fa-file"></i>
+            <span>Grades</span>
           </a>
         </li>
         <li>

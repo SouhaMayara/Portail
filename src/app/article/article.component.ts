@@ -21,7 +21,7 @@ export class ArticleComponent implements OnInit {
     this.apiService.getOneArticle(id).subscribe((res: any) => {
       console.log(res);
       this.article = res.data;
-      this.article.date=this.datePipe.transform( this.article.date , 'yyyy-MM-dd hh:mm');});
+      this.article.date=this.datePipe.transform( this.article.date , 'yyyy-MM-dd');});
   }
 
 }

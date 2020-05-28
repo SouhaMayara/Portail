@@ -38,13 +38,14 @@ export class ProfilComponent implements OnInit {
       }
     
     }
-    updateProfile(email, firstname, lastname,grade) {
+    updateProfile(email, firstname, lastname,grade,password) {
     
       const user = {
         email: email,
         firstname: firstname,
         lastname: lastname,
         grade:grade,
+        password:password
        
       }
   

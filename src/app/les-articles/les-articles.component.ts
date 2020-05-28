@@ -35,7 +35,7 @@ export class LesArticlesComponent implements OnInit {
       this.articles = res.data
     for(let index=0; index<this.articles.length;index++){
       
-      this.articles[index].date=this.datePipe.transform( this.articles[index].date , 'yyyy-MM-dd hh:mm');
+      this.articles[index].date=this.datePipe.transform( this.articles[index].date , 'yyyy-MM-dd');
       //console.log(k) 
     }
     });

@@ -80,8 +80,13 @@
                 <input type="text" placeholder=" " id="cell" class="form-control" #grade value={{user?.grade}}></div>
             </div>
             <div class="form-group">
+              <label class="col-lg-2 control-label" style="color:aliceblue">Password :</label>
+              <div class="col-lg-6" >
+                <input type="password" placeholder=" " id="cell" class="form-control" #password value={{user?.password}}></div>
+            </div>
+            <div class="form-group">
               <div class="col-lg-offset-2 col-lg-10">
-                <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value,firstname.value,lastname.value,grade.value)">Save</button>
+                <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value,firstname.value,lastname.value,grade.value,password.value)">Save</button>
                 
               </div>
               

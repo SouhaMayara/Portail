@@ -66,11 +66,12 @@ async ngOnInit(): Promise<any> {
         console.log("seance",this.seances);
         this.apiService.getGroupBySeance(this.seances[0]['_id'],this.prof['_id']).subscribe(async (resultGroup: any) => {
           console.log("grouuupe",resultGroup);
-
+    
           this.etudiants = await resultGroup.data[0]['groupe'].etudiants;
           this.etudiants.sort((a, b) => (a.lastname > b.lastname) ? 1 : ((b.lastname > a.lastname) ? -1 : 0) );
           this.anneScolaire = await resultGroup.data[0]['groupe']['annee_scolaire'];
-          this.nomGroupe = await resultGroup.data[0]['groupe']['filiere']+'-0'+resultGroup.data[0]['groupe']['niveau']+'-'+resultGroup.data[0]['groupe']['nom'];
+          console.log(this.anneScolaire)
+          this.nomGroupe = await resultGroup.data[0]['groupe']['nom'];
         });
       });
       
@@ -107,7 +108,7 @@ async ngOnInit(): Promise<any> {
         }else{
           if (res.data['DateAbs'] != this.jstoday){
           this.apiService.addAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent,this.jstoday).subscribe((res: any) => {
-
+            
             console.log(res);
             
           }) 
