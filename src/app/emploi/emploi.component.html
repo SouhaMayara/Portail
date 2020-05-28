@@ -28,19 +28,19 @@
                   <table class="table table-bordered table-striped table-condensed cf">
                     <thead class="cf">
                       <tr>
-                        <th >Day\Seance</th>
-                        <th>S1[8:30=>10:00]</th>
-                        <th>S2[10:10=>11:40]</th>
-                        <th>S3[11:50=>13:20]</th>
-                        <th>S4[13:50=>15:20]</th>
-                        <th>S5[15:30=>17:00]</th>
-                        <th>S6[17:10=>18:40]</th>
+                        <th style="background: lightcyan;" >Day\Seance</th>
+                        <th style="background: lightcyan;">S1[8:30=>10:00]</th>
+                        <th style="background: lightcyan;">S2[10:10=>11:40]</th>
+                        <th style="background: lightcyan;">S3[11:50=>13:20]</th>
+                        <th style="background: lightcyan;">S4[13:50=>15:20]</th>
+                        <th style="background: lightcyan;">S5[15:30=>17:00]</th>
+                        <th style="background: lightcyan;">S6[17:10=>18:40]</th>
                       </tr>
                     </thead>
                     <tbody *ngFor="let i of jour">
                       <tr>
-                        <td data-title="Code">{{ i }}</td>
-                          <td >
+                        <td data-title="Code" style="background: lightcyan;">{{ i }}</td>
+                          <td style="background: white;">
                             <div *ngFor="let seance of seances| filter:term">
                               <p *ngIf="seance?.jour===i && seance?.nom==='S1'" >
                                 {{ seance?.matiere.nom }}<br>
@@ -57,7 +57,7 @@
                                 <span *ngIf="user?.role=='Etudiant'">{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}</span>
                                 <span *ngIf="user?.role=='professeur'">{{ seance?.groupe?.nom}}</span>
                                 <br>{{ seance?.type }}<span *ngIf="seance?.rattrap==='catching up'" style="color:white;background-color:rgba(255, 0, 0, 0.411);"><br>{{seance?.rattrap}}</span></p></div></td>
-                          <td>
+                          <td style="background: white;">
                             <div *ngFor="let seance of seances| filter:term">
                               <p *ngIf="seance?.jour===i && seance?.nom==='S3'">
                                 {{ seance?.matiere.nom }}<br>
@@ -71,7 +71,7 @@
                                 <span *ngIf="user?.role=='Etudiant'">{{ seance?.professeur.user.firstname}}{{ seance?.professeur.user.lastname }}</span>
                                 <span *ngIf="user?.role=='professeur'">{{ seance?.groupe?.nom}}</span>
                                 <br>{{ seance?.type }}<span *ngIf="seance?.rattrap==='catching up'" style="color:white;background-color:rgba(255, 0, 0, 0.411);"><br>{{seance?.rattrap}}</span></p></div></td>
-                          <td>
+                          <td style="background: white;">
                             <div *ngFor="let seance of seances| filter:term">
                               <p *ngIf="seance?.jour===i && seance?.nom==='S5'">
                                 {{ seance?.matiere.nom }}<br>

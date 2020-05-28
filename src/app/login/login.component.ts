@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
 @Component({
-  selector: 'app-login',
+  selector:'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

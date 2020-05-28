@@ -3,15 +3,16 @@ import { HomeComponent } from '../home/home.component';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-notifications',
   templateUrl: './notifications.component.html',
   styleUrls: ['./notifications.component.css'],
   providers: [DatePipe]
 })
+
 export class NotificationsComponent implements OnInit {
   
 
@@ -34,12 +35,13 @@ export class NotificationsComponent implements OnInit {
   notifications =[];
   mat;
   listeId=[];
-  n=0;  
+  n;  
   value: any;
   toastContainer: any;
   myDate = new Date();
   test: string;
-  constructor(private toastr: ToastrService,private http:HttpClient,private apiService: AuthService, private activatedRoute: ActivatedRoute,private datePipe: DatePipe ) {
+  
+  constructor(public router: Router,private toastr: ToastrService,private http:HttpClient,private apiService: AuthService, private activatedRoute: ActivatedRoute,private datePipe: DatePipe ) {
     //console.log("homeComponent*********************************");
     }
 
@@ -86,19 +88,20 @@ export class NotificationsComponent implements OnInit {
             this.pourcentage[index]=(parseInt(this.nb[index])/(parseInt(this.ntotal[index])))*100;
             console.log(this.pourcentage[index]);  
             if(this.pourcentage[index] < 30 && this.pourcentage[index] >=5){
-              setTimeout(() => this.toastr.warning(this.user.firstname +' watch your absence in '+ this.noms[index][0]))
+              
               
               //this.n++; 
-              const notif=this.toastr.warning(this.user.firstname +' watch your absence in '+ this.noms[index][0]);
-              this.notifications.push(notif.message + this.nb[index])
+              const notif=this.user.firstname +' watch your absence in '+ this.noms[index][0];
+              this.notifications.push(notif + this.nb[index])
+              
               console.log("notifications",this.notifications); 
-              console.log(notif.message)
+              console.log(notif)
               //console.log(this.pourcentage[index]);  
             }else if(this.pourcentage[index] >= 30){
 
-              setTimeout(() => this.toastr.error("You are eliminated in "+ this.noms[index])) 
-              const notif=this.toastr.warning(this.user.firstname +' watch your absence in '+ this.noms[index][0]);
-              this.notifications.push(notif.message)
+             
+              const notif="You are eliminated in "+ this.noms[index][0];
+              this.notifications.push(notif)
              //this.n++;
             //console.log(this.n)
           }
@@ -111,7 +114,7 @@ export class NotificationsComponent implements OnInit {
         console.log(this.noms);
         console.log(this.nb);
         //console.log(this.matiere.nom);
-    
+        console.log(this.user._id);
       });
 
       this.apiService.getMatiere(this.idG).subscribe((res: any) => {
@@ -133,7 +136,7 @@ export class NotificationsComponent implements OnInit {
             console.log("ghada");
             console.log(this.nb[index].date);
             var k=this.nb[index].date
-            //k=this.datePipe .transform( k , 'yyyy-MM-ddThh:mm')
+            k=this.datePipe .transform( k , 'yyyy-MM-dd hh:mm')
             //var h = k.getHours(); 
            // var m = this.nb[index].date.getMinutes();
             //var d = this.nb[index].date.getHours();
@@ -142,41 +145,32 @@ export class NotificationsComponent implements OnInit {
             var d=new Date(k);
             
             this.value=this.nb[index].note.toString()
-            if(this.value !== null)
+            if(this.value !== null )
             {
                
               //console.log(this.noms[index])
               //this.toastr.warning(this.user.firstname +' check your grades in '+ this.noms[index][0]))
-               const notif=this.toastr.warning(this.user.firstname +' check your grades in '+ this.noms[index][0]);
-               this.notifications.push(notif.message +" "+ k )
+               const notif=this.user.firstname +' check your grades in '+ this.noms[index][0];
+               this.notifications.push(notif +" "+ k )
               console.log("notifications",this.notifications); 
-              console.log(notif.message)
+              console.log(notif)
+              console.log("ghada",this.user._id);
             }
-            else{
-              //console.log(this.value)
-            }
-           
-            
-         
-         
+
           });
          
           // console.log(this.nb);  
           });
         }
-        // console.log(this.noms);
+         
         // console.log(this.nb);
 
-    
       });
 
-      
     });
-
-   
-  
-  
-
   }
  
+
+
+
 }

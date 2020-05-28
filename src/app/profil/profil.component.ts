@@ -44,12 +44,13 @@ export class ProfilComponent implements OnInit {
         email: email,
         firstname: firstname,
         lastname: lastname,
-        grade:grade 
+        grade:grade,
+       
       }
   
       this.id = this.activatedRoute.snapshot.paramMap.get('id')
       this.apiService.updateUser(this.id, user).subscribe((res: any) => { 
-    
+        this.user.password=
       console.log(this.user.image);
       console.log(res);
       this.ngOnInit();
@@ -72,6 +73,7 @@ export class ProfilComponent implements OnInit {
       console.log(this.user.image);
       console.log(res); 
       this.ngOnInit();
+      window.location.reload();
       //console.log(this.onSelectFile(onchange))
       //console.log(this.user.image);
      

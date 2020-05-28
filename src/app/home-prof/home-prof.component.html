@@ -6,59 +6,7 @@
     <!--logo start-->
     <a routerLink='/homeprof/{{user?._id}}' routerLinkActive="router-link-active"  class="logo"><b>ISSAT<span>SO</span></b></a>
     <!--logo end-->
-    <div class="nav notify-row" id="top_menu">
-      <!--  notification start -->
-      <ul class="nav top-menu">
-        <!-- settings start -->
-        <li class="dropdown">
-          <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-            <i class="fa fa-tasks"></i>
-            <span class="badge bg-theme">4</span>
-            </a>
-          <ul class="dropdown-menu extended tasks-bar">
-            <div class="notify-arrow notify-arrow-green"></div>
-            <li>
-              <p class="green">You have 4 pending tasks</p>
-            </li>
-            <li class="external">
-              <a href="#">See All Tasks</a>
-            </li>
-          </ul>
-        </li>
-        <!-- settings end -->
-        <!-- inbox dropdown start-->
-        <li id="header_inbox_bar" class="dropdown">
-          <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-            <i class="fa fa-envelope-o"></i>
-            <span class="badge bg-theme">5</span>
-            </a>
-          <ul class="dropdown-menu extended inbox">
-            <div class="notify-arrow notify-arrow-green"></div>
-            
-           
-          </ul>
-        </li>
-        <!-- inbox dropdown end -->
-        <!-- notification dropdown start-->
-        <li id="header_notification_bar" class="dropdown">
-          <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
-            <i class="fa fa-bell-o"></i>
-            <span class="badge bg-warning">7</span>
-            </a>
-          <ul class="dropdown-menu extended notification">
-            <div class="notify-arrow notify-arrow-yellow"></div>
-            <li>
-              <p class="yellow">You have 7 new notifications</p>
-            </li>
-            <li>
-              <a href="index.html#">See all notifications</a>
-            </li>
-          </ul>
-        </li>
-        <!-- notification dropdown end -->
-      </ul>
-      <!--  notification end -->
-    </div>
+
     <div class="top-menu">
       <ul class="nav pull-right top-menu">
         <li><a class="logout" (click)="profService.logoutUser()">Logout</a></li>
@@ -74,7 +22,7 @@
     <div id="sidebar" class="nav-collapse ">
       <!-- sidebar menu start-->
       <ul class="sidebar-menu" id="nav-accordion">
-        <p class="centered"><a href="profile.html"><img src="http://localhost:3001/{{user?.image}}" class="img-circle" width="80" ></a></p>
+        <p class="centered"><a href="#"><img src="http://localhost:3001/{{user?.image}}" class="img-circle" width="80" ></a></p>
             <h5 class="centered">{{user?.firstname}} {{user?.lastname}}</h5>
         
         
@@ -86,7 +34,7 @@
         </li>
 
         <li>
-          <a routerLink="profile/{{user?._id}}" >
+          <a routerLink="profile/{{user?._id}}"  routerLinkActive="router-link-active" >
              <i class="fa fa-user"></i>
              <span>Profile</span>
           </a>
@@ -128,30 +76,18 @@
           
               
         <li>
-          <a href="#">
-            <i class="fa fa-book"></i>
-            <span>Documents</span>
+          <a routerLink="rattrapage">
+            <i class="fa fa-pencil"></i>
+            <span>add catch-up</span>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i class="fa fa-envelope"></i>
-            <span>Mail </span>
-            <span class="label label-theme pull-right mail-info">2</span>
-          </a>
-        </li>
-        <li>
-          <a  routerLink="#" routerLinkActive="active">
-            <i class="fa fa-comments-o"></i>
-            <span>Chat Room</span>
-          </a>
-          </li>
           <li>
-          <a routerLink="map" routerLinkActive="active">
-            <i class="fa fa-map-marker"></i>
-            <span>Google Maps </span>
-          </a>
-        </li>
+            <a routerLink="map" routerLinkActive="active">
+              <i class="fa fa-map-marker"></i>
+              <span>Google Maps </span>
+              </a>
+          </li>
         
       </ul>
       <!-- sidebar menu end-->
@@ -162,7 +98,7 @@
       <router-outlet></router-outlet>
       <!--______________________________________________________________________________________________-->
       <!--footer start-->
-      <footer class="site-footer">
+      <footer class="site-footer" style="margin-top:25%">
         <div class="text-center">
           <p>
             &copy; Copyrights <strong><a href="http://www.issatso.rnu.tn/fo/index.php">ISSATSO</a></strong>. All Rights Reserved

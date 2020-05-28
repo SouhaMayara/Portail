@@ -1,0 +1,75 @@
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<section id="main-content" style="background-color: aliceblue;">
+    <section class="wrapper">
+        <div class="row mt">
+            <div class="col-lg-12">
+              <div class="form-panel">
+                <form class="form-inline" role="form">
+                    <select id="ListeMat" style="margin: 5px;" class="btn btn-theme dropdown-toggle btn-group" #mat (change)="getGroupe(mat.value)">
+                        <option value="" >Matter</option>
+                        <option *ngFor="let mat of matieresList"  value="{{mat?._id}}" >{{mat?.nom}}</option>
+                    </select>
+                    <select id="ListeMat" style="margin: 5px;" class="btn btn-theme dropdown-toggle btn-group" #grp (change)="getTypeMat(mat.value,grp.value)">
+                       <option value="" >Group</option>
+                       <option *ngFor="let grp of groupesList" value="{{grp?._id}}">{{grp?.nom}}</option>
+                    </select>
+                </form>
+              </div>
+            </div>
+        </div>
+
+        <div class="row mt">
+            <div class="col-md-12">
+                <div class="content-panel">
+                    <form (ngSubmit) = "validate(dateSeance.value)" style="margin: 20px;">
+                        <div class="form-group row">
+                            <label  class="col-sm-2 col-form-label" style="font-weight: bold; color: #000;">Meeting</label>
+                            <div class="col-sm-3">
+                                <input type="date" class="form-control" id="meeting" required value="null" #dateSeance (change) = "testDateFN(dateSeance.value);">
+                            </div>
+                        </div>
+                        <div class="alert alert-danger alert-dismissible" *ngIf="testDate">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close" onclick="document.getElementById('meeting').value =''">&times;</a>
+                            <strong>Attention !</strong> You must select a correct date.
+                          </div>
+                        <div class="row">
+                            <label class="col-form-label col-sm-2 " style="font-weight: bold; color: #000;">Time</label>
+                            <div class="col-sm-10">
+                                <div class="form-check" *ngFor="let nom of nomSeances" >
+                                    <fieldset id="timeRadios">
+                                        <input class="form-check-input" type="radio" required name="timeRadios" #timeRadio id="timeRadios" value="{{nom}}" (change)="saveInfoTime(timeRadio.value)" >
+                                        <label class="form-check-label" for="timeRadios1">{{nom}}</label>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-form-label col-sm-2 " style="font-weight: bold; color: #000;">Type</label>
+                            <div class="col-sm-10">
+                                <div class="form-check" *ngFor="let type of typesMatiere" >
+                                    <fieldset id="typeRadios">
+                                        <input class="form-check-input" type="radio" required name="typeRadios" #typeRadio  value="{{type}}" (change)="saveInfoType(typeRadio.value)" >
+                                        <label class="form-check-label" for="typeRadios1">{{type}}</label>        
+                                    </fieldset>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" style="margin: 5px; float: right;" class="btn btn-theme dropdown-toggle btn-group">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /content-panel -->
+            </div>
+            <!-- /col-md-12 -->
+        </div>
+    </section>
+</section>

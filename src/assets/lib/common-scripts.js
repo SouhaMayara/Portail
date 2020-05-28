@@ -1,4 +1,5 @@
 /*---LEFT BAR ACCORDION----*/
+$(function() { });
 $(function() {
   $('#nav-accordion').dcAccordion({
     eventType: 'click',
@@ -71,15 +72,18 @@ var Script = function() {
   });
 
   // custom scrollbar
-  $("#sidebar").niceScroll({
+  $("#sidebar").scroll(function(){
+    $("#sidebar").niceScroll.remove({
     styler: "fb",
     cursorcolor: "#4ECDC4",
     cursorwidth: '3',
     cursorborderradius: '10px',
     background: '#404040',
     spacebarenabled: false,
-    cursorborder: ''
+    cursorborder: '',
+    
   });
+});
 
   //  $("html").niceScroll({styler:"fb",cursorcolor:"#4ECDC4", cursorwidth: '6', cursorborderradius: '10px', background: '#404040', spacebarenabled:false,  cursorborder: '', zindex: '1000'});
 
@@ -103,11 +107,11 @@ var Script = function() {
 
   //    tool tips
 
-  $('.tooltips').tooltip();
+ // $('.tooltips').tooltip();
 
   //    popovers
 
-  $('.popovers').popover();
+  //$('.popovers').popover();
 
 
 

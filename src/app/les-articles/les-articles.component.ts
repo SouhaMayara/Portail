@@ -3,10 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-les-articles',
   templateUrl: './les-articles.component.html',
-  styleUrls: ['./les-articles.component.css']
+  styleUrls: ['./les-articles.component.css'],
+  providers: [DatePipe]
 })
 export class LesArticlesComponent implements OnInit {
   articles;
@@ -14,7 +16,7 @@ export class LesArticlesComponent implements OnInit {
   title:any;
   term;
   p;
-  constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { }
+  constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute,private datePipe: DatePipe) { }
 
   ngOnInit(): void {
 
@@ -30,7 +32,13 @@ export class LesArticlesComponent implements OnInit {
     this.apiService.decodeToken();
     this.apiService.getArticles().subscribe((res: any) => {
       console.log(res);
-      this.articles = res.data });
+      this.articles = res.data
+    for(let index=0; index<this.articles.length;index++){
+      
+      this.articles[index].date=this.datePipe.transform( this.articles[index].date , 'yyyy-MM-dd hh:mm');
+      //console.log(k) 
+    }
+    });
   }
 
 

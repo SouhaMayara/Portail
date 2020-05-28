@@ -30,6 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpdateNoteComponent } from './update-note/update-note.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
 //import { ToastrModule } from 'ngx-toastr';
 //import { TIMEOUT } from 'dns';
 
@@ -38,6 +41,7 @@ import { UpdateNoteComponent } from './update-note/update-note.component';
     AppComponent,
     LoginComponent,
     ProfComponent,
+    ProfilComponent,
     HomeComponent,
     ListePresenceComponent,
     HomeProfComponent,
@@ -51,7 +55,8 @@ import { UpdateNoteComponent } from './update-note/update-note.component';
     ListAbProfComponent,
     MarkNoteComponent,
     NotificationsComponent,
-    UpdateNoteComponent
+    UpdateNoteComponent,
+    AddRAttrapageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -68,16 +73,21 @@ import { UpdateNoteComponent } from './update-note/update-note.component';
       preventDuplicates: true,
       
     }),
-    ToastContainerModule
+    ToastContainerModule,
+    CommonModule,
+    RouterModule,
+    
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent,
               LoginComponent,
               ProfComponent,
+              ProfilComponent,
               HomeComponent,
               ListePresenceComponent,
-            LesArticlesComponent,
-            NgxPaginationModule],
+              LesArticlesComponent,
+              AddRAttrapageComponent,
+              NgxPaginationModule],
   exports: []
 })
 export class AppModule { };

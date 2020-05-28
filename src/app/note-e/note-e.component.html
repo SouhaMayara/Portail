@@ -4,7 +4,7 @@
     <!--main content start-->
     <section id="main-content">
         <section class="wrapper">
-          <h3><i class="fa fa-angle-right"></i>Notes</h3>
+          <h3><i class="fa fa-angle-right"></i>Grades</h3>
           <!-- /row -->
           <div class="row mt">
             <div class="col-lg-12">
@@ -14,8 +14,8 @@
                <section id="no-more-tables">
                   <table class="table table-bordered table-striped table-condensed cf">
                     <thead class="cf">
-                      <tr>
-                        <th >Matter\Note</th>
+                      <tr style="background: lightcyan;">
+                        <th >Matter\Grade</th>
                         <th>DS</th>
                         <th>Examen</th>
                         <th>TP</th>
@@ -23,7 +23,7 @@
                     </thead>
                     <tbody *ngFor="let nom of noms">
                       <tr>
-                       <td data-title="Code">{{ nom[0] }}</td>
+                       <td data-title="Code" style="background: white;">{{ nom[0] }}</td>
                        <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='DS' && n?.matiere===nom[1]"> {{ n?.note }} </p></div></td>
                        <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='Examen' && n?.matiere===nom[1]"> {{ n?.note }} </p></div></td>
                        <td ><div *ngFor="let n of nb"><p *ngIf="n?.type==='TP' && n?.matiere===nom[1]"> {{ n?.note }} </p></div></td>

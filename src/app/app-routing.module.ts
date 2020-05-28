@@ -18,25 +18,26 @@ import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpdateNoteComponent } from './update-note/update-note.component';
+import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
 
 
 
 const routes: Routes = [
   {path : '', component : LoginComponent},
-  {path : 'homeprof/:id', component : HomeProfComponent, 
-  canActivate: [AuthGuard]
+  {path : 'homeprof/:id', component : HomeProfComponent, canActivate: [AuthGuard]
   , children : [
     { path : '' ,  component : LesArticlesComponent },
     //{path: 'article/:id', component: LayoutEtudiantComponent, canActivate: [AuthGuard]},
-    {path: 'article/:id', component: ArticleComponent},
-    {path: 'listAbProf/:id', component: ListAbProfComponent},
-    {path: 'listepresence/:id', component: ListePresenceComponent},
-    {path: 'profile/:id', component: ProfilComponent},
-    {path: 'notes/:id', component: MarkNoteComponent},
-    {path: 'UpdateNote/:id', component: UpdateNoteComponent},
-    {path: 'document', component: ListePresenceComponent},
-    {path: 'emploi/:id', component: EmploiComponent},
-    {path: 'mail', component: ListePresenceComponent},
+    {path: 'article/:id', component: ArticleComponent,canActivate: [AuthGuard]},
+    {path: 'listAbProf/:id', component: ListAbProfComponent,canActivate: [AuthGuard]},
+    {path: 'listepresence/:id', component: ListePresenceComponent,canActivate: [AuthGuard]},
+    {path: 'profile/:id', component: ProfilComponent,canActivate: [AuthGuard]},
+    {path: 'notes', component: MarkNoteComponent,canActivate: [AuthGuard]},
+    {path: 'UpdateNote/:id', component: UpdateNoteComponent,canActivate: [AuthGuard]},
+    {path: 'rattrapage', component: AddRAttrapageComponent,canActivate: [AuthGuard]},
+    {path: 'document', component: ListePresenceComponent,canActivate: [AuthGuard]},
+    {path: 'emploi/:id', component: EmploiComponent,canActivate: [AuthGuard]},
+    {path: 'mail', component: ListePresenceComponent,canActivate: [AuthGuard]},
   ]},
 
   { path : 'home/:id' , component : HomeComponent, canActivate: [AuthGuard]
@@ -48,7 +49,7 @@ const routes: Routes = [
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]},
       {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]},
-      {path: 'notification', component: NotificationsComponent, canActivate: [AuthGuard]}
+      {path: 'notification/:id', component: NotificationsComponent, canActivate: [AuthGuard]}
 ]}
 ,
   { path : "**" , 

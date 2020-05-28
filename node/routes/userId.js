@@ -2,6 +2,7 @@ const router = require('express').Router();
 const user = require('../models/user');
 const professeur = require('../models/professeur');
 const multer=require('multer');
+const bcrypt = require('bcryptjs');
 
 const storage =multer.diskStorage({
   destination: function(req,file,cb){
@@ -32,9 +33,9 @@ router.post('/updateProfileImage/:id',upload.single('image'), async (req, res) =
     res.send({ data: userResult })
   })
 
-  router.post('/updateProfile/:id', upload.single('image'),async (req, res) => {
-   
-    const userResult = await user.update({ "_id": req.params.id },{ $set: req.body }).exec();
+  router.post('/updateProfile/:id',async (req, res) => {
+ 
+    const userResult = await user.updateOne({ "_id": req.params.id },{ $set: req.body }).exec();
     res.send({ data: userResult })
   })
 

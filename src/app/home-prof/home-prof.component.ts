@@ -15,6 +15,7 @@ export class HomeProfComponent implements OnInit {
 
   public idd;
   articles: any;
+  static notification: any[];
   constructor(public profService: AuthService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

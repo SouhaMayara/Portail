@@ -1,15 +1,17 @@
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper site-min-height" >
-      <h3><i class="fa fa-angle-right"></i> Inline Editor</h3>
+      <h3><i class="fa fa-angle-right"></i> Notifications</h3>
      
    
       <div class="mt"></div>
       <div class="row content-panel mt mb"*ngFor="let n of notifications| paginate:{itemsPerPage: 6, currentPage:p}">
-        <div class="col-md-6 mt">
-          <p contenteditable="true">{{n}}</p>
-          
+        <div class="col-md-6 mt"  >
+          <p  style="margin-top:-4%" *ngIf="n.indexOf('absence') > -1" ><a href="http://localhost:4200/home/{{user?._id}}/absence/{{user?._id}}">{{n}}</a></p>
+          <p  style="margin-top:-4%" *ngIf="n.indexOf('eliminated') > -1"  ><a   href="http://localhost:4200/{{user?._id}}/home/absence/{{user?._id}}">{{n}}</a></p>
+          <p  style="margin-top:-4%" *ngIf="n.indexOf('grades') > -1"  ><a  href="http://localhost:4200/home/{{user?._id}}/note_e/{{user?._id}}">{{n}}</a></p>
         </div>
+        
      
       </div>
     </section>

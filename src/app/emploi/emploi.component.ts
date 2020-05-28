@@ -54,7 +54,7 @@ jstoday = '';
             this.seances= await rsSeance.data;
          await console.log(rsSeance.data);
 
-         this.jstoday =formatDate(this.today, 'dd-MM-yyyy', 'en-UTC');
+         this.jstoday =formatDate(this.today, 'dd-mm-yyyy', 'en-UTC');
          for (let i = 0; i< this.seances.length; i++) {
              if(this.seances[i].rattrap=="catching up"){
                if(this.seances[i].DateS<this.jstoday){
