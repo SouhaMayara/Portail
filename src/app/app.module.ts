@@ -29,6 +29,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UpdateNoteComponent } from './update-note/update-note.component';
 //import { ToastrModule } from 'ngx-toastr';
 //import { TIMEOUT } from 'dns';
 
@@ -49,7 +50,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     NoteEComponent,
     ListAbProfComponent,
     MarkNoteComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    UpdateNoteComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

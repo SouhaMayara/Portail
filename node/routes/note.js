@@ -43,6 +43,8 @@ router.get('/:idS/:idm', async (req, res) => {
    
     const noteResult = await note.updateOne({ "_id": req.params.id },{ $set: req.body }).exec();
     res.send({ data: noteResult })
+    console.log("hhhhhhhhhhhh")
+    console.log(req.body)
   })
 
   router.post('/delete/:id',async (req, res) => {
@@ -51,6 +53,10 @@ router.get('/:idS/:idm', async (req, res) => {
     res.send({ data: noteResult })
   })
 
-
+  router.get('/:id', async (req, res) => {
+  
+    const userResult = await note.findOne({ "_id": req.params.id }).exec();
+    res.send({ data: userResult })
+  })
 
 module.exports = router;

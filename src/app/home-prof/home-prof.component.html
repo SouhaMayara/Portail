@@ -98,22 +98,35 @@
             <span>Calendar</span>
           </a>
         </li>
-        <li class="sub-menu">
-          <a href="javascript:;">
-            <i class="fa fa-clipboard"></i>
-            <span>Students absences</span>
-          </a>
-          <ul class="sub">
-            <li><a routerLink="listAbProf/{{user?._id}}" >presence list</a></li>
-            <li><a routerLink="listepresence/{{user?._id}}" >Mark absence</a></li>
-          </ul>
-        </li>
         <li>
-          <a routerLink="notes">
-            <i class="fa fa-pencil"></i>
-            <span>Notes</span>
+          <a routerLink="listAbProf/{{user?._id}}" >
+            <i class="fa fa-clipboard"></i>
+            <span>presence list</span>
           </a>
         </li>
+          <li>
+            <a routerLink="listepresence/{{user?._id}}" >
+              <i class="fa fa-clipboard"></i>
+              <span>Mark absence</span>
+            </a>
+            </li>
+         
+       
+        <li>
+          <a routerLink="UpdateNote/{{user?._id}}" >
+            <i class="fa fa-clipboard"></i>
+            <span>Notes list</span>
+             </a>
+        </li>
+
+            <li>
+              <a routerLink="notes/{{user?._id}}" >
+                <i class="fa fa-clipboard"></i>
+                <span> Mark note</span>
+              </a>
+            </li>
+          
+              
         <li>
           <a href="#">
             <i class="fa fa-book"></i>

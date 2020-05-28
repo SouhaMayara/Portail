@@ -147,6 +147,9 @@ export class AuthService {
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
   }
 
+  getNoteById(_id:any){
+    return this.http.get('http://localhost:3001/note/'+_id);
+  }
   getOneNote(ids: any,idm: any ,type: string) {
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm+'/'+type);
   }
@@ -159,6 +162,15 @@ export class AuthService {
     return this.http.post('http://localhost:3001/note/delete/'+id,Note);
   }
 
+
+  updateNote(id,noteup){
+    console.log("xxxxxxxxxxxxxxxxxxxxxx")
+    console.log(noteup)
+    return this.http.post('http://localhost:3001/note/edit/'+id,noteup);
+    
+  }
+
+  
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
