@@ -101,6 +101,8 @@ async recherche(idMat, idGrp, dts) {
 
 async supprimerAb(_id) {
  
+  
+
   this.apiService.getAbByuser(_id).subscribe(async (resus : any) =>{
     this.etu=await resus.data;
     console.log(this.etu)

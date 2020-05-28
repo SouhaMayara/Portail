@@ -29,6 +29,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerDirective,ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UpdateNoteComponent } from './update-note/update-note.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
@@ -54,6 +55,7 @@ import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.componen
     ListAbProfComponent,
     MarkNoteComponent,
     NotificationsComponent,
+    UpdateNoteComponent,
     AddRAttrapageComponent
   ],
   imports: [

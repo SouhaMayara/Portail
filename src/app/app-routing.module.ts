@@ -17,6 +17,7 @@ import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UpdateNoteComponent } from './update-note/update-note.component';
 import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
     {path: 'listepresence/:id', component: ListePresenceComponent,canActivate: [AuthGuard]},
     {path: 'profile/:id', component: ProfilComponent,canActivate: [AuthGuard]},
     {path: 'notes', component: MarkNoteComponent,canActivate: [AuthGuard]},
+    {path: 'UpdateNote/:id', component: UpdateNoteComponent,canActivate: [AuthGuard]},
     {path: 'rattrapage', component: AddRAttrapageComponent,canActivate: [AuthGuard]},
     {path: 'document', component: ListePresenceComponent,canActivate: [AuthGuard]},
     {path: 'emploi/:id', component: EmploiComponent,canActivate: [AuthGuard]},
