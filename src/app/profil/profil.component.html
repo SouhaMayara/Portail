@@ -79,14 +79,16 @@
               <div class="col-lg-6" >
                 <input type="text" placeholder=" " id="cell" class="form-control" #grade value={{user?.grade}}></div>
             </div>
-            <div class="form-group">
-              <label class="col-lg-2 control-label" style="color:aliceblue">Password :</label>
-              <div class="col-lg-6" >
-                <input type="password" placeholder=" " id="cell" class="form-control" #password value={{user?.password}}></div>
-            </div>
+            
             <div class="form-group">
               <div class="col-lg-offset-2 col-lg-10">
-                <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value,firstname.value,lastname.value,grade.value,password.value)">Save</button>
+                <button class="btn btn-theme" type="submit"  (click)="updateProfile(email.value,firstname.value,lastname.value,grade.value)">Save</button>
+                
+              </div>
+              <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn " type="submit" style="margin-top: -7.8%; margin-left: 38.5%;" >
+                  <a  style="color: #4ecdc4; text-decoration: none;" data-toggle="modal" href="login.html#myModal">Change Password</a>
+                </button>
                 
               </div>
               
@@ -101,4 +103,43 @@
         <!-- /col-lg-8 -->
       </div>
       <!-- /row -->
- 
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+  <!-- Modal -->
+  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title text-center">Forgot Password ?</h4>
+        </div>
+        <div>
+          <div id="errorMsg" *ngIf="errorMessage">
+              <span>{{errorMessage}}</span>
+          </div>
+          <div id="successMsg" *ngIf="successMessage">
+              <span>{{successMessage}}</span>
+          </div>
+          <form action="" [formGroup]="RequestResetForm" (ngSubmit)="RequestResetUser(RequestResetForm)">
+            <div class="form-group modal-body">
+              <p>Enter your e-mail address below to reset your password.</p>
+                <input _ngcontent-c0="" class="form-control form-control-lg" placeholder="email"
+                    type="text" id="email" formControlName="email" value={user?.email}/>
+                <span *ngIf="!RequestResetForm.get('email').valid && !IsvalidForm"
+                    class="help-block">Please enter a valid email!</span>
+            </div>
+            <div class="form-group">
+                <div style="margin-left: 75%;">
+                    <button type="submit" class=" btn btn-theme">Reset
+                        Password</button>
+                </div>
+            </div>
+        </form>
+      </div>
+      </div>
+    </div>
+
+

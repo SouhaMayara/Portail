@@ -17,7 +17,9 @@ import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { UpdateNoteComponent } from './update-note/update-note.component';
 import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
+import { ResponseResetComponent } from './response-reset/response-reset.component';
 
 
 
@@ -31,27 +33,35 @@ const routes: Routes = [
     {path: 'listAbProf/:id', component: ListAbProfComponent,canActivate: [AuthGuard]},
     {path: 'listepresence/:id', component: ListePresenceComponent,canActivate: [AuthGuard]},
     {path: 'profile/:id', component: ProfilComponent,canActivate: [AuthGuard]},
-    {path: 'notes', component: MarkNoteComponent,canActivate: [AuthGuard]},
+    {path: 'notes/:id', component: MarkNoteComponent,canActivate: [AuthGuard]},
+    {path: 'UpdateNote/:id', component: UpdateNoteComponent,canActivate: [AuthGuard]},
     {path: 'rattrapage', component: AddRAttrapageComponent,canActivate: [AuthGuard]},
     {path: 'document', component: ListePresenceComponent,canActivate: [AuthGuard]},
     {path: 'emploi/:id', component: EmploiComponent,canActivate: [AuthGuard]},
     {path: 'mail', component: ListePresenceComponent,canActivate: [AuthGuard]},
+    {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
   ]},
 
   { path : 'home/:id' , component : HomeComponent, canActivate: [AuthGuard]
   , children : [
       { path : '' ,  component : LesArticlesComponent },
       {path: 'article/:id', component: ArticleComponent, canActivate: [AuthGuard]},
-      {path: 'profile/:id', component: ProfilComponent, canActivate: [AuthGuard]},
+      {path: 'profile', component: ProfilComponent, canActivate: [AuthGuard]},
       {path: 'emploi/:id', component: EmploiComponent, canActivate: [AuthGuard]},
       {path: 'map', component: MapComponent, canActivate: [AuthGuard]},
       {path: 'absence/:id', component: AbsenceComponent, canActivate: [AuthGuard]},
       {path: 'note_e/:id', component: NoteEComponent, canActivate: [AuthGuard]},
       {path: 'notification/:id', component: NotificationsComponent, canActivate: [AuthGuard]}
-]}
-,
-  { path : "**" , 
-    redirectTo : '/'    }
+]},
+{
+   path: 'login',
+   component: LoginComponent
+}
+,{
+    path: 'response-reset-password/:token',
+    component: ResponseResetComponent
+    }
+
    /*, children : [
       { path : '' , component : ProfComponent },
       { path : 'presence' , component : ListePresenceComponent },
@@ -62,10 +72,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [ RouterModule.forRoot(routes),RouterModule.forChild(routes)],
+  imports: [ RouterModule.forRoot(routes),
+    RouterModule.forChild(routes)],
   exports: [ RouterModule ]
 
 })
 // tslint:disable-next-line:semicolon
 export class AppRoutingModule {};
-export const routingComponents =[HomeComponent];
+export const routingComponents =[LoginComponent,HomeComponent];

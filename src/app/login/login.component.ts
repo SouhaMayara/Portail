@@ -13,6 +13,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   message = '';
   user: any;
+  RequestResetForm: FormGroup;
+  forbiddenEmails: any;
+  errorMessage: string;
+  successMessage: string;
+  IsvalidForm = true;
+
   constructor(private apiService: AuthService, private router: Router) {
 
     this.loginForm = new FormGroup({
@@ -22,9 +28,38 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
    
-    // window.location.reload();
-  
+    this.RequestResetForm = new FormGroup({
+      'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
+    });
   }
+
+
+  RequestResetUser(form) {
+    console.log(form)
+    if (form.valid) {
+      this.IsvalidForm = true;
+      this.apiService.requestReset(this.RequestResetForm.value).subscribe(
+        data => {
+          this.RequestResetForm.reset();
+          this.successMessage = "Reset password link send to email sucessfully.";
+          setTimeout(() => {
+            this.successMessage = null;
+            this.router.navigate(['login']);
+          }, 3001);
+        },
+        err => {
+
+          if (err.error.message) {
+            this.errorMessage = err.error.message;
+          }
+        }
+      );
+    } else {
+      this.IsvalidForm = false;
+    }
+  }
+  
+ 
  
   loginBtn(){
     console.warn(this.loginForm.value);

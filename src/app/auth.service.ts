@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 import { Absence } from "../../node/models/absence";
@@ -7,9 +7,13 @@ import { Note } from "../../node/models/note";
 import { Observable, throwError } from 'rxjs';
 import { map, take, catchError } from 'rxjs/operators';
 
+const BASEURL = 'http://localhost:3001/api/resetpassword';
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AuthService {
   
   userId;
@@ -154,6 +158,9 @@ export class AuthService {
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm);
   }
 
+  getNoteById(_id:any){
+    return this.http.get('http://localhost:3001/note/'+_id);
+  }
   getOneNote(ids: any,idm: any ,type: string) {
     return this.http.get('http://localhost:3001/note/'+ids+'/'+idm+'/'+type);
   }
@@ -166,6 +173,15 @@ export class AuthService {
     return this.http.post('http://localhost:3001/note/delete/'+id,Note);
   }
 
+
+  updateNote(id,noteup){
+    console.log("xxxxxxxxxxxxxxxxxxxxxx")
+    console.log(noteup)
+    return this.http.post('http://localhost:3001/note/edit/'+id,noteup);
+    
+  }
+
+  
   getnbAbsence(id,idmat){
     return this.http.get('http://localhost:3001/matiere/absNb/'+id+'/'+idmat);
   }
@@ -176,12 +192,23 @@ export class AuthService {
   getAbByuser(id){
     return this.http.get('http://localhost:3001/matiere/Abs/'+id);
   }
-  
-
 
   deleteS(ids){
     return this.http.post('http://localhost:3001/matiere/deleteSceance/'+ ids,"");
   }
 
+  requestReset(body): Observable<any> {
+    return this.http.post(`${BASEURL}/req-reset-password`, body).pipe(
+      catchError((error: HttpErrorResponse) => throwError(error))
+    );
+  }
+
+  newPassword(body): Observable<any> {
+    return this.http.post(`${BASEURL}/new-password`, body);
+  }
+
+  ValidPasswordToken(body): Observable<any> {
+    return this.http.post(`${BASEURL}/valid-password-token`, body);
+  }
   
 }

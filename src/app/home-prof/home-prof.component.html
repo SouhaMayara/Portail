@@ -48,23 +48,32 @@
         </li>
         <li>
           <a routerLink="listAbProf/{{user?._id}}" >
-            <i class="fa fa-th"></i>
+            <i class="fa fa-clipboard"></i>
             <span>presence list</span>
           </a>
         </li>
+          <li>
+            <a routerLink="listepresence/{{user?._id}}" >
+              <i class="fa fa-clipboard"></i>
+              <span>Mark absence</span>
+            </a>
+            </li>
+         
+       
         <li>
-          <a routerLink="listepresence/{{user?._id}}" >
-            <i class="fa fa-pencil"></i>
-            <span>Mark absence</span>
-          </a>
+          <a routerLink="UpdateNote/{{user?._id}}" >
+            <i class="fa fa-clipboard"></i>
+            <span>Notes list</span>
+             </a>
         </li>
-        
-        <li>
-          <a routerLink="notes">
-            <i class="fa fa-file"></i>
-            <span>Grades</span>
-          </a>
-        </li>
+
+            <li>
+              <a routerLink="notes/{{user?._id}}" >
+                <i class="fa fa-clipboard"></i>
+                <span> Mark note</span>
+              </a>
+            </li>
+             
         <li>
           <a routerLink="rattrapage">
             <i class="fa fa-pencil"></i>
