@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { async } from '@angular/core/testing';
 import { noteEtudiant } from './noteEtudiant';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mark-note',
@@ -146,7 +147,11 @@ export class MarkNoteComponent implements OnInit {
       this.apiService.addNote(noEt.idEt,this.idMatiere,this.prof._id,noEt.noteEt,this.typeNote).subscribe( async (resNote : any) => {
         //console.log(resNote.data);
         await this.ngOnInit();
-        alert('Notes are updated !')
+        Swal.fire(
+          'Notes !',
+          'Successfuly added !',
+          'success'
+        )
       });
     });
   }

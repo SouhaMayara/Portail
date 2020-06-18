@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {formatDate} from '@angular/common';
 import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { async } from '@angular/core/testing';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-liste-presence',
@@ -96,7 +98,7 @@ async ngOnInit(): Promise<any> {
 
     this.etudiantsPresent.forEach(async etPresent => {
       this.jstoday = formatDate(this.today, 'dd-MM-yyyy', 'en-UTC');
-      this.apiService.getAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent).subscribe((res: any) => {
+      this.apiService.getAbsence(this.seances[0]['matiere']['_id'],this.seances[0]['_id'],etPresent).subscribe( async (res: any) => {
         if (res.data === null) {
           
          
@@ -118,6 +120,11 @@ async ngOnInit(): Promise<any> {
         }
       }) 
     });  
+    await Swal.fire(
+      'Notes !',
+      'Successfuly added !',
+      'success'
+    )
   
   }
 

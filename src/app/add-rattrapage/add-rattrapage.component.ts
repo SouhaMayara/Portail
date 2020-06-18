@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { formatDate } from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-rattrapage',
@@ -139,7 +140,12 @@ export class AddRAttrapageComponent implements OnInit {
   }
   async validate(day): Promise <any>{ 
     if (this.timeS == null || this.typeS == null || this.dayName == null || this.groupe == null || this.matiere == null) {
-      alert('You must enter all the information!');
+      
+      await Swal.fire(
+        'Warning !',
+        'You must enter all the information!',
+        'warning'
+      )
     } else {
       const seance = {
         nom_matiere: this.nom_matiere,
@@ -159,7 +165,11 @@ export class AddRAttrapageComponent implements OnInit {
         
       });
       await this.ngOnInit();
-      alert('Catch-up added successfully!');
+      await Swal.fire(
+        'Catch-up !',
+        'Catch-up added successfully!',
+        'success'
+      )
     }
     
   }

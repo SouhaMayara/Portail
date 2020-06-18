@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+ 
+// CommonJS
 import { async } from '@angular/core/testing';
 import { AbsenceComponent } from '../absence/absence.component';
 import { formatDate } from '@angular/common';
@@ -10,6 +12,7 @@ import { formatDate } from '@angular/common';
 })
 export class ListAbProfComponent implements OnInit {
 
+  Swal = require('sweetalert2')
   user : any;
   prof: any;
   groupes: any;
@@ -19,6 +22,10 @@ export class ListAbProfComponent implements OnInit {
   listUser: any [] = new Array();
   matieresList: any [] = new Array();
   groupesList: any [] = new Array();
+  idMat: any;
+  idGrp: any;
+  dts: any;
+  dateseance: any;
   constructor(private apiService: AuthService) { }
   matieres : any;
   etudiantsList: any ;
@@ -69,7 +76,11 @@ async getGroupe(idMAt): Promise<any>{
   }
 }
 
-async recherche(idMat, idGrp, dts) {
+async recherche(idMat, idGrp, dts): Promise<any> {
+  this.listUser = [];
+  this.idMat = await idMat;
+  this.idGrp = await idGrp;
+  this.dateseance = dts;
   dts = formatDate(dts, 'dd-MM-yyyy', 'en-UTC');
   console.log("matiere:",idMat,"Groupe",idGrp,"date",dts);
   if ((idMat != "") && (idGrp != "")&&(dts != "")){
@@ -101,21 +112,34 @@ async recherche(idMat, idGrp, dts) {
 
 async supprimerAb(_id) {
  
-  
+
 
   this.apiService.getAbByuser(_id).subscribe(async (resus : any) =>{
     this.etu=await resus.data;
     console.log(this.etu)
     console.log(this.etu._id);
-  this.apiService.deleteAB(this.etu._id).subscribe(
-    data => {
-      this.listUser = data
+    this.Swal.fire(
+      {
+        title : "Are you sure ?",
+        text : "you will not be able to recover this student ",
+        type : "warning" , 
+        showCancelButton : true,
+        confirmButtonText : 'Yes',
+        cancelButtonText : 'No , keep it'
+      }
+    ).then( 
+      (result)=>{
+        if(result.value){
+          this.apiService.deleteAB(this.etu._id).subscribe(
+            data => {
+              console.log(data);
+              this.recherche(this.idMat,this.idGrp,this.dateseance);
+            });
+          this.Swal.fire('deleted' , '' , 'success')
+        }else if(result.dismiss === this.Swal.DismissReason.cancel){
+            this.Swal.fire('Cancel' , '' , 'error');
+        }
     }
-    //this.listUser=data;
-   
-   // console.log(this.listUser);
-   // this.ngOnInit()
-  
   )
   });
 }
