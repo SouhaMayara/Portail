@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string;
   successMessage: string;
   IsvalidForm = true;
+  b='';
 
   constructor(private apiService: AuthService, private router: Router) {
 
@@ -64,9 +65,12 @@ export class LoginComponent implements OnInit {
   loginBtn(){
     console.warn(this.loginForm.value);
     console.log(this.loginForm.valid);
-    
+    if(!this.loginForm.valid){
+      this.b="wrong password or Email !";
+    }
     this.message = ''
     if (this.loginForm.valid) {
+      this.b="";
       this.apiService.login(this.loginForm.value).subscribe((res: any) => {
         console.log(res);
         if (res.message === 'ok') {
