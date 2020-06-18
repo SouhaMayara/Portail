@@ -7,6 +7,10 @@
         <input formControlName="email" name="email" type="text" class="form-control" placeholder="Email" autofocus required>
           <br>
         <input formControlName="password" name="password" type="password" class="form-control" placeholder="Password" required>
+        
+        <div id="errorMsg" *ngIf="b">
+            <p style="color:rgba(255, 0, 0, 0.411);">{{ b }}</p>
+        </div>
           <label class="checkbox">
           <span class="pull-right">
           <a data-toggle="modal" href="login.html#myModal">Forgot Password?</a>
