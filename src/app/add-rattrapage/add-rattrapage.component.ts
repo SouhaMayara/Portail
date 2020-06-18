@@ -158,9 +158,9 @@ export class AddRAttrapageComponent implements OnInit {
         groupe: null,
         matiere: null ,
       }
-      seance.DateS=formatDate(seance.DateS, 'dd-mm-yyyy', 'en-UTC');
+      seance.DateS=formatDate(seance.DateS, 'dd-MM-yyyy', 'en-UTC');
       this.apiService.addSeance(this.groupe,this.matiere,this.prof._id,seance).subscribe(async (res : any) => {
-         
+        seance.DateS=formatDate(seance.DateS, 'dd-MM-yyyy', 'en-UTC');
         console.log(res);
         
       });

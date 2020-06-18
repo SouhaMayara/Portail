@@ -23,6 +23,8 @@ import { AbsenceComponent } from './absence/absence.component';
 import { NoteEComponent } from './note-e/note-e.component';
 import { ListAbProfComponent } from './list-ab-prof/list-ab-prof.component';
 import { MarkNoteComponent } from './mark-note/mark-note.component';
+import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
+import { ResponseResetComponent } from './response-reset/response-reset.component';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -32,7 +34,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { UpdateNoteComponent } from './update-note/update-note.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.component';
+
+
 //import { ToastrModule } from 'ngx-toastr';
 //import { TIMEOUT } from 'dns';
 
@@ -56,7 +59,8 @@ import { AddRAttrapageComponent } from './add-rattrapage/add-rattrapage.componen
     MarkNoteComponent,
     NotificationsComponent,
     UpdateNoteComponent,
-    AddRAttrapageComponent
+    AddRAttrapageComponent,
+    ResponseResetComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,11 +1,24 @@
+
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const bodyparser = require('body-parser');
 //const cors = require('cors');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const app = express();
+app.use(cors());
+const server = require('http').createServer(app);
 app.use(bodyparser.json());
 app.use('/uploads',express.static('uploads'));
+//const dbConfig = require('./config/secret');
+
+
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+app.use(cookieParser());
+
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/absencedb',err =>{
   if(err){
     console.error('___________________Error of connection to database!')
@@ -13,6 +26,7 @@ mongoose.connect('mongodb://localhost:27017/absencedb',err =>{
     console.log('______________________connected to mongodb')
   }
 })
+
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -37,6 +51,10 @@ app.use('/matiere', matiere);
 
 const note = require('./node/routes/note')
 app.use('/note', note);
+
+const authRoutes = require('./node/routes/authRoutes')
+app.use('/api/resetpassword', authRoutes);
+
 
 app.listen(3001, ()=>{
   console.log('________________________port:3001')

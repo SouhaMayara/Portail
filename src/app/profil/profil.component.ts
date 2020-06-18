@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-profil',
@@ -11,10 +12,30 @@ export class ProfilComponent implements OnInit {
   user: any;
   id: string;
   image: string ;
+  ResponseResetForm: FormGroup;
 
-  constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute) { }
+  resetToken: null;
+  CurrentState: any;
+  IsResetFormValid = true;
+  loginForm: FormGroup;
+  message = '';
+ 
+  RequestResetForm: FormGroup;
+  forbiddenEmails: any;
+  errorMessage: string;
+  successMessage: string;
+  IsvalidForm = true;
+
+  constructor(private apiService: AuthService, private activatedRoute: ActivatedRoute, 
+    private router: Router,
+    //private route: ActivatedRoute,
+    private fb: FormBuilder) {
+      
+     }
 
   ngOnInit(): void {
+
+
     this.apiService.decodeToken();
     //const id = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(this.apiService.getUser());
@@ -27,6 +48,10 @@ export class ProfilComponent implements OnInit {
      this.user=res.data;
      console.log(res)
     })
+
+    this.RequestResetForm = new FormGroup({
+      'email': new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
+    });
 
   }
 
@@ -45,6 +70,7 @@ export class ProfilComponent implements OnInit {
         firstname: firstname,
         lastname: lastname,
         grade:grade,
+       
        
       }
   
@@ -79,8 +105,42 @@ export class ProfilComponent implements OnInit {
      
      // location.reload(); 
       
-      })
+      }) 
+     
     }
+  
+    RequestResetUser(form) {
+
+      
+      console.log(form)
+      if (form.valid) {
+        this.IsvalidForm = true;
+        this.apiService.requestReset(this.RequestResetForm.value).subscribe(
+          data => {
+         
+            this.RequestResetForm.reset();
+            this.successMessage = "Reset password link send to email sucessfully.";
+            
+            setTimeout(() => {
+              this.successMessage = null;
+              this.router.navigate(['profile']);
+            }, 3001);
+          },
+          err => {
+  
+            if (err.error.message) {
+              this.errorMessage = err.error.message;
+            }
+          }
+        );
+      } else {
+        this.IsvalidForm = false;
+      }
+    }
+    
+
+  
+
 
   }
 
