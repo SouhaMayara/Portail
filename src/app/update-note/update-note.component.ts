@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { async } from '@angular/core/testing';
 import { noteEtudiant } from './noteEtudiant';
 @Component({
   selector: 'app-update-note',
@@ -8,6 +7,8 @@ import { noteEtudiant } from './noteEtudiant';
   styleUrls: ['./update-note.component.css']
 })
 export class UpdateNoteComponent implements OnInit {
+
+  Swal = require('sweetalert2')
 
   user : any;
   prof: any;
@@ -128,20 +129,35 @@ export class UpdateNoteComponent implements OnInit {
     }
   }
   async supprimerNote(idNote) {
- 
-    this.apiService.deleteNote(idNote).subscribe(
-      data => {
-        let index: any = this.noteEtudiants.findIndex((element) => element.idNote == idNote);
-        this.noteEtudiants.splice(index, 1);
-        
-      
-        this.ngOnInit();
-        
-      }
-    
-    )
-    };
 
+    this.Swal.fire(
+      {
+        title : "Are you sure ?",
+        text : "you will not be able to recover this note ",
+        type : "warning" , 
+        showCancelButton : true,
+        confirmButtonText : 'Yes',
+        cancelButtonText : 'No , keep it'
+      }
+    ).then( 
+      (result)=>{
+        if(result.value){
+          this.apiService.deleteNote(idNote).subscribe(
+            data => {
+              let index: any = this.noteEtudiants.findIndex((element) => element.idNote == idNote);
+              this.noteEtudiants.splice(index, 1);
+              this.ngOnInit();
+            }
+          );
+          this.Swal.fire('Note' , 'Successfuly deleted !' , 'success')
+        }else if(result.dismiss === this.Swal.DismissReason.cancel){
+            this.Swal.fire('Cancel' , '' , 'error');
+        }
+    }
+  )
+
+
+}
     async updateNote(idNote,noteUpdate){
 
       console.log(idNote)
@@ -151,6 +167,11 @@ export class UpdateNoteComponent implements OnInit {
         data=>{
           this.ngOnInit();
         }
+      )
+      await this.Swal.fire(
+        'Notes !',
+        'Successfuly updated !',
+        'success'
       )
         
             
