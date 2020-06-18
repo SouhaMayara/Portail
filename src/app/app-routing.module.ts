@@ -33,7 +33,7 @@ const routes: Routes = [
     {path: 'listAbProf/:id', component: ListAbProfComponent,canActivate: [AuthGuard]},
     {path: 'listepresence/:id', component: ListePresenceComponent,canActivate: [AuthGuard]},
     {path: 'profile/:id', component: ProfilComponent,canActivate: [AuthGuard]},
-    {path: 'notes/:id', component: MarkNoteComponent,canActivate: [AuthGuard]},
+    {path: 'notes', component: MarkNoteComponent,canActivate: [AuthGuard]},
     {path: 'UpdateNote/:id', component: UpdateNoteComponent,canActivate: [AuthGuard]},
     {path: 'rattrapage', component: AddRAttrapageComponent,canActivate: [AuthGuard]},
     {path: 'document', component: ListePresenceComponent,canActivate: [AuthGuard]},
